@@ -1,5 +1,5 @@
+import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
-import "../App.css";
 import { GlobalStyle } from "../GlobalStyle";
 import { SharedLayout } from "./layout/SharedLayout";
 import { HomePage } from "./pages/HomePage/HomePage";
@@ -7,8 +7,9 @@ import { Teachers } from "./pages/Teachers/Teachers";
 import { Favorites } from "./pages/Favorites/Favorites";
 import { SignIn } from "./pages/SignIn/SignIn";
 import { SignUp } from "./pages/SignUp.tsx/SignUp";
+import "../App.css";
 
-const App = () => {
+const App: FC = () => {
   return (
     <>
       <Routes>

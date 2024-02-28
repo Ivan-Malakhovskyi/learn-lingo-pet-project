@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
-import { Suspense } from "react";
+import { FC, Suspense } from "react";
 
-export const SharedLayout = () => {
+export const SharedLayout: FC = () => {
   return (
     <>
       <Header />

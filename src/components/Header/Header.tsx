@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   LoginNavLink,
   IconWrapper,
@@ -11,7 +12,7 @@ import { HeaderStyled, HomeLink } from "../layout/SharedLayout.styled";
 import logo from "/icons/ukraine.svg";
 import iconLogin from "/icons/log-in-01.svg";
 
-export const Header = () => {
+export const Header: FC = () => {
   return (
     <HeaderStyled>
       <Nav>
