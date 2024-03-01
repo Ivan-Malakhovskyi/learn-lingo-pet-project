@@ -16,15 +16,16 @@ import { SignIn } from "../pages/SignIn/SignIn";
 import { SignUp } from "../pages/SignUp.tsx/SignUp";
 
 export const Header: FC = () => {
-  const [isOpenSignIn, setIsOpenSignIn] = useState(false);
-  const [isOpenSignUp, setIsOpenSignUp] = useState(false);
+  const [isOpen, setIsOpen] = useState({
+    signIn: false,
+    signUp: false,
+  });
 
-  const handleToggleSignIn = () => {
-    setIsOpenSignIn(!isOpenSignIn);
-  };
-
-  const handleToggleSignUp = () => {
-    setIsOpenSignUp(!isOpenSignUp);
+  const handleToggle = (key) => {
+    setIsOpen((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key],
+    }));
   };
 
   return (
@@ -49,15 +50,15 @@ export const Header: FC = () => {
         {/* <StyledNavLink to="/favorites">Favorites</StyledNavLink> */}
         <ListBtnAuth>
           <li>
-            <BtnSignin onClick={handleToggleSignIn}>
+            <BtnSignin onClick={() => handleToggle("signIn")}>
               <IconWrapper>
                 <img src={iconLogin} width={20} height={20} alt="icon_login" />{" "}
               </IconWrapper>
               Log in
             </BtnSignin>
 
-            {isOpenSignIn && (
-              <Modal close={handleToggleSignIn}>
+            {isOpen.signIn && (
+              <Modal close={() => handleToggle("signIn")}>
                 <SignIn />
               </Modal>
             )}
@@ -65,12 +66,12 @@ export const Header: FC = () => {
 
           <li>
             {" "}
-            <BtnRegister type="button" onClick={handleToggleSignUp}>
+            <BtnRegister type="button" onClick={() => handleToggle("signUp")}>
               Registration
             </BtnRegister>
           </li>
-          {isOpenSignUp && (
-            <Modal close={handleToggleSignUp}>
+          {isOpen.signUp && (
+            <Modal close={() => handleToggle("signUp")}>
               <SignUp />
             </Modal>
           )}
