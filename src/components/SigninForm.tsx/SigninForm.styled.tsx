@@ -2,9 +2,17 @@ import styled from "styled-components";
 import { Field, Form } from "formik";
 
 export const FormWrapper = styled.div`
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  gap: 18px; */
+  margin-bottom: 40px;
+  gap: 18px;
+`;
+
+export const FormUser = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  gap: 18px;
 `;
 
 export const Title = styled.h2`
@@ -27,16 +35,8 @@ export const Paragraph = styled.p`
   margin-bottom: 40px;
 `;
 
-export const FormUser = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  margin-bottom: 40px;
-`;
-
 export const FieldForm = styled(Field)`
-  display: block;
-  width: 100%;
+  width: calc(100% - 35px);
   padding: 16px 18px;
   border: 1px solid ${({ theme: { colors } }) => colors.accentBlack};
   border-radius: 12px;
@@ -56,6 +56,26 @@ export const InputWrapper = styled.div`
 
 export const IconsWrapper = styled.div`
   position: absolute;
-  top: 17px;
-  right: 17px;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+`;
+
+export const BtnSubmit = styled.button`
+  color: ${({ theme: { colors } }) => colors.mainBlack};
+  width: 100%;
+  padding: 16px 21px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  border: none;
+  border-radius: 12px;
+  background-color: ${({ theme: { colors } }) => colors.mainYellow};
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    background-color: ${({ theme: { colors } }) => colors.accentYellow};
+  }
 `;

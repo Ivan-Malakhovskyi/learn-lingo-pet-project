@@ -8,6 +8,8 @@ export const theme = {
     mainBgBlack: "rgba(0, 0, 0, 0.8)",
     mainWhite: "rgb(255, 255, 255)",
     mainGrey: "rgb(138, 138, 137)",
+    mainYellow: "rgb(244, 197, 80)",
+    accentYellow: "rgb(255, 220, 134)",
   },
 };
 

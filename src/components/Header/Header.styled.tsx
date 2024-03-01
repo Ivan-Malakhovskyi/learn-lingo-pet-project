@@ -69,8 +69,6 @@ export const LoginNavLink = styled(NavLink)`
   line-height: 20px;
 `;
 
-export const RegisterNavLink = styled(NavLink)``;
-
 export const BtnRegister = styled.button`
   padding: 14px 39px;
   border-radius: 12px;
@@ -82,6 +80,22 @@ export const BtnRegister = styled.button`
   line-height: 20px;
 `;
 
-export const LogInNavLinkWrapper = styled.div`
+export const ListBtnAuth = styled.ul`
+  display: flex;
+  gap: 16px;
+  align-items: center;
   margin-right: 14px;
+`;
+
+export const BtnSignin = styled.button`
+  display: flex;
+  color: ${({ theme: { colors } }) => colors.mainGrey};
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: 0;
+  margin: 0;
 `;

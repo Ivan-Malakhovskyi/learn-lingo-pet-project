@@ -1,4 +1,4 @@
-import { ErrorMessage, Formik } from "formik";
+import { ErrorMessage, Formik, Form } from "formik";
 import { useState } from "react";
 import * as yup from "yup";
 import {
@@ -6,9 +6,10 @@ import {
   Paragraph,
   Title,
   IconsWrapper,
-  FormUser,
   FormWrapper,
   InputWrapper,
+  BtnSubmit,
+  FormUser,
 } from "./SigninForm.styled";
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
@@ -22,19 +23,22 @@ const validationSigninSchema = yup.object({
   email: yup
     .string()
     .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/, "Invalid email")
-    .required(),
+    .required("Email can't be is empty"),
   password: yup
     .string()
     .min(8, "Too short password")
     .max(48, "Too long password")
     .matches(/[a-zA-Z]/, "Must contain at least one letter")
-    .required(),
+    .required("Password can't be is empty"),
 });
 
 export const SigninForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = () => {};
+  const handleSubmit = (values, { resetForm }) => {
+    const { email, password } = values;
+    console.log(values);
+  };
 
   const handelToggleClick = () => {
     setShowPassword(!showPassword);
@@ -54,24 +58,28 @@ export const SigninForm = () => {
       >
         <FormUser>
           <FormWrapper>
-            <FieldForm type="text" name="email" placeholder="Email" />
-            <ErrorMessage name="email" component="p" />
+            <div>
+              {" "}
+              <FieldForm type="email" name="email" placeholder="Email" />
+              <ErrorMessage name="email" component="p" />
+            </div>
             <InputWrapper>
               <FieldForm
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Password"
               />
-              {/* <IconsWrapper onClick={handelToggleClick}>
+              <IconsWrapper onClick={handelToggleClick}>
                 {showPassword ? (
-                  <img src={eyeOn} alt="eye-on-icon" />
+                  <img src={eyeOn} alt="eye-on-icon" width={20} height={20} />
                 ) : (
-                  <img src={eyeOff} alt="eye-off_icon" />
+                  <img src={eyeOff} alt="eye-off_icon" width={20} height={20} />
                 )}
-              </IconsWrapper> */}
+              </IconsWrapper>
               <ErrorMessage name="password" component="p" />
             </InputWrapper>
           </FormWrapper>
+          <BtnSubmit type="submit">Log In</BtnSubmit>
         </FormUser>
       </Formik>
     </>

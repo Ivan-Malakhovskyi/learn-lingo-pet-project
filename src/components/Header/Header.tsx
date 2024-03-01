@@ -1,25 +1,30 @@
 import { FC, useState } from "react";
 import {
-  LoginNavLink,
   IconWrapper,
-  LogInNavLinkWrapper,
   LogoLink,
   Nav,
   StyledNavLink,
-  RegisterNavLink,
   BtnRegister,
+  ListBtnAuth,
+  BtnSignin,
 } from "../Header/Header.styled";
 import { HeaderStyled, HomeLink } from "../Header/Header.styled";
 import logo from "/icons/ukraine.svg";
 import iconLogin from "/icons/log-in-01.svg";
 import { Modal } from "../Global/Modal";
-import { SigninForm } from "../SigninForm.tsx/SigninForm";
+import { SignIn } from "../pages/SignIn/SignIn";
+import { SignUp } from "../pages/SignUp.tsx/SignUp";
 
 export const Header: FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenSignIn, setIsOpenSignIn] = useState(false);
+  const [isOpenSignUp, setIsOpenSignUp] = useState(false);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
+  const handleToggleSignIn = () => {
+    setIsOpenSignIn(!isOpenSignIn);
+  };
+
+  const handleToggleSignUp = () => {
+    setIsOpenSignUp(!isOpenSignUp);
   };
 
   return (
@@ -40,37 +45,36 @@ export const Header: FC = () => {
           </HomeLink>
           <StyledNavLink to="/teachers">Teachers</StyledNavLink>
         </li>
-        <li>
-          {" "}
-          {/* <StyledNavLink to="/favorites">Favorites</StyledNavLink> */}
-          <div style={{ display: "flex", alignItems: "center" }}>
+
+        {/* <StyledNavLink to="/favorites">Favorites</StyledNavLink> */}
+        <ListBtnAuth>
+          <li>
+            <BtnSignin onClick={handleToggleSignIn}>
+              <IconWrapper>
+                <img src={iconLogin} width={20} height={20} alt="icon_login" />{" "}
+              </IconWrapper>
+              Log in
+            </BtnSignin>
+
+            {isOpenSignIn && (
+              <Modal close={handleToggleSignIn}>
+                <SignIn />
+              </Modal>
+            )}
+          </li>
+
+          <li>
             {" "}
-            <LogInNavLinkWrapper>
-              <LoginNavLink to="/signin">
-                {" "}
-                <IconWrapper>
-                  <img
-                    src={iconLogin}
-                    width={20}
-                    height={20}
-                    alt="icon_login"
-                  />{" "}
-                </IconWrapper>
-                Log in
-              </LoginNavLink>
-            </LogInNavLinkWrapper>
-            <RegisterNavLink to="/signup">
-              <BtnRegister type="button" onClick={handleToggle}>
-                Registration
-              </BtnRegister>
-              {isOpen && (
-                <Modal close={handleToggle}>
-                  <SigninForm />
-                </Modal>
-              )}
-            </RegisterNavLink>
-          </div>
-        </li>
+            <BtnRegister type="button" onClick={handleToggleSignUp}>
+              Registration
+            </BtnRegister>
+          </li>
+          {isOpenSignUp && (
+            <Modal close={handleToggleSignUp}>
+              <SignUp />
+            </Modal>
+          )}
+        </ListBtnAuth>
       </Nav>
     </HeaderStyled>
   );
