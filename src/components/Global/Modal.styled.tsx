@@ -1,0 +1,55 @@
+import styled from "styled-components";
+
+export const Backdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  background-color: ${({ theme: { colors } }) => colors.mainBgBlack};
+  z-index: 1200;
+
+  @media screen and (max-height: 600px) {
+    align-items: flex-start;
+  }
+`;
+
+export const ModalContent = styled.div`
+  max-width: 566px;
+  position: relative;
+  /* max-width: 100vw; */
+  /* max-height: 100vh;
+  width: 100%; */
+  padding: 64px;
+  border-radius: 30px;
+  background-color: ${({ theme: { colors } }) => colors.mainWhite};
+
+  /* @media screen and (max-width: 767px) {
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 656px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 960px;
+  } */
+`;
+
+export const CloseButton = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+  position: absolute;
+  padding: 0;
+  top: 20px;
+  right: 20px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.2);
+  }
+`;

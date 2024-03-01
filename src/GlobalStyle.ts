@@ -4,6 +4,8 @@ export const theme = {
   colors: {
     rootBodyColor: "rgb(238, 238, 238)",
     mainBlack: "rgb(18, 20, 23)",
+    accentBlack: "rgba(18, 20, 23, 0.1)",
+    mainBgBlack: "rgba(0, 0, 0, 0.8)",
     mainWhite: "rgb(255, 255, 255)",
     mainGrey: "rgb(138, 138, 137)",
   },

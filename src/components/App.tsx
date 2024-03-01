@@ -17,8 +17,8 @@ const App: FC = () => {
           <Route index element={<HomePage />} />
           <Route path="teachers" element={<Teachers />} />
           <Route path="favorites" element={<Favorites />} />
-          <Route path="login" element={<SignIn />} />
-          <Route path="registration" element={<SignUp />} />
+          <Route path="signin" element={<SignIn />} />
+          <Route path="signup" element={<SignUp />} />
         </Route>
       </Routes>
       <GlobalStyle />
