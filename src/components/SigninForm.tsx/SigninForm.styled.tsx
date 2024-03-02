@@ -1,14 +1,7 @@
 import styled from "styled-components";
-import { Field, Form } from "formik";
+import { ErrorMessage, Field } from "formik";
 
 export const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 40px;
-  gap: 18px;
-`;
-
-export const FormUser = styled(Form)`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
@@ -21,10 +14,6 @@ export const Title = styled.h2`
   line-height: 1.2;
   max-width: 200px;
   margin-bottom: 20px;
-
-  @media screen and (min-width: 768px) {
-    /* min-width: 384px; */
-  }
 `;
 
 export const Paragraph = styled.p`
@@ -40,14 +29,6 @@ export const FieldForm = styled(Field)`
   padding: 16px 18px;
   border: 1px solid ${({ theme: { colors } }) => colors.accentBlack};
   border-radius: 12px;
-
-  @media screen and (max-width: 768px) {
-    /* max-width: 438px; */
-  }
-
-  @media screen and (min-width: 768px) {
-    /* max-width: 392px; */
-  }
 `;
 
 export const InputWrapper = styled.div`
@@ -72,10 +53,19 @@ export const BtnSubmit = styled.button`
   border-radius: 12px;
   background-color: ${({ theme: { colors } }) => colors.mainYellow};
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms
+    ${({ theme: { transitions } }) => transitions.cubic};
 
   &:hover,
   &:focus {
     background-color: ${({ theme: { colors } }) => colors.accentYellow};
   }
+`;
+
+export const ErrMessage = styled(ErrorMessage)`
+  color: ${({ theme: { colors } }) => colors.mainRed};
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 `;

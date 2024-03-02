@@ -15,25 +15,13 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  max-width: 566px;
+  max-width: 438px;
   position: relative;
-  /* max-width: 100vw; */
   max-height: 100vh;
   width: 100%;
   padding: 64px;
   border-radius: 30px;
   background-color: ${({ theme: { colors } }) => colors.mainWhite};
-
-  /* @media screen and (max-width: 767px) {
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 656px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 960px;
-  } */
 `;
 
 export const CloseButton = styled.button`

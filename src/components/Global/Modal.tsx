@@ -1,10 +1,5 @@
 import { createPortal } from "react-dom";
-import {
-  Backdrop,
-  CloseButton,
-  // Container,
-  ModalContent,
-} from "./Modal.styled";
+import { Backdrop, CloseButton, ModalContent } from "./Modal.styled";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { useEffect } from "react";
 import iconClose from "/icons/x.svg";

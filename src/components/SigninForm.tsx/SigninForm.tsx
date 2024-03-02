@@ -1,4 +1,4 @@
-import { ErrorMessage, Formik, Form } from "formik";
+import { Formik, Form } from "formik";
 import { useState } from "react";
 import * as yup from "yup";
 import {
@@ -9,7 +9,7 @@ import {
   FormWrapper,
   InputWrapper,
   BtnSubmit,
-  FormUser,
+  ErrMessage,
 } from "./SigninForm.styled";
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
@@ -56,12 +56,12 @@ export const SigninForm = () => {
         validationSchema={validationSigninSchema}
         onSubmit={handleSubmit}
       >
-        <FormUser>
+        <Form>
           <FormWrapper>
             <div>
               {" "}
               <FieldForm type="email" name="email" placeholder="Email" />
-              <ErrorMessage name="email" component="p" />
+              <ErrMessage name="email" component="p" />
             </div>
             <InputWrapper>
               <FieldForm
@@ -76,11 +76,11 @@ export const SigninForm = () => {
                   <img src={eyeOff} alt="eye-off_icon" width={20} height={20} />
                 )}
               </IconsWrapper>
-              <ErrorMessage name="password" component="p" />
+              <ErrMessage name="password" component="p" />
             </InputWrapper>
           </FormWrapper>
           <BtnSubmit type="submit">Log In</BtnSubmit>
-        </FormUser>
+        </Form>
       </Formik>
     </>
   );

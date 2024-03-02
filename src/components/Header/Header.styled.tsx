@@ -58,22 +58,18 @@ export const StyledNavLink = styled(NavLink)`
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0%;
-`;
+  transition: color 250ms ${({ theme: { transitions } }) => transitions.cubic};
 
-export const LoginNavLink = styled(NavLink)`
-  display: flex;
-  align-items: center;
-  color: ${({ theme: { colors } }) => colors.mainGrey};
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
+  &.active {
+    color: ${({ theme: { colors } }) => colors.mainYellow};
+  }
 `;
 
 export const BtnRegister = styled.button`
   padding: 14px 39px;
   border-radius: 12px;
   border: none;
-  background-color: ${({ theme: { colors } }) => colors.mainGrey};
+  background-color: ${({ theme: { colors } }) => colors.mainBlack};
   color: ${({ theme: { colors } }) => colors.mainWhite};
   font-size: 16px;
   font-weight: 700;
@@ -89,7 +85,7 @@ export const ListBtnAuth = styled.ul`
 
 export const BtnSignin = styled.button`
   display: flex;
-  color: ${({ theme: { colors } }) => colors.mainGrey};
+  color: ${({ theme: { colors } }) => colors.mainBlack};
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;

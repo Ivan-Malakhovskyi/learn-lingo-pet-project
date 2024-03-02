@@ -9,7 +9,7 @@ import {
   BtnSignin,
 } from "../Header/Header.styled";
 import { HeaderStyled, HomeLink } from "../Header/Header.styled";
-import logo from "/icons/ukraine.svg";
+import logo from "/icons/ukraine_blue_yellow.svg";
 import iconLogin from "/icons/log-in-01.svg";
 import { Modal } from "../Global/Modal";
 import { SignIn } from "../pages/SignIn/SignIn";
