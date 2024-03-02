@@ -2,14 +2,16 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const HeaderWrapper = styled.div`
-  display: flex;
+  /* display: flex;
+  margin: 0 auto; */
+  /* display: flex;
   flex-direction: column;
   align-items: center;
 
   @media screen and (min-width: 768px) {
     justify-content: space-between;
     flex-direction: row;
-  }
+  } */
 `;
 
 export const Nav = styled.nav`
@@ -26,12 +28,12 @@ export const Nav = styled.nav`
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
-    gap: 30px;
+    /* gap: 30px; */
   }
 `;
 
 export const HeaderStyled = styled.header`
-  padding: 20px 0;
+  padding: 20px 128px;
 `;
 
 export const IconWrapper = styled.span`
@@ -68,7 +70,6 @@ export const StyledNavLink = styled(NavLink)`
 export const BtnRegister = styled.button`
   padding: 14px 39px;
   border-radius: 12px;
-  border: none;
   background-color: ${({ theme: { colors } }) => colors.mainBlack};
   color: ${({ theme: { colors } }) => colors.mainWhite};
   font-size: 16px;
@@ -89,9 +90,4 @@ export const BtnSignin = styled.button`
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  padding: 0;
-  margin: 0;
 `;

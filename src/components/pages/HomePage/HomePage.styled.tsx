@@ -3,10 +3,12 @@ import styled from "styled-components";
 export const Hero = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 24px;
 `;
 
 export const HeroBenefits = styled.div`
+  width: 100%;
   max-width: 720px;
   height: 100%;
   padding: 98px 108px 98px 64px;
