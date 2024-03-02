@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const HeroContainer = styled.div`
+  margin-bottom: 24px;
+  @media screen and (min-width: 1440px) {
+    /* width: 1340px; */
+  }
+`;
+
 export const HeroWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -52,11 +59,7 @@ export const HeroBtn = styled.button`
 `;
 
 export const HeroBenefits = styled.div`
-  /* width: 100%; */
-  max-width: 720px;
-  /* height: 100%; */
   padding: 98px 108px 98px 64px;
-  /* max-height: 530px; */
   border-radius: 30px;
   background-color: ${({ theme: { colors } }) => colors.accentGrey};
 `;
@@ -69,6 +72,10 @@ export const HeroBgImg = styled.div`
   height: 530px;
   border-radius: 30px;
   background-color: ${({ theme: { colors } }) => colors.accentYellow};
+
+  @media screen and (max-width: 1339px) {
+    display: none;
+  }
 `;
 
 export const GirlImg = styled.img`

@@ -6,6 +6,7 @@ export const theme = {
     addBodyColor: "#ffffff",
     mainBlack: "#121417",
     accentBlack: "rgba(18, 20, 23, 0.1)",
+    addAccentBlack: "#121417B3",
     mainBgBlack: "rgba(0, 0, 0, 0.8)",
     mainWhite: "rgb(255, 255, 255)",
     mainGrey: "#8A8A89",
@@ -25,6 +26,7 @@ body {
 font-family: 'Roboto', sans-serif;
 line-height: 1.5;
  background-color: ${({ theme: { colors } }) => colors.addBodyColor};
+
 }
 
 h1,

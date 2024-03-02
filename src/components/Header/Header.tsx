@@ -7,6 +7,7 @@ import {
   BtnRegister,
   ListBtnAuth,
   BtnSignin,
+  HeaderWrapper,
 } from "../Header/Header.styled";
 import { HeaderStyled, HomeLink } from "../Header/Header.styled";
 import logo from "/icons/ukraine_blue_yellow.svg";

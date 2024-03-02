@@ -8,14 +8,14 @@ import {
   HeroTitleWrapper,
   HeroMainText,
   HeroBtn,
+  HeroContainer,
 } from "./Hero.styled";
 import girl from "/images/stiker_girl.png";
 import mac from "/images/mac.png";
 
 export const Hero = () => {
   return (
-    <div style={{ margin: "0 auto" }}>
-      {" "}
+    <HeroContainer>
       <HeroWrapper>
         <HeroBenefits>
           <HeroTitle>
@@ -34,6 +34,6 @@ export const Hero = () => {
           <MacImg src={mac} alt="girl_stiker" />
         </HeroBgImg>
       </HeroWrapper>
-    </div>
+    </HeroContainer>
   );
 };
