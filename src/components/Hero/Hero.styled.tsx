@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeroContainer = styled.div`
@@ -32,6 +33,7 @@ export const HeroTitleWrapper = styled.span`
 
 export const HeroMainText = styled.p`
   color: ${({ theme: { colors } }) => colors.mainBlack};
+  max-width: 471px;
   margin-bottom: 64px;
   font-size: 16px;
   font-weight: 400;
@@ -39,7 +41,7 @@ export const HeroMainText = styled.p`
   letter-spacing: -2%;
 `;
 
-export const HeroBtn = styled.button`
+export const HeroBtn = styled(NavLink)`
   color: ${({ theme: { colors } }) => colors.mainBlack};
   background-color: ${({ theme: { colors } }) => colors.mainYellow};
   padding: 16px 88px;

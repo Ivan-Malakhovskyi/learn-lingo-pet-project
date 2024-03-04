@@ -27,7 +27,7 @@ export const Hero = () => {
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
           </HeroMainText>
-          <HeroBtn type="button">Get started</HeroBtn>
+          <HeroBtn to="/teachers">Get started</HeroBtn>
         </HeroBenefits>
         <HeroBgImg>
           <GirlImg src={girl} alt="girl_stiker" />

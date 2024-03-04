@@ -7,12 +7,11 @@ import {
   BtnRegister,
   ListBtnAuth,
   BtnSignin,
-  HeaderWrapper,
 } from "../Header/Header.styled";
 import { HeaderStyled, HomeLink } from "../Header/Header.styled";
 import logo from "/icons/ukraine_blue_yellow.svg";
 import iconLogin from "/icons/log-in-01.svg";
-import { Modal } from "../Global/Modal";
+import { Modal } from "../Global/Modal/Modal";
 import { SignIn } from "../pages/SignIn/SignIn";
 import { SignUp } from "../pages/SignUp.tsx/SignUp";
 import { Container } from "../layout/SharedLayout.styled";
