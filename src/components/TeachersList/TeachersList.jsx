@@ -1,5 +1,5 @@
 import { get, limitToFirst, query, ref, startAfter } from "firebase/database";
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig";
 import { LoadMoreBtn, TeachersListWrapper } from "./TeachersList.styled";
 // import { List } from "./TeachersList.styled";
@@ -7,7 +7,7 @@ import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
 // import { SectionForm } from "../Filters/Filters.styled";
 import { Container } from "../layout/SharedLayout.styled";
 
-export const TeachersList: FC = () => {
+export const TeachersList = () => {
   const [teachers, setTeachers] = useState([]);
   const [lastVisible, setLastVisible] = useState(null);
 

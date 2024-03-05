@@ -24,9 +24,8 @@ import activeStatus from "/icons/active_status.svg";
 import heart from "/icons/heart.svg";
 import book from "/icons/book-open-01.svg";
 import star from "/icons/icon_star.svg";
-import { FC } from "react";
 
-export const TeachersListItem: FC = ({ teacher }) => {
+export const TeachersListItem = ({ teacher }) => {
   const {
     id,
     avatar_url,
