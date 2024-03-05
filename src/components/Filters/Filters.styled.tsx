@@ -18,16 +18,6 @@ const rotateClose = keyframes`
   }
 `;
 
-export const SectionForm = styled.section`
-  padding-top: 96px;
-  background-color: ${({ theme: { colors } }) => colors.rootBodyColor};
-`;
-
-export const Container = styled.div`
-  padding: 0 20px;
-  margin: 0 auto;
-`;
-
 export const ListFilters = styled.ul`
   display: flex;
   gap: 20px;
@@ -74,8 +64,7 @@ export const ToggleBtn = styled.button`
 `;
 
 export const Main = styled.div`
-  /* background: #f0f0f0; */
-  /* height: 100vh; */
+  margin-bottom: 32px;
 `;
 
 export const DropDown = styled.div`

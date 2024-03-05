@@ -2,16 +2,19 @@ import { FC } from "react";
 import { Filters } from "../../Filters/Filters";
 import { TeachersList } from "../../TeachersList/TeachersList";
 import { Test } from "../../Filters/Test";
-import { Container, SectionForm } from "../../Filters/Filters.styled";
+import { Container } from "../../layout/SharedLayout.styled";
+import { SectionFormContainer } from "../../layout/SharedLayout.styled";
 
 export const Teachers: FC = () => {
   return (
-    <SectionForm>
-      {" "}
-      <Container>
-        <Test />
+    <>
+      <SectionFormContainer>
+        {" "}
+        <Container>
+          <Test />
+        </Container>
         <TeachersList />
-      </Container>
-    </SectionForm>
+      </SectionFormContainer>
+    </>
   );
 };

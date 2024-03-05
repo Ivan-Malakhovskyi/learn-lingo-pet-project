@@ -18,7 +18,7 @@ export const TeacherImageWrapper = styled.div`
   background: rgb(255, 255, 255);
 `;
 
-export const ActiveImg = styled.img`
+export const ActiveImg = styled.div`
   position: absolute;
   width: 12px;
   height: 12px;
@@ -43,15 +43,65 @@ export const ListItem = styled.li`
 
 export const ContentWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
+`;
+
+export const Label = styled.p`
+  color: ${({ theme: { colors } }) => colors.mainGrey};
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+`;
+
+export const LanguageLabel = styled.p`
+  color: ${({ theme: { colors } }) => colors.mainGrey};
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+  margin-bottom: 8px;
+`;
+
+export const Heading = styled.h3`
+  color: ${({ theme: { colors } }) => colors.mainBlack};
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+  margin-bottom: 32px;
+`;
+
+export const MainText = styled.span`
+  color: ${({ theme: { colors } }) => colors.mainBlack};
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+`;
+
+export const UnderLineText = styled.span`
+  color: ${({ theme: { colors } }) => colors.mainBlack};
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-decoration: underline;
+`;
+
+export const ListLabels = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
 `;
 
 export const TeachersRating = styled.div`
   display: flex;
   justify-content: center;
-  /* justify-content: ; */
 `;
 
-export const HeartIcon = styled.img`
+export const HeartIcon = styled.div`
   width: 26px;
   height: 26px;
   position: absolute;
@@ -59,13 +109,15 @@ export const HeartIcon = styled.img`
   right: 24px;
 `;
 
-export const TeacherInfoWrapper = styled.div`
-  margin-right: 150px;
+export const InfoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const ListRating = styled.ul`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  align-self: flex-start;
   gap: 16px;
 `;
 
@@ -82,4 +134,39 @@ export const ListItemRating = styled.li`
   }
 `;
 
-export const RatingText = styled.p``;
+export const RatingText = styled.p`
+  margin-left: 4px;
+`;
+
+export const LevelList = styled.ul`
+  display: flex;
+  gap: 8px;
+  margin-top: 32px;
+
+  @media screen and (max-width: 767px) {
+    flex-wrap: wrap;
+  }
+`;
+
+export const LevelListItem = styled.li`
+  padding: 8px 12px;
+  border-radius: 35px;
+  &:first-child {
+    background-color: ${({ theme: { colors } }) => colors.mainYellow};
+    border: none;
+  }
+  border: 1px solid ${({ theme: { colors } }) => colors.accentBlack};
+  background-color: transparent;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0%;
+`;
+
+export const LevelText = styled.p`
+  color: ${({ theme: { colors } }) => colors.mainBlack};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+`;

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const HeroContainer = styled.div`
+export const Hero = styled.div`
   margin-bottom: 24px;
   @media screen and (min-width: 1440px) {
     /* width: 1340px; */

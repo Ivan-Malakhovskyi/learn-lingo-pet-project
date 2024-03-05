@@ -11,10 +11,7 @@ export const SharedLayout: FC = () => {
       </Container>
       <Suspense fallback={<div>Loading...</div>}>
         <main>
-          <Container>
-            {" "}
-            <Outlet />
-          </Container>
+          <Outlet />
         </main>
       </Suspense>
     </>

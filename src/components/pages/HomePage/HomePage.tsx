@@ -1,12 +1,13 @@
 import { FC } from "react";
-import { Hero } from "../../Hero/Hero";
+import { HeroSection } from "../../Hero/Hero";
 import { Stats } from "../../Stats/Stats";
+import { Container } from "../../layout/SharedLayout.styled";
 
 export const HomePage: FC = () => {
   return (
-    <>
-      <Hero />
+    <Container>
+      <HeroSection />
       <Stats />
-    </>
+    </Container>
   );
 };

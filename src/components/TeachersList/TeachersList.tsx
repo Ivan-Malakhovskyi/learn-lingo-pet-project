@@ -1,9 +1,11 @@
 import { get, limitToFirst, query, ref, startAfter } from "firebase/database";
 import { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig";
-import { TeachersListWrapper } from "./TeachersList.styled";
+import { LoadMoreBtn, TeachersListWrapper } from "./TeachersList.styled";
 import { List } from "./TeachersList.styled";
 import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
+import { SectionForm } from "../Filters/Filters.styled";
+import { Container } from "../layout/SharedLayout.styled";
 
 export const TeachersList = () => {
   const [teachers, setTeachers] = useState([]);
@@ -55,20 +57,25 @@ export const TeachersList = () => {
   };
 
   return (
-    <TeachersListWrapper>
-      <List>
-        {teachers.length > 0 ? (
-          teachers.map((teacher) => (
-            <TeachersListItem key={teacher.id} teacher={teacher} />
-          ))
-        ) : (
-          <div>Loading...</div>
-        )}
-      </List>
-
-      <button type="button" onClick={handleLoadMore}>
-        Load More
-      </button>
-    </TeachersListWrapper>
+    <>
+      {" "}
+      <TeachersListWrapper>
+        <Container>
+          {" "}
+          <ul>
+            {teachers.length > 0 ? (
+              teachers.map((teacher) => (
+                <TeachersListItem key={teacher.id} teacher={teacher} />
+              ))
+            ) : (
+              <div>Loading...</div>
+            )}
+          </ul>
+          <LoadMoreBtn type="button" onClick={handleLoadMore}>
+            Load More
+          </LoadMoreBtn>
+        </Container>
+      </TeachersListWrapper>
+    </>
   );
 };

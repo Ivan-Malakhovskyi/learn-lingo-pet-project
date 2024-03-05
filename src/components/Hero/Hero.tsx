@@ -8,14 +8,15 @@ import {
   HeroTitleWrapper,
   HeroMainText,
   HeroBtn,
-  HeroContainer,
+  Hero,
 } from "./Hero.styled";
 import girl from "/images/stiker_girl.png";
 import mac from "/images/mac.png";
+import { Container } from "../layout/SharedLayout.styled";
 
-export const Hero = () => {
+export const HeroSection = () => {
   return (
-    <HeroContainer>
+    <Hero>
       <HeroWrapper>
         <HeroBenefits>
           <HeroTitle>
@@ -34,6 +35,6 @@ export const Hero = () => {
           <MacImg src={mac} alt="girl_stiker" />
         </HeroBgImg>
       </HeroWrapper>
-    </HeroContainer>
+    </Hero>
   );
 };
