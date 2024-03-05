@@ -1,22 +1,4 @@
-import styled, { keyframes } from "styled-components";
-
-const rotateOpen = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(180deg);
-  }
-`;
-
-const rotateClose = keyframes`
-  from {
-    transform: rotate(180deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-`;
+import styled from "styled-components";
 
 export const ListFilters = styled.ul`
   display: flex;
@@ -56,8 +38,7 @@ export const ToggleBtn = styled.button`
   top: 50%;
   right: 14px;
   pointer-events: none;
-  transform: rotate(${({ $isOpen }) => ($isOpen ? rotateOpen : rotateClose)})
-    translateY(-50%);
+
   transform-origin: top;
   transition: transform 250ms
     ${({ theme: { transitions } }) => transitions.cubic};

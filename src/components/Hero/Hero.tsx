@@ -12,9 +12,9 @@ import {
 } from "./Hero.styled";
 import girl from "/images/stiker_girl.png";
 import mac from "/images/mac.png";
-import { Container } from "../layout/SharedLayout.styled";
+import { FC } from "react";
 
-export const HeroSection = () => {
+export const HeroSection: FC = () => {
   return (
     <Hero>
       <HeroWrapper>

@@ -42,6 +42,7 @@ export const HeroMainText = styled.p`
 `;
 
 export const HeroBtn = styled(NavLink)`
+  display: inline-block;
   color: ${({ theme: { colors } }) => colors.mainBlack};
   background-color: ${({ theme: { colors } }) => colors.mainYellow};
   padding: 16px 88px;
@@ -61,9 +62,11 @@ export const HeroBtn = styled(NavLink)`
 `;
 
 export const HeroBenefits = styled.div`
-  padding: 98px 108px 98px 64px;
   border-radius: 30px;
   background-color: ${({ theme: { colors } }) => colors.accentGrey};
+  padding: 98px 108px 98px 64px;
+  @media screen and (min-width: 1440px) {
+  }
 `;
 
 export const HeroBgImg = styled.div`

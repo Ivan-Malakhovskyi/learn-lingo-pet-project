@@ -5,9 +5,8 @@ import { SharedLayout } from "./layout/SharedLayout";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { Teachers } from "./pages/Teachers/Teachers";
 import { Favorites } from "./pages/Favorites/Favorites";
-// import { SignIn } from "./pages/SignIn/SignIn";
-// import { SignUp } from "./pages/SignUp.tsx/SignUp";
 import "../App.css";
+import { NotFoundPage } from "./NotFoundPage/NotFoundPage";
 
 const App: FC = () => {
   return (
@@ -17,9 +16,8 @@ const App: FC = () => {
           <Route index element={<HomePage />} />
           <Route path="teachers" element={<Teachers />} />
           <Route path="favorites" element={<Favorites />} />
-          {/* <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} /> */}
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <GlobalStyle />
     </>

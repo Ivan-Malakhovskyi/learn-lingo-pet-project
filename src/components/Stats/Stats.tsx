@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   ListItemStats,
   ListStats,
@@ -6,7 +7,7 @@ import {
   StatsTextWrapper,
 } from "./Stats.styled";
 
-export const Stats = () => {
+export const Stats: FC = () => {
   return (
     <>
       <StatsBox>

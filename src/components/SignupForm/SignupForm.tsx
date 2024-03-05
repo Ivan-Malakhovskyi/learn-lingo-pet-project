@@ -1,4 +1,9 @@
-import { ErrorMessage, Form, Formik } from "formik";
+import {
+  // ErrorMessage,
+  Form,
+  Formik,
+  FormikValues,
+} from "formik";
 import { useState } from "react";
 import * as yup from "yup";
 import {
@@ -9,12 +14,13 @@ import {
   FormWrapper,
   InputWrapper,
   BtnSubmit,
-  FormUser,
+  // FormUser,
   ErrMessage,
 } from "../SigninForm.tsx/SigninForm.styled";
 
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
+import { SignUpPageProps } from "./SignUp.types";
 
 const initialValuesFields = {
   name: "",
@@ -39,9 +45,13 @@ const validationSignupSchema = yup.object({
 export const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (
+    values: SignUpPageProps,
+    { resetForm }: FormikValues
+  ) => {
     const { email, password } = values;
-    console.log(values);
+    console.log(email, password);
+    resetForm();
   };
 
   const handelToggleClick = () => {

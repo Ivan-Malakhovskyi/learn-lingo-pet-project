@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Filters } from "../../Filters/Filters";
+// import { Filters } from "../../Filters/Filters";
 import { TeachersList } from "../../TeachersList/TeachersList";
 import { Test } from "../../Filters/Test";
 import { Container } from "../../layout/SharedLayout.styled";

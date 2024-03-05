@@ -8,6 +8,6 @@ export const getTeachers = async () => {
 
     return { res };
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };

@@ -16,29 +16,30 @@ import { FaChevronUp } from "react-icons/fa";
 const prices = Array.from({ length: 9 }, (_, index) => index * 5);
 
 export const Test = () => {
-  const [languageSelect, setLanguageSelect] = useState("All");
-  const [levelSelect, setLevelSelect] = useState("All");
-  const [priceSelect, setPriceSelect] = useState("All");
-  const [selectedOption, setSelectedOption] = useState(null);
+  //! Дописати скрізь setlanguageSelect,setlevelSelect,setPriceSelect
+  const [languageSelect] = useState("All");
+  const [levelSelect] = useState("All");
+  const [priceSelect] = useState("All");
+  // const [selectedOption, setSelectedOption] = useState(null);
 
   const [isLanguage, setIsLanguage] = useState(false);
   const [isLevel, setIsLevel] = useState(false);
   const [isPrice, setIsPrice] = useState(false);
 
-  const handleDropdownClick = (type) => () => {
+  const handleDropdownClick = (type: "language" | "level" | "price") => () => {
     if (type === "language") setIsLanguage(!isLanguage);
     if (type === "level") setIsLevel(!isLevel);
     if (type === "price") setIsPrice(!isPrice);
   };
 
-  const handleChange = (e) => {
-    e.preventDefault();
+  // const handleChange = (e) => {
+  //   e.preventDefault();
 
-    // Use the corresponding set functions to update the state
-    setLanguageSelect(e.target.value);
-    setLevelSelect(e.target.value);
-    setPriceSelect(e.target.value);
-  };
+  //   // Use the corresponding set functions to update the state
+  // (e.target.value);
+  //   setLevelSelect(e.target.value);
+  //   setPriceSelect(e.target.value);
+  // };
 
   return (
     <Main>

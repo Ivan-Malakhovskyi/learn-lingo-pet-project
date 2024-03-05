@@ -15,14 +15,15 @@ import { Modal } from "../Global/Modal/Modal";
 import { SignIn } from "../pages/SignIn/SignIn";
 import { SignUp } from "../pages/SignUp.tsx/SignUp";
 import { Container } from "../layout/SharedLayout.styled";
+import { HeaderToggleState } from "./Header.types";
 
 export const Header: FC = () => {
-  const [isOpen, setIsOpen] = useState({
+  const [isOpen, setIsOpen] = useState<HeaderToggleState>({
     signIn: false,
     signUp: false,
-  });
+  }); //Або дженерик типом useState<HeaderToggleFunc>
 
-  const handleToggle = (key) => {
+  const handleToggle = (key: "signIn" | "signUp") => {
     setIsOpen((prevState) => ({
       ...prevState,
       [key]: !prevState[key],

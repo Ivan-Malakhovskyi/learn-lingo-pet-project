@@ -1,12 +1,13 @@
 import { createPortal } from "react-dom";
 import { Backdrop, CloseButton, ModalContent } from "./Modal.styled";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import iconClose from "/icons/x.svg";
+import { DropDownProps } from "../DropDown/DropDown.types";
 
-const modalRoot = document.querySelector("#modal-root");
+const modalRoot = document.querySelector("#modal-root")!;
 
-export const Modal = ({ close, children }) => {
+export const Modal: FC<DropDownProps> = ({ close, children }) => {
   useEffect(() => {
     const handleEscClick = ({ code }: KeyboardEvent) => {
       if (code === "Escape") {
@@ -24,7 +25,10 @@ export const Modal = ({ close, children }) => {
     };
   }, [close]);
 
-  const handleBackdropClick = ({ target, currentTarget }) => {
+  const handleBackdropClick = ({
+    target,
+    currentTarget,
+  }: React.MouseEvent<HTMLElement>) => {
     if (target === currentTarget) {
       close();
     }

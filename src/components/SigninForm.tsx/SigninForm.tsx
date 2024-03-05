@@ -1,4 +1,4 @@
-import { Formik, Form } from "formik";
+import { Formik, Form, FormikValues } from "formik";
 import { useState } from "react";
 import * as yup from "yup";
 import {
@@ -13,6 +13,7 @@ import {
 } from "./SigninForm.styled";
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
+import { SigninFormProps } from "./SigninForm.types";
 
 const initialValuesFields = {
   email: "",
@@ -33,11 +34,15 @@ const validationSigninSchema = yup.object({
 });
 
 export const SigninForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (
+    values: SigninFormProps,
+    { resetForm }: FormikValues
+  ) => {
     const { email, password } = values;
-    console.log(values);
+    console.log(email, password);
+    resetForm();
   };
 
   const handelToggleClick = () => {
