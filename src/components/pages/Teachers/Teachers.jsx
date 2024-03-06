@@ -1,3 +1,5 @@
+//!Перейменувати файл на tsx
+
 // import { Filters } from "../../Filters/Filters";
 import { TeachersList } from "../../TeachersList/TeachersList";
 import { Test } from "../../Filters/Test";

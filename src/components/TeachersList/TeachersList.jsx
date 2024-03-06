@@ -1,3 +1,5 @@
+//! Перейменувати файл на tsx
+
 import { get, limitToFirst, query, ref, startAfter } from "firebase/database";
 import { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig";
