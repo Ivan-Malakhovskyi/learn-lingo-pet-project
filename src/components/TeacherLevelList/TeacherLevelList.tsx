@@ -1,6 +1,8 @@
+import { FC } from "react";
 import { LevelList, LevelListItem, LevelText } from "./TeacherLevelList.styled";
+import { TeacherLevelListProps } from "./TeachersLevelList.types";
 
-export const TeacherLevelList = ({ levels }) => {
+export const TeacherLevelList: FC<TeacherLevelListProps> = ({ levels }) => {
   return (
     <>
       {" "}

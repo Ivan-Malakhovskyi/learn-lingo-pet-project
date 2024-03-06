@@ -20,7 +20,7 @@ import {
   ListItemRating,
   RatingText,
 } from "../TeacherLevelList/TeacherLevelList.styled";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { AdditionalInfo } from "../AdditionalInfo/AdditionalInfo";
 import { TeacherLevelList } from "../TeacherLevelList/TeacherLevelList";
 
@@ -29,8 +29,9 @@ import heart from "/icons/heart.svg";
 import book from "/icons/book-open-01.svg";
 import star from "/icons/icon_star.svg";
 import { BookTrialBtn } from "../AdditionalInfo/AdditonalInfo.styled";
+import { TeachersListItemProps } from "./TeachersListItem.types";
 
-export const TeachersListItem = ({ teacher }) => {
+export const TeachersListItem: FC<TeachersListItemProps> = ({ teacher }) => {
   const [showInfo, setShowInfo] = useState(false);
 
   const {

@@ -15,7 +15,6 @@ import star from "/icons/icon_star.svg";
 export const AdditionalInfo: FC<AdditionalInfoProps> = ({
   experience,
   reviews,
-  id,
 }) => {
   return (
     <>
