@@ -1,5 +1,5 @@
 import { get, limitToFirst, query, ref, startAfter } from "firebase/database";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { db } from "../../firebaseConfig";
 import { LoadMoreBtn, TeachersListWrapper } from "./TeachersList.styled";
 // import { List } from "./TeachersList.styled";
@@ -7,7 +7,7 @@ import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
 // import { SectionForm } from "../Filters/Filters.styled";
 import { Container } from "../layout/SharedLayout.styled";
 
-export const TeachersList = () => {
+export const TeachersList: FC = () => {
   const [teachers, setTeachers] = useState([]);
   const [lastVisible, setLastVisible] = useState(null);
 
@@ -65,15 +65,17 @@ export const TeachersList = () => {
           <ul>
             {teachers.length > 0 ? (
               teachers.map((teacher) => (
-                <TeachersListItem key={teacher.id} teacher={teacher} />
+                <TeachersListItem key={teacher} teacher={teacher} />
               ))
             ) : (
               <div>Loading...</div>
             )}
           </ul>
-          <LoadMoreBtn type="button" onClick={handleLoadMore}>
-            Load More
-          </LoadMoreBtn>
+          {teachers.length > 0 && (
+            <LoadMoreBtn type="button" onClick={handleLoadMore}>
+              Load More
+            </LoadMoreBtn>
+          )}
         </Container>
       </TeachersListWrapper>
     </>

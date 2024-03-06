@@ -7,6 +7,7 @@ export const TeacherImg = styled.img`
 `;
 
 export const TeacherImageWrapper = styled.div`
+  flex-shrink: 0;
   position: relative;
   width: 120px;
   height: 120px;
@@ -39,11 +40,18 @@ export const ListItem = styled.li`
   &:not(:last-child) {
     margin-bottom: 32px;
   }
+
+  @media screen and (max-width: 1339px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+
+  @media screen and (max-width: 1339px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const Label = styled.p`
@@ -80,7 +88,18 @@ export const MainText = styled.span`
   letter-spacing: 0%;
 `;
 
-export const UnderLineText = styled.span`
+export const UnderlineText = styled.span`
+  color: ${({ theme: { colors } }) => colors.mainBlack};
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-decoration: underline;
+`;
+
+export const ReadMoreBtn = styled.button`
+  display: block;
+  margin-bottom: 16px;
   color: ${({ theme: { colors } }) => colors.mainBlack};
   font-size: 16px;
   font-weight: 500;
@@ -94,24 +113,55 @@ export const ListLabels = styled.ul`
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
+
+  @media screen and (max-width: 1339px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const TeachersRating = styled.div`
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 1339px) {
+    flex-wrap: wrap;
+  }
 `;
 
-export const HeartIcon = styled.div`
+export const HeartIcon = styled.button`
   width: 26px;
   height: 26px;
-  position: absolute;
-  top: 24px;
-  right: 24px;
+  margin-left: 64px;
+
+  &:hover,
+  &:focus {
+    transform: scale(0.9);
+  }
+  transform: scale(0.7);
+  transition: all 250ms ${({ theme: { transitions } }) => transitions.cubic};
+
+  @media screen and (max-width: 1339px) {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+`;
+
+export const LessonInfoWrapper = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 1339px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const InfoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 1339px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ListRating = styled.ul`
@@ -119,54 +169,8 @@ export const ListRating = styled.ul`
   align-items: center;
   align-self: flex-start;
   gap: 16px;
-`;
 
-export const ListItemRating = styled.li`
-  display: flex;
-  align-items: center;
-
-  &:not(:last-child)::after {
-    content: "";
-    width: 1px;
-    height: 16px;
-    background-color: ${({ theme: { colors } }) => colors.mainGrey};
-    margin-left: 16px;
-  }
-`;
-
-export const RatingText = styled.p`
-  margin-left: 4px;
-`;
-
-export const LevelList = styled.ul`
-  display: flex;
-  gap: 8px;
-  margin-top: 32px;
-
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1339px) {
     flex-wrap: wrap;
   }
-`;
-
-export const LevelListItem = styled.li`
-  padding: 8px 12px;
-  border-radius: 35px;
-  &:first-child {
-    background-color: ${({ theme: { colors } }) => colors.mainYellow};
-    border: none;
-  }
-  border: 1px solid ${({ theme: { colors } }) => colors.accentBlack};
-  background-color: transparent;
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 16px;
-  letter-spacing: 0%;
-`;
-
-export const LevelText = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 16px;
 `;

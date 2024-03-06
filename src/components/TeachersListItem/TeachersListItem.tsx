@@ -6,26 +6,33 @@ import {
   InfoWrapper,
   Label,
   LanguageLabel,
-  LevelList,
-  LevelListItem,
-  LevelText,
   ListItem,
-  ListItemRating,
   ListLabels,
   ListRating,
   MainText,
-  RatingText,
   TeacherImageWrapper,
   TeacherImg,
-  TeachersRating,
-  UnderLineText,
+  ReadMoreBtn,
+  UnderlineText,
+  LessonInfoWrapper,
 } from "./TeachersListItem.styled";
+import {
+  ListItemRating,
+  RatingText,
+} from "../TeacherLevelList/TeacherLevelList.styled";
+import { useState } from "react";
+import { AdditionalInfo } from "../AdditionalInfo/AdditionalInfo";
+import { TeacherLevelList } from "../TeacherLevelList/TeacherLevelList";
+
 import activeStatus from "/icons/active_status.svg";
 import heart from "/icons/heart.svg";
 import book from "/icons/book-open-01.svg";
 import star from "/icons/icon_star.svg";
+import { BookTrialBtn } from "../AdditionalInfo/AdditonalInfo.styled";
 
 export const TeachersListItem = ({ teacher }) => {
+  const [showInfo, setShowInfo] = useState(false);
+
   const {
     id,
     avatar_url,
@@ -36,7 +43,13 @@ export const TeachersListItem = ({ teacher }) => {
     lessons_done,
     conditions,
     levels,
+    experience,
+    reviews,
   } = teacher;
+
+  const handleClick = () => {
+    setShowInfo(!showInfo);
+  };
 
   return (
     <ListItem key={id}>
@@ -55,7 +68,7 @@ export const TeachersListItem = ({ teacher }) => {
                 {name} {surname}
               </Heading>
             </div>
-            <div>
+            <LessonInfoWrapper>
               <ListRating>
                 <ListItemRating>
                   <span>
@@ -79,16 +92,19 @@ export const TeachersListItem = ({ teacher }) => {
                 </ListItemRating>
                 <ListItemRating>
                   <RatingText>Price / 1 hour: 30$</RatingText>
-                </ListItemRating>
+                </ListItemRating>{" "}
               </ListRating>
-            </div>
+              <HeartIcon>
+                <img src={heart} alt="" />
+              </HeartIcon>
+            </LessonInfoWrapper>
           </InfoWrapper>
 
           <ListLabels>
             <li>
               {" "}
               <Label>
-                Speaks: <UnderLineText>{languages.join(", ")}</UnderLineText>
+                Speaks: <UnderlineText>{languages.join(", ")}</UnderlineText>
               </Label>
             </li>
             <li>
@@ -104,21 +120,21 @@ export const TeachersListItem = ({ teacher }) => {
               </Label>
             </li>
           </ListLabels>
-          <UnderLineText>Read more</UnderLineText>
 
-          <LevelList>
-            {levels.map((level) => (
-              <LevelListItem>
-                <LevelText>#{level}</LevelText>
-              </LevelListItem>
-            ))}
-          </LevelList>
+          {!showInfo && (
+            <ReadMoreBtn onClick={handleClick}>Read more</ReadMoreBtn>
+          )}
+
+          {showInfo && (
+            <AdditionalInfo experience={experience} reviews={reviews} />
+          )}
+
+          <TeacherLevelList levels={levels} />
+
+          {showInfo && (
+            <BookTrialBtn type="button">Book trial lesson</BookTrialBtn>
+          )}
         </div>
-        <TeachersRating>
-          <HeartIcon>
-            <img src={heart} alt="" />
-          </HeartIcon>
-        </TeachersRating>
       </ContentWrapper>
     </ListItem>
   );
