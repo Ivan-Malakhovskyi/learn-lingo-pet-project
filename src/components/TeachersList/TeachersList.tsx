@@ -1,5 +1,3 @@
-//! Перейменувати файл на tsx
-
 import { get, limitToFirst, query, ref, startAfter } from "firebase/database";
 import { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig";
@@ -15,7 +13,7 @@ export const TeachersList = () => {
 
   useEffect(() => {
     const teachersRef = query(ref(db, "teachers"), limitToFirst(4));
-    const getAll = async () => {
+    const getAllTeachers = async () => {
       try {
         const data = await get(teachersRef);
         if (data.exists()) {
@@ -34,28 +32,11 @@ export const TeachersList = () => {
       }
     };
 
-    getAll();
+    getAllTeachers();
   }, []);
 
   const handleLoadMore = async () => {
-    const teachersRef = query(ref(db, "teachers"), startAfter(lastVisible));
-
-    try {
-      const data = await get(teachersRef);
-      console.log(data);
-      if (data.exists()) {
-        const teachersData = Object.entries(data.val()).map(([id, data]) => ({
-          id,
-          ...data,
-        }));
-        setTeachers((teachersList) => [...teachersList, ...teachersData]);
-        const lastTeacher = teachersData[teachersData.length - 1];
-        console.log(lastTeacher);
-        setLastVisible(lastTeacher);
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
+    // setLastVisible(null);
   };
 
   return (

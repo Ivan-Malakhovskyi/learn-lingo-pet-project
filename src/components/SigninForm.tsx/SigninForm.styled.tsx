@@ -29,6 +29,13 @@ export const FieldForm = styled(Field)`
   padding: 16px 18px;
   border: 1px solid ${({ theme: { colors } }) => colors.accentBlack};
   border-radius: 12px;
+
+  &::placeholder {
+    color: ${({ theme: { colors } }) => colors.mainBlack};
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+  }
 `;
 
 export const InputWrapper = styled.div`

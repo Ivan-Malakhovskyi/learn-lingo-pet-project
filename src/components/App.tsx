@@ -1,4 +1,3 @@
-// import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import { GlobalStyle } from "../GlobalStyle";
 import { SharedLayout } from "./layout/SharedLayout";
@@ -7,8 +6,9 @@ import { Teachers } from "./pages/Teachers/Teachers";
 import { Favorites } from "./pages/Favorites/Favorites";
 import "../App.css";
 import { NotFoundPage } from "./NotFoundPage/NotFoundPage";
+import { FC } from "react";
 
-const App = () => {
+const App: FC = () => {
   return (
     <>
       <Routes>

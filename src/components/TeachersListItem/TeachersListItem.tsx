@@ -24,16 +24,23 @@ import { FC, useState } from "react";
 import { AdditionalInfo } from "../AdditionalInfo/AdditionalInfo";
 import { TeacherLevelList } from "../TeacherLevelList/TeacherLevelList";
 
+import { BookTrialBtn } from "../AdditionalInfo/AdditonalInfo.styled";
+
 import activeStatus from "/icons/active_status.svg";
 import heart from "/icons/heart.svg";
 import book from "/icons/book-open-01.svg";
 import star from "/icons/icon_star.svg";
-import { BookTrialBtn } from "../AdditionalInfo/AdditonalInfo.styled";
-import { TeachersListItemProps } from "./TeachersListItem.types";
+import { BookTrial } from "../BookTrial/BookTrial";
+import { TeacherProps } from "../../types";
+import { Modal } from "../Global/Modal/Modal";
 
-export const TeachersListItem: FC<TeachersListItemProps> = ({ teacher }) => {
+export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
   const [showInfo, setShowInfo] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
+  const handleToggleClick = () => {
+    setShowModal(!showModal);
+  };
   const {
     id,
     avatar_url,
@@ -133,7 +140,15 @@ export const TeachersListItem: FC<TeachersListItemProps> = ({ teacher }) => {
           <TeacherLevelList levels={levels} />
 
           {showInfo && (
-            <BookTrialBtn type="button">Book trial lesson</BookTrialBtn>
+            <BookTrialBtn type="button" onClick={handleToggleClick}>
+              Book trial lesson
+            </BookTrialBtn>
+          )}
+
+          {showModal && (
+            <Modal close={handleToggleClick}>
+              <BookTrial teacher={teacher} />
+            </Modal>
           )}
         </div>
       </ContentWrapper>

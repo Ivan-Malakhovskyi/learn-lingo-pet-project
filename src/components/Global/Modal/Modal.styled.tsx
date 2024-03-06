@@ -12,10 +12,15 @@ export const Backdrop = styled.div`
   overflow-y: scroll;
   background-color: ${({ theme: { colors } }) => colors.mainBgBlack};
   z-index: 1200;
+
+  @media screen and (max-height: 972px) {
+    align-items: flex-start;
+  }
 `;
 
 export const ModalContent = styled.div`
   max-width: 438px;
+  overflow-y: scroll;
   position: relative;
   max-height: 100vh;
   width: 100%;
