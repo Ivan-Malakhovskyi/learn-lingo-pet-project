@@ -5,7 +5,6 @@ import { TeacherLevelListProps } from "./TeachersLevelList.types";
 export const TeacherLevelList: FC<TeacherLevelListProps> = ({ levels }) => {
   return (
     <>
-      {" "}
       <LevelList>
         {levels.map((level, idx) => (
           <LevelListItem key={idx}>

@@ -8,7 +8,7 @@ import {
   Topic,
   TopicEnglishInfo,
 } from "./BookTrial.styled";
-import { Label } from "../TeachersListItem/TeachersListItem.styled";
+import { Label } from "../LabelsList/LabelList.styled";
 import { RadioButtonForm } from "../RadioBurronForm/RadioButtonForm";
 
 export const BookTrial: FC<TeacherProps> = ({ teacher }) => {

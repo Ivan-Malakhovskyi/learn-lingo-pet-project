@@ -54,14 +54,6 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const Label = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainGrey};
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0%;
-`;
-
 export const LanguageLabel = styled.p`
   color: ${({ theme: { colors } }) => colors.mainGrey};
   font-size: 16px;
@@ -80,23 +72,6 @@ export const Heading = styled.h3`
   margin-bottom: 32px;
 `;
 
-export const MainText = styled.span`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0%;
-`;
-
-export const UnderlineText = styled.span`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0%;
-  text-decoration: underline;
-`;
-
 export const ReadMoreBtn = styled.button`
   display: block;
   margin-bottom: 16px;
@@ -106,17 +81,6 @@ export const ReadMoreBtn = styled.button`
   line-height: 24px;
   letter-spacing: 0%;
   text-decoration: underline;
-`;
-
-export const ListLabels = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
-
-  @media screen and (max-width: 1339px) {
-    flex-wrap: wrap;
-  }
 `;
 
 export const TeachersRating = styled.div`

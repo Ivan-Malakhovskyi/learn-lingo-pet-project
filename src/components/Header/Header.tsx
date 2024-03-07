@@ -49,6 +49,7 @@ export const Header: FC = () => {
               <StyledNavLink to="/">Home</StyledNavLink>
             </HomeLink>
             <StyledNavLink to="/teachers">Teachers</StyledNavLink>
+            <StyledNavLink to="/favorites">Favorites</StyledNavLink>
           </li>
 
           {/* <StyledNavLink to="/favorites">Favorites</StyledNavLink> */}

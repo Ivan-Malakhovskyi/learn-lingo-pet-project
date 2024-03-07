@@ -9,13 +9,21 @@ import "./index.css";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./GlobalStyle.ts";
 import { BrowserRouter } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor } from "./components/redux/store.ts";
+import { Provider } from "react-redux";
+import { store } from "./components/redux/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );

@@ -10,8 +10,17 @@ import { Container } from "../layout/SharedLayout.styled";
 export const TeachersList = () => {
   const [teachers, setTeachers] = useState([]);
   const [lastVisible, setLastVisible] = useState(null);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(4);
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
+    const pageParam = urlParams.get("page");
+    const pagePerParam = urlParams.get("per_page");
+
+    setPage(pageParam ? parseInt(pageParam, 4) : 1);
+    setPerPage(pagePerParam ? parseInt(pagePerParam, 4) : 1);
     const teachersRef = query(ref(db, "teachers"), limitToFirst(4));
     const getAllTeachers = async () => {
       try {
@@ -44,7 +53,6 @@ export const TeachersList = () => {
       {" "}
       <TeachersListWrapper>
         <Container>
-          {" "}
           <ul>
             {teachers.length > 0 ? (
               teachers.map((teacher) => (
