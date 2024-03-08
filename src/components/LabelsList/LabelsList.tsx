@@ -1,6 +1,12 @@
+import { FC } from "react";
 import { LabelList, Label, UnderlineText, MainText } from "./LabelList.styled";
+import { LabeListProps } from "./LabelList.types";
 
-export const LabelsList = ({ languages, conditions, lessonInfo }) => {
+export const LabelsList: FC<LabeListProps> = ({
+  languages,
+  conditions,
+  lessonInfo,
+}) => {
   return (
     <LabelList>
       <li>

@@ -32,7 +32,7 @@ import activeHeart from "/icons/active_icon.svg";
 import book from "/icons/book-open-01.svg";
 import star from "/icons/icon_star.svg";
 import { BookTrial } from "../BookTrial/BookTrial";
-import { TeacherProps } from "../../types";
+import { Teacher, TeacherProps } from "../../types";
 import { Modal } from "../Global/Modal/Modal";
 
 import { nanoid } from "nanoid";
@@ -45,7 +45,7 @@ import { LabelsList } from "../LabelsList/LabelsList";
 export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
   const [showInfo, setShowInfo] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
+  console.log(teacher);
   const dispatch = useDispatch();
 
   const favorites = useSelector(selectFavoriteTeachers);
@@ -74,7 +74,8 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
     setShowInfo(!showInfo);
   };
 
-  const isFavoriteCar = (id) => favorites.some((teacher) => teacher.id === id);
+  const isFavoriteCar = (id: string) =>
+    favorites.some((teacher: Teacher) => teacher.id === id);
 
   const handleToggleAddTeacher = () => {
     if (isFavoriteCar(id)) {
@@ -173,7 +174,7 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
             )}
 
             {showModal && (
-              <Modal close={handleToggleClick}>
+              <Modal maxWidth={600} maxHeight={972} close={handleToggleClick}>
                 <BookTrial teacher={teacher} />
               </Modal>
             )}

@@ -4,7 +4,7 @@ export type Review = {
   comment: string;
 };
 
-type Teacher = {
+export type Teacher = {
   id: string;
   avatar_url: string;
   name: string;
@@ -21,3 +21,5 @@ type Teacher = {
 export type TeacherProps = {
   teacher: Teacher;
 };
+
+export const StoreTypes = {};

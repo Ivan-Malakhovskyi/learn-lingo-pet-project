@@ -16,6 +16,8 @@ import {
 
 import empty from "/icons/no-data.svg";
 
+import { Teacher } from "../../../types";
+
 export const Favorites: FC = () => {
   const favoriteTeachers = useSelector(selectFavoriteTeachers);
 
@@ -26,8 +28,8 @@ export const Favorites: FC = () => {
           <Container>
             <ul>
               {favoriteTeachers.length > 0 ? (
-                favoriteTeachers.map((teacher) => (
-                  <TeachersListItem key={teacher} teacher={teacher} />
+                favoriteTeachers.map((teacher: Teacher) => (
+                  <TeachersListItem key={teacher.id} teacher={teacher} />
                 ))
               ) : (
                 <TextWrapper>

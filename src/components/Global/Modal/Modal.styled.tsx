@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { ModalTypes } from "./Modal.types";
 
-export const Backdrop = styled.div`
+export const Backdrop = styled.div<ModalTypes>`
   position: fixed;
   top: 0;
   left: 0;
@@ -13,17 +14,14 @@ export const Backdrop = styled.div`
   background-color: ${({ theme: { colors } }) => colors.mainBgBlack};
   z-index: 1200;
 
-  @media screen and (max-height: 972px) {
+  @media screen and (max-height: ${({ maxHeight }) => maxHeight}px) {
     align-items: flex-start;
   }
 `;
 
-export const ModalContent = styled.div`
-  max-width: 438px;
-  overflow-y: scroll;
+export const ModalContent = styled.div<ModalTypes>`
+  max-width: ${({ maxWidth }) => maxWidth}px;
   position: relative;
-  max-height: 100vh;
-  width: 100%;
   padding: 64px;
   border-radius: 30px;
   background-color: ${({ theme: { colors } }) => colors.mainWhite};

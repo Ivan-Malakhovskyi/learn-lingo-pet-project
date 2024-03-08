@@ -7,7 +7,12 @@ import { DropDownProps } from "../DropDown/DropDown.types";
 
 const modalRoot = document.querySelector("#modal-root")!;
 
-export const Modal: FC<DropDownProps> = ({ close, children }) => {
+export const Modal: FC<DropDownProps> = ({
+  close,
+  children,
+  maxWidth,
+  maxHeight,
+}) => {
   useEffect(() => {
     const handleEscClick = ({ code }: KeyboardEvent) => {
       if (code === "Escape") {
@@ -35,8 +40,8 @@ export const Modal: FC<DropDownProps> = ({ close, children }) => {
   };
 
   return createPortal(
-    <Backdrop onClick={handleBackdropClick}>
-      <ModalContent>
+    <Backdrop onClick={handleBackdropClick} maxHeight={maxHeight}>
+      <ModalContent maxWidth={maxWidth}>
         <CloseButton onClick={close}>
           <img src={iconClose} alt="icon_close" width={32} height={32} />
         </CloseButton>

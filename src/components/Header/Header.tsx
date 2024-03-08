@@ -52,7 +52,6 @@ export const Header: FC = () => {
             <StyledNavLink to="/favorites">Favorites</StyledNavLink>
           </li>
 
-          {/* <StyledNavLink to="/favorites">Favorites</StyledNavLink> */}
           <ListBtnAuth>
             <li>
               <BtnSignin onClick={() => handleToggle("signIn")}>
@@ -68,7 +67,11 @@ export const Header: FC = () => {
               </BtnSignin>
 
               {isOpen.signIn && (
-                <Modal close={() => handleToggle("signIn")}>
+                <Modal
+                  maxWidth={566}
+                  maxHeight={506}
+                  close={() => handleToggle("signIn")}
+                >
                   <SignIn />
                 </Modal>
               )}
@@ -81,9 +84,16 @@ export const Header: FC = () => {
               </BtnRegister>
             </li>
             {isOpen.signUp && (
-              <Modal close={() => handleToggle("signUp")}>
-                <SignUp />
-              </Modal>
+              <div>
+                {" "}
+                <Modal
+                  maxWidth={566}
+                  maxHeight={600}
+                  close={() => handleToggle("signUp")}
+                >
+                  <SignUp />
+                </Modal>
+              </div>
             )}
           </ListBtnAuth>
         </Nav>
