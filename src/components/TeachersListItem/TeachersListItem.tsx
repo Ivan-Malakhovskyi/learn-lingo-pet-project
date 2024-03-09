@@ -31,6 +31,7 @@ import heart from "/icons/heart.svg";
 import activeHeart from "/icons/active_icon.svg";
 import book from "/icons/book-open-01.svg";
 import star from "/icons/icon_star.svg";
+
 import { BookTrial } from "../BookTrial/BookTrial";
 import { Teacher, TeacherProps } from "../../types";
 import { Modal } from "../Global/Modal/Modal";
@@ -41,11 +42,14 @@ import { selectFavoriteTeachers } from "../redux/teachers/teachers-selectors";
 import { addTeacher, deleteTeacher } from "../redux/teachers/teacher-slice";
 import { CustomToaster } from "../Global/Toaster/CustomToaster";
 import { LabelsList } from "../LabelsList/LabelsList";
+import { useAuthUser } from "../hooks/useAuthUser";
+
+import { TOAST_MESSAGES } from "../constants";
 
 export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
   const [showInfo, setShowInfo] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  console.log(teacher);
+
   const dispatch = useDispatch();
 
   const favorites = useSelector(selectFavoriteTeachers);
@@ -53,6 +57,8 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
   const handleToggleClick = () => {
     setShowModal(!showModal);
   };
+
+  const { DELETE_SUCCESS, ADD_SUCCESS, AUTH_ERROR } = TOAST_MESSAGES;
 
   const itemId = nanoid();
 
@@ -70,6 +76,8 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
     reviews,
   } = teacher;
 
+  const { isUserLoggedIn } = useAuthUser();
+
   const handleClick = () => {
     setShowInfo(!showInfo);
   };
@@ -78,12 +86,17 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
     favorites.some((teacher: Teacher) => teacher.id === id);
 
   const handleToggleAddTeacher = () => {
+    if (!isUserLoggedIn) {
+      toast.error(AUTH_ERROR);
+      return;
+    }
+
     if (isFavoriteCar(id)) {
       dispatch(deleteTeacher(teacher.id));
-      toast.success("teacher was successfully deleted ✅");
+      toast.success(DELETE_SUCCESS);
     } else {
       dispatch(addTeacher(teacher));
-      toast.success("Teacher was added 🧔");
+      toast.success(ADD_SUCCESS);
     }
   };
 

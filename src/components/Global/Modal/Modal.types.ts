@@ -1,4 +1,4 @@
-export type ModalTypes = {
-  maxHeight: number;
+export type TModalTypes = {
+  maxHeight?: number;
   maxWidth?: number;
 };

@@ -16,11 +16,13 @@ import {
   BtnSubmit,
   // FormUser,
   ErrMessage,
-} from "../SigninForm.tsx/SigninForm.styled";
+} from "../SigninForm/SigninForm.styled";
 
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
-import { SignUpPageProps } from "./SignUp.types";
+import { TSignUpPageProps } from "./SignUp.types";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
 
 const initialValuesFields = {
   name: "",
@@ -45,13 +47,25 @@ const validationSignupSchema = yup.object({
 export const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (
-    values: SignUpPageProps,
+  const handleSubmit = async (
+    values: TSignUpPageProps,
     { resetForm }: FormikValues
   ) => {
-    const { email, password } = values;
-    console.log(email, password);
-    resetForm();
+    try {
+      const { name, email, password } = values;
+
+      const createUser = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = updateProfile(createUser.user, { displayName: name });
+      console.log(user);
+
+      resetForm();
+    } catch (error) {
+      console.log((error as Error).message);
+    }
   };
 
   const handelToggleClick = () => {

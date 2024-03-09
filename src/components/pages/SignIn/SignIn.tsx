@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { SigninForm } from "../../SigninForm.tsx/SigninForm";
+import { SigninForm } from "../../SigninForm/SigninForm";
+import { TProps } from "../../../types";
 
-export const SignIn: FC = () => {
-  return <SigninForm />;
+export const SignIn: FC<TProps> = ({ onLoginSuccess }) => {
+  return <SigninForm onLoginSuccess={onLoginSuccess} />;
 };

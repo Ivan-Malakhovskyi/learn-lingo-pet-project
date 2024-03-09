@@ -1,5 +1,5 @@
 import { Formik, Form, FormikValues } from "formik";
-import { useState } from "react";
+import { FC, useState } from "react";
 import * as yup from "yup";
 import {
   FieldForm,
@@ -13,7 +13,16 @@ import {
 } from "./SigninForm.styled";
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
-import { SigninFormProps } from "./SigninForm.types";
+import { TSigninFormProps } from "./SigninForm.types";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+import { signIn } from "../redux/auth/auth-slice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { CustomToaster } from "../Global/Toaster/CustomToaster";
+import toast from "react-hot-toast";
+import { TProps } from "../../types";
+import { useAuthUser } from "../hooks/useAuthUser";
 
 const initialValuesFields = {
   email: "",
@@ -33,16 +42,44 @@ const validationSigninSchema = yup.object({
     .required("Password can't be is empty"),
 });
 
-export const SigninForm = () => {
+export const SigninForm: FC<TProps> = ({ onLoginSuccess }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleSubmit = (
-    values: SigninFormProps,
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isUserLoggedIn } = useAuthUser();
+
+  const isLoggin = () => {
+    if (isUserLoggedIn) {
+      onLoginSuccess();
+    }
+  };
+
+  const handleSubmit = async (
+    values: TSigninFormProps,
     { resetForm }: FormikValues
   ) => {
-    const { email, password } = values;
-    console.log(email, password);
-    resetForm();
+    try {
+      const { email, password } = values;
+
+      const signinUser = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const signedUser = signinUser.user;
+
+      dispatch(
+        signIn({ name: signedUser.displayName, email: signedUser.email })
+      );
+      navigate("/teachers");
+
+      toast.success("You are was successfully signed ✅");
+
+      resetForm();
+    } catch (error) {
+      console.log((error as Error).message);
+    }
   };
 
   const handelToggleClick = () => {
@@ -84,9 +121,12 @@ export const SigninForm = () => {
               <ErrMessage name="password" component="p" />
             </InputWrapper>
           </FormWrapper>
-          <BtnSubmit type="submit">Log In</BtnSubmit>
+          <BtnSubmit type="submit" onClick={isLoggin}>
+            Log In
+          </BtnSubmit>
         </Form>
       </Formik>
+      <CustomToaster />
     </>
   );
 };

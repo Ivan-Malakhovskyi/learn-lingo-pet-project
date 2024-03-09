@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ModalTypes } from "./Modal.types";
+import { TModalTypes } from "./Modal.types";
 
-export const Backdrop = styled.div<ModalTypes>`
+export const Backdrop = styled.div<TModalTypes>`
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@ export const Backdrop = styled.div<ModalTypes>`
   }
 `;
 
-export const ModalContent = styled.div<ModalTypes>`
+export const ModalContent = styled.div<TModalTypes>`
   max-width: ${({ maxWidth }) => maxWidth}px;
   position: relative;
   padding: 64px;

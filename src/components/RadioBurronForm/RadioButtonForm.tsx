@@ -8,7 +8,7 @@ import {
   InputWrapper,
   IconsWrapper,
   BtnSubmit,
-} from "../SigninForm.tsx/SigninForm.styled";
+} from "../SigninForm/SigninForm.styled";
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-off.svg";
 

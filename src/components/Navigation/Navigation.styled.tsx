@@ -66,6 +66,10 @@ export const StyledNavLink = styled(NavLink)`
   }
 `;
 
+export const LinkWapper = styled.span`
+  margin-left: 28px;
+`;
+
 export const BtnRegister = styled.button`
   padding: 14px 39px;
   border-radius: 12px;

@@ -1,18 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { TeacherType } from "../../../types";
+import { Teacher } from "../../../types";
 
-type Teacher = {
-  teachers: [];
-};
-
-type TeacherState = {
-  favorites: Teacher[];
-  isLoading: boolean;
-  isFavorite: boolean;
-  isError: null;
-};
-
-const initialState: TeacherState = {
+const initialState: TeacherType = {
   items: [],
   favorites: [],
   isLoading: false,
@@ -24,20 +15,14 @@ const teachersSlice = createSlice({
   name: "teachers",
   initialState,
   reducers: {
-    addTeacher: {
-      reducer(state, action: PayloadAction<Teacher>) {
-        state.favorites.push(action.payload);
-      },
+    addTeacher(state, action: PayloadAction<Teacher>) {
+      state.favorites.push(action.payload);
+      console.log(state);
     },
-    deleteTeacher: {
-      reducer(state, action: PayloadAction<string>) {
-        state.favorites = state.favorites.filter(
-          (teacher) => teacher.id !== action.payload
-        );
-      },
-      prepare(teacherId: string) {
-        return { payload: teacherId };
-      },
+    deleteTeacher(state, action: PayloadAction<string>) {
+      state.favorites = state.favorites.filter(
+        (teacher) => teacher.id !== action.payload
+      );
     },
   },
 });

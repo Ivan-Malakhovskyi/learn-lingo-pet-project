@@ -1,3 +1,3 @@
-import { Review } from "../../types";
+import { TReview } from "../../types";
 
-export type AdditionalInfoProps = { experience: string; reviews: Review[] };
+export type AdditionalInfoProps = { experience: string; reviews: TReview[] };

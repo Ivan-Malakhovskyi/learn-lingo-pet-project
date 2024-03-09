@@ -1,6 +1,6 @@
 import { Teacher } from "../../../types";
 
-export type FavoritesType = {
+export type TFavoritesType = {
   id: string;
   teacher: Teacher[];
 };

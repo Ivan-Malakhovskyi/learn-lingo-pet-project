@@ -1,5 +1,8 @@
-export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+import { TInitStateTypes } from "../../../types";
 
-export const selectUserName = (state) => state.auth.user.name;
+export const selectIsLoggedIn = (state: TInitStateTypes) =>
+  state.auth.isLoggedIn;
 
-export const selectIsRefresh = (state) => state.auth.user.isRefresh;
+export const selectUserName = (state: TInitStateTypes) => state.auth.user;
+
+export const selectIsRefresh = (state: TInitStateTypes) => state.auth.isRefresh;

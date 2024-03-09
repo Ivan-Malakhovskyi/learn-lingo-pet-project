@@ -1,14 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { TAuthType } from "../../../types";
 
-type initialStateTypes = {
-  user: { name: null; email: null };
-  isLoggedIn: boolean;
-  isRefresh: boolean;
-  isLoading: boolean;
-  error: null;
-};
-
-const initialState = {
+const initialState: TAuthType = {
   user: { name: null, email: null },
   isLoggedIn: false,
   isRefresh: false,
@@ -20,19 +13,20 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    signUp: (state, action) => {
-      state.user = action.payload.user;
-      state.isLoggedIn = true;
-    },
+    setUser: (state, action) => ({
+      ...state,
+      user: { name: action.payload.name, email: action.payload.email },
+    }),
+
     signIn: (state, action) => {
       state.user = action.payload.user;
       state.isLoggedIn = true;
     },
-    signOut: (state) => {
-      state.user = { name: null, email: null };
-      state.isLoggedIn = false;
-    },
-
+    signOutUser: (state) => ({
+      ...state,
+      user: { name: null, email: null },
+      isLoggedIn: false,
+    }),
     getCurrentUser: (state, action) => {
       state.user = action.payload;
       state.isLoggedIn = true;
@@ -40,4 +34,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { signIn, setUser, signOutUser } = authSlice.actions;
 export const authReducer = authSlice.reducer;

@@ -1,4 +1,4 @@
-export type Review = {
+export type TReview = {
   reviewer_name: string;
   reviewer_rating: number;
   comment: string;
@@ -15,11 +15,34 @@ export type Teacher = {
   conditions: string[];
   levels: string[];
   experience: string;
-  reviews: Review[];
+  reviews: TReview[];
 };
 
 export type TeacherProps = {
   teacher: Teacher;
 };
 
-export const StoreTypes = {};
+export type TAuthType = {
+  user: { name: null | string; email: null | string };
+  isLoggedIn: boolean;
+  isRefresh: boolean;
+  isLoading: boolean;
+  error: null;
+};
+
+export type TeacherType = {
+  items: Teacher[];
+  favorites: Teacher[];
+  isLoading: boolean;
+  isFavorite: boolean;
+  isError: null;
+};
+
+export type TInitStateTypes = {
+  auth: TAuthType;
+  teachers: TeacherType;
+};
+
+export type TProps = {
+  onLoginSuccess: () => void;
+};

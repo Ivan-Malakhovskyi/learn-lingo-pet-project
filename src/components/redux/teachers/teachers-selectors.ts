@@ -1,7 +1,11 @@
-export const selectTeachers = (state) => state.teachers.items;
+import { TInitStateTypes } from "../../../types";
 
-export const selectFavoriteTeachers = (state) => state.teachers.favorites;
+export const selectTeachers = (state: TInitStateTypes) => state.teachers.items;
 
-export const selectIsLoading = (state) => state.teachers.isLoading;
+export const selectFavoriteTeachers = (state: TInitStateTypes) =>
+  state.teachers.favorites;
 
-export const selectError = (state) => state.teachers.error;
+export const selectIsLoading = (state: TInitStateTypes) =>
+  state.teachers.isLoading;
+
+export const selectError = (state: TInitStateTypes) => state.teachers.isError;

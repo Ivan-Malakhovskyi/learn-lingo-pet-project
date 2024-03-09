@@ -1,4 +1,4 @@
-export type SigninFormProps = {
+export type TSigninFormProps = {
   email: string;
   password: string;
 };
