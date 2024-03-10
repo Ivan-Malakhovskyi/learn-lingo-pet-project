@@ -1,22 +1,19 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 
-import { selectFavoriteTeachers } from "../../redux/teachers/teachers-selectors";
-import { TeachersListWrapper } from "../../TeachersList/TeachersList.styled";
-import {
-  Container,
-  SectionFormContainer,
-} from "../../layout/SharedLayout.styled";
-import { TeachersListItem } from "../../TeachersListItem/TeachersListItem";
+import { selectFavoriteTeachers } from "../redux/teachers/teachers-selectors";
+import { TeachersListWrapper } from "../TeachersList/TeachersList.styled";
+import { Container, SectionFormContainer } from "../layout/SharedLayout.styled";
+import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
 import {
   Paragraph,
   StyledLink,
   TextWrapper,
-} from "../../Favorites/Favorites.styed";
+} from "../Favorites/Favorites.styed";
 
 import empty from "/icons/no-data.svg";
 
-import { Teacher } from "../../../types";
+import { Teacher } from "../../types";
 
 const Favorites: FC = () => {
   const favoriteTeachers = useSelector(selectFavoriteTeachers);

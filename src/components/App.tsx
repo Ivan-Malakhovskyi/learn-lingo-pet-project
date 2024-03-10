@@ -14,8 +14,8 @@ import { Loader } from "./Loader/Loader";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const TeachersPage = lazy(() => import("./pages/TeachersPage"));
-const FavoritesPage = lazy(() => import("./pages/Favorites/Favorites"));
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
+const FavoritesPage = lazy(() => import("./pages/Favorites"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const App: FC = () => {
   const dispatch = useDispatch();
