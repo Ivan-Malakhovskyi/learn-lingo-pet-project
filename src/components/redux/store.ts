@@ -3,15 +3,16 @@ import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/auth-slice";
 import {
   persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PURGE,
-  PERSIST,
-  REGISTER,
+  // FLUSH,
+  // REHYDRATE,
+  // PAUSE,
+  // PURGE,
+  // PERSIST,
+  // REGISTER,
   persistStore,
 } from "redux-persist";
 import { teacherReducer } from "./teachers/teacher-slice";
+import { TeacherType } from "../../types";
 
 const teachersPersistConfig = {
   key: "teachers",
@@ -22,19 +23,22 @@ const teachersPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    teachers: persistReducer(teachersPersistConfig, teacherReducer),
+    teachers: persistReducer<TeacherType>(
+      teachersPersistConfig,
+      teacherReducer
+    ),
     // filters:
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PURGE, REGISTER, PERSIST],
+        ignoreActions: true,
       },
     }),
 });
 
-export const persistor = persistStore(store);
-
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
+
+export const persistor = persistStore(store);

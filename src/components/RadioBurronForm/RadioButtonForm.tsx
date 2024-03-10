@@ -1,5 +1,6 @@
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, FormikValues } from "formik";
 import { FC, useState } from "react";
+import * as yup from "yup";
 import { RadioValue, RadioWrapper } from "./RadioButtonForm.styled";
 import {
   FormWrapper,
@@ -11,6 +12,7 @@ import {
 } from "../SigninForm/SigninForm.styled";
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-off.svg";
+import { TOptions } from "./RadioButton.types";
 
 const labels = [
   { id: 1, name: "career", value: "Career and business" },
@@ -20,6 +22,27 @@ const labels = [
   { id: 5, name: "travel", value: "Culture, travel or hobby" },
 ];
 
+const initState = {
+  radioGroup: "",
+  fullName: "",
+  email: "",
+  password: "",
+};
+
+const validationRecordSchema = yup.object({
+  fullName: yup.string().required("Full name is required field"),
+  email: yup
+    .string()
+    .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/, "Invalid email")
+    .required("Email can't be is empty"),
+  password: yup
+    .string()
+    .min(8, "Too short password")
+    .max(48, "Too long password")
+    .matches(/[a-zA-Z]/, "Must contain at least one letter")
+    .required("Password can't be is empty"),
+});
+
 export const RadioButtonForm: FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -27,17 +50,36 @@ export const RadioButtonForm: FC = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleFormSubmit = () => {};
+  const filteredEnteredData = (values: TOptions): Partial<TOptions> => {
+    const enteredData: Partial<TOptions> = {};
+
+    for (const [key, value] of Object.entries(values)) {
+      if (value !== "") {
+        enteredData[key as keyof TOptions] = value;
+      }
+    }
+
+    return enteredData;
+  };
+
+  const handleFormSubmit = (values: TOptions, { resetForm }: FormikValues) => {
+    filteredEnteredData(values);
+    resetForm();
+  };
 
   return (
     <>
-      <Formik initialValues={{ picked: "" }} onSubmit={handleFormSubmit}>
+      <Formik
+        initialValues={initState}
+        onSubmit={handleFormSubmit}
+        validationSchema={validationRecordSchema}
+      >
         <Form>
           <RadioWrapper>
             {" "}
-            {labels.map(({ id, value, name }) => (
+            {labels.map(({ id, value }) => (
               <label key={id}>
-                <Field type="radio" name={name} value={value} />
+                <Field type="radio" name="radioGroup" value={value} />
                 <RadioValue>{value}</RadioValue>
               </label>
             ))}
@@ -47,7 +89,7 @@ export const RadioButtonForm: FC = () => {
             <div>
               {" "}
               <FieldForm type="text" name="fullName" placeholder="Full Name" />
-              <ErrMessage name="name" component="p" />
+              <ErrMessage name="fullName" component="p" />
             </div>
             <div>
               {" "}
@@ -70,7 +112,7 @@ export const RadioButtonForm: FC = () => {
               <ErrMessage name="password" component="p" />
             </InputWrapper>
           </FormWrapper>
-          <BtnSubmit>Book</BtnSubmit>
+          <BtnSubmit type="submit">Book</BtnSubmit>
         </Form>
       </Formik>
     </>
