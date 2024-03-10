@@ -1,30 +1,67 @@
-# React + TypeScript + Vite
+# Learn Lingo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Installation
 
-Currently, two official plugins are available:
+-- **install dependencies** - `npm install` or `yarn`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-- **dev** - `npm run dev` or `yarn dev`
 
-## Expanding the ESLint configuration
+-- **build** - `npm run build` or ``yarn build
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Introductions and Usage
 
-- Configure the top-level `parserOptions` property like this:
+This application is designed for a company that offers online language learning services. The app consists of three main pages: `"Home"`, `"Teachers"` and `"Favorites."`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1.`Home Page`: Learn about the company's advantages and navigate to the "Teachers" page.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. `Teachers Page`: Choose teachers based on your preferences, adding them to your favorites. Get more information and book a trial lesson
+
+3. `Favorites Page`: If you are logged in, review the teachers you liked and added to your favorites
+
+### Key Features
+
+#### Home Page
+
+-- **View the company's advantages and start working with the app. Link to redirect to the "Teachers" page.**
+
+#### Teachers Page
+
+-- **Browse a list of teachers with the ability to filter by language, students' proficiency level, and hourly rate.**
+
+-- **Implementation of "Load more" to dynamically load additional teacher cards.**
+
+-- **Add teachers to the user's favorites list.**
+
+-- **View detailed information about a teacher and reviews from students.Booking trial lessons through a modal window.**
+
+#### Favorites Page
+
+-- **A private page for authorized users.**
+
+-- **View the list of selected teachers.**
+
+### Technical Details
+
+#### Authorization
+
+-- **Use Firebase Realtime Database for storing and retrieving teacher data.**
+
+-- **Introduce user authentication, registration, login, and logout through Firebase.**
+
+#### Forms
+
+-- **Utilize Formik and Yup for registration and authentication forms.**
+
+-- **Minimal validation of all mandatory fields in the forms.**
+
+#### `"Favorites" Functionality`
+
+-- **Store selected teachers using localStorage or Firebase Realtime Database.**
+
+-- **Display the state of selected teachers after page refresh.**
+
+#### `Bonus*: Routing and Filtering`
+
+-- **Implement React Router for application routing.**
+
+-- **Add functionality for filtering by language, students' proficiency level, and hourly rate.**
