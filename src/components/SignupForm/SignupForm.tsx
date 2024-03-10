@@ -1,10 +1,5 @@
-import {
-  // ErrorMessage,
-  Form,
-  Formik,
-  FormikValues,
-} from "formik";
-import { useState } from "react";
+import { Form, Formik, FormikValues } from "formik";
+import { FC, useState } from "react";
 import * as yup from "yup";
 import {
   FieldForm,
@@ -14,15 +9,22 @@ import {
   FormWrapper,
   InputWrapper,
   BtnSubmit,
-  // FormUser,
   ErrMessage,
 } from "../SigninForm/SigninForm.styled";
 
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
 import { TSignUpPageProps } from "./SignUp.types";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  AuthError,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../../firebaseConfig";
+import { TSignupProps } from "../../types";
+import toast from "react-hot-toast";
+import { TOAST_MESSAGES } from "../constants";
+import { CustomToaster } from "../Global/Toaster/CustomToaster";
 
 const initialValuesFields = {
   name: "",
@@ -44,8 +46,10 @@ const validationSignupSchema = yup.object({
     .required("Password can't be is empty"),
 });
 
-export const Signup = () => {
+export const Signup: FC<TSignupProps> = ({ onRegisterSuccess }) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const { SIGN_UP_ERROR, SIGN_UP_SUCCESSFULLY } = TOAST_MESSAGES;
 
   const handleSubmit = async (
     values: TSignUpPageProps,
@@ -54,17 +58,20 @@ export const Signup = () => {
     try {
       const { name, email, password } = values;
 
-      const createUser = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = updateProfile(createUser.user, { displayName: name });
-      console.log(user);
+      await createUserWithEmailAndPassword(auth, email, password);
+      updateProfile(auth.currentUser!, { displayName: name });
+
+      onRegisterSuccess();
+
+      toast.success(SIGN_UP_SUCCESSFULLY);
 
       resetForm();
     } catch (error) {
-      console.log((error as Error).message);
+      const errMessage = (error as AuthError).code;
+
+      if (errMessage === "auth/email-already-in-use") {
+        toast.error(SIGN_UP_ERROR);
+      }
     }
   };
 
@@ -112,9 +119,10 @@ export const Signup = () => {
               <ErrMessage name="password" component="p" />
             </InputWrapper>
           </FormWrapper>
-          <BtnSubmit type="submit">Log In</BtnSubmit>
+          <BtnSubmit type="submit">Registration</BtnSubmit>
         </Form>
       </Formik>
+      <CustomToaster />
     </>
   );
 };

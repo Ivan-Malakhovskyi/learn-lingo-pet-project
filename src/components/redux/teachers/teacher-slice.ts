@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { TeacherType } from "../../../types";
 import { Teacher } from "../../../types";
+import { signOutUser } from "../auth/auth-slice";
 
 const initialState: TeacherType = {
   items: [],
@@ -24,6 +25,10 @@ const teachersSlice = createSlice({
         (teacher) => teacher.id !== action.payload
       );
     },
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(signOutUser, () => ({ ...initialState }));
   },
 });
 

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
-export const NotFoundPage: FC = () => {
+const NotFoundPage: FC = () => {
   return (
     <div>
       <p>Such page wasn't found 😢</p>
@@ -9,3 +9,5 @@ export const NotFoundPage: FC = () => {
     </div>
   );
 };
+
+export default NotFoundPage;

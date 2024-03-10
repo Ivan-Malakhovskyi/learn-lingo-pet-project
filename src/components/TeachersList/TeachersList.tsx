@@ -7,6 +7,7 @@ import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
 // import { SectionForm } from "../Filters/Filters.styled";
 import { Container } from "../layout/SharedLayout.styled";
 import { Teacher } from "../../types";
+import { Loader } from "../Loader/Loader";
 
 export const TeachersList: FC = () => {
   const [teachers, setTeachers] = useState([]);
@@ -32,7 +33,6 @@ export const TeachersList: FC = () => {
             ...(data as Teacher[]),
           }));
           setTeachers(teachersData as []);
-          console.log(teachersData);
           // const lastTeacher = teachersData[teachersData.length - 1];
           // setLastVisible(lastTeacher);
         } else {
@@ -61,7 +61,7 @@ export const TeachersList: FC = () => {
                 <TeachersListItem key={teacher} teacher={teacher} />
               ))
             ) : (
-              <div>Loading...</div>
+              <Loader />
             )}
           </ul>
           {teachers.length > 0 && (

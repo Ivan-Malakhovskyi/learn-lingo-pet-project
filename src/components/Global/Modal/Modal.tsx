@@ -4,7 +4,6 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { FC, useEffect } from "react";
 import iconClose from "/icons/x.svg";
 import { DropDownProps } from "../DropDown/DropDown.types";
-import { useAuthUser } from "../../hooks/useAuthUser";
 
 const modalRoot = document.querySelector("#modal-root")!;
 
@@ -14,18 +13,12 @@ export const Modal: FC<DropDownProps> = ({
   maxWidth,
   maxHeight,
 }) => {
-  const { isUserLoggedIn } = useAuthUser();
-
   useEffect(() => {
     const handleEscClick = ({ code }: KeyboardEvent) => {
       if (code === "Escape") {
         close();
       }
     };
-
-    if (isUserLoggedIn) {
-      close();
-    }
 
     window.addEventListener("keydown", handleEscClick);
 
@@ -35,7 +28,7 @@ export const Modal: FC<DropDownProps> = ({
       window.removeEventListener("keydown", handleEscClick);
       enableBodyScroll(document.body);
     };
-  }, [close, isUserLoggedIn]);
+  }, [close]);
 
   const handleBackdropClick = ({
     target,

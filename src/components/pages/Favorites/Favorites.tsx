@@ -18,7 +18,7 @@ import empty from "/icons/no-data.svg";
 
 import { Teacher } from "../../../types";
 
-export const Favorites: FC = () => {
+const Favorites: FC = () => {
   const favoriteTeachers = useSelector(selectFavoriteTeachers);
 
   return (
@@ -53,3 +53,5 @@ export const Favorites: FC = () => {
     </>
   );
 };
+
+export default Favorites;

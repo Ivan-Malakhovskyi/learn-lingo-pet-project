@@ -3,12 +3,12 @@ import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/auth-slice";
 import {
   persistReducer,
-  // FLUSH,
-  // REHYDRATE,
-  // PAUSE,
-  // PURGE,
-  // PERSIST,
-  // REGISTER,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PURGE,
+  PERSIST,
+  REGISTER,
   persistStore,
 } from "redux-persist";
 import { teacherReducer } from "./teachers/teacher-slice";
@@ -21,14 +21,14 @@ const teachersPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(teachersPersistConfig, authReducer),
+    auth: authReducer,
     teachers: persistReducer(teachersPersistConfig, teacherReducer),
     // filters:
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // ignoreActions: [FLUSH, REHYDRATE, PAUSE, PURGE, REGISTER, PERSIST],
+        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PURGE, REGISTER, PERSIST],
       },
     }),
 });

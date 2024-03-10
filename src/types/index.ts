@@ -43,6 +43,10 @@ export type TInitStateTypes = {
   teachers: TeacherType;
 };
 
-export type TProps = {
+export type TSigninProps = {
   onLoginSuccess: () => void;
+};
+
+export type TSignupProps = {
+  onRegisterSuccess: () => void | undefined;
 };

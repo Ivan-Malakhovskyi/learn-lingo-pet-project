@@ -11,9 +11,9 @@ type TProps = {
 };
 
 export const PrivateRoute: FC<TProps> = ({ element }) => {
-  const { isUserLoggedIn, isUserRefresh } = useAuthUser();
+  const { isUserLoggedIn } = useAuthUser();
 
-  const shouldRedirectUser = !isUserRefresh && !isUserLoggedIn;
+  const shouldRedirectUser = !isUserLoggedIn;
 
   return <>{shouldRedirectUser ? <Navigate to={ERoutes.Root} /> : element}</>;
 };

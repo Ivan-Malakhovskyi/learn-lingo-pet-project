@@ -5,8 +5,8 @@ import logo from "/icons/ukraine_blue_yellow.svg";
 import iconLogin from "/icons/log-in-01.svg";
 
 import { Modal } from "../Global/Modal/Modal";
-import { SignIn } from "../pages/SignIn/SignIn";
-import { SignUp } from "../pages/SignUp.tsx/SignUp";
+import { SignInPage } from "../pages/SignInPage";
+import { SignUpPage } from "../pages/SignUpPage";
 import { useAuthUser } from "../hooks/useAuthUser";
 import {
   IconWrapper,
@@ -32,13 +32,14 @@ export const Navigation: FC = () => {
   const [isOpen, setIsOpen] = useState<TNavProps>({
     signIn: false,
     signUp: false,
-  }); //Або дженерик типом useState<HeaderToggleFunc>
+  });
 
   const { isUserLoggedIn } = useAuthUser();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
+
   const handleToggle = (key: "signIn" | "signUp") => {
     setIsOpen((prevState) => ({
       ...prevState,
@@ -47,9 +48,11 @@ export const Navigation: FC = () => {
   };
 
   const handleSuccessLogin = () => {
-    if (isUserLoggedIn) {
-      handleToggle("signIn");
-    }
+    handleToggle("signIn");
+  };
+
+  const handleSuccessRegister = () => {
+    handleToggle("signUp");
   };
 
   const handleSignOut = async () => {
@@ -122,7 +125,7 @@ export const Navigation: FC = () => {
             maxHeight={506}
             close={() => handleToggle("signIn")}
           >
-            <SignIn onLoginSuccess={handleSuccessLogin} />
+            <SignInPage onLoginSuccess={handleSuccessLogin} />
           </Modal>
         )}
 
@@ -134,7 +137,7 @@ export const Navigation: FC = () => {
               maxHeight={600}
               close={() => handleToggle("signUp")}
             >
-              <SignUp />
+              <SignUpPage onRegisterSuccess={handleSuccessRegister} />
             </Modal>
           </div>
         )}

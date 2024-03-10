@@ -21,8 +21,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CustomToaster } from "../Global/Toaster/CustomToaster";
 import toast from "react-hot-toast";
-import { TProps } from "../../types";
-import { useAuthUser } from "../hooks/useAuthUser";
+import { TSigninProps } from "../../types";
+import { TOAST_MESSAGES } from "../constants";
 
 const initialValuesFields = {
   email: "",
@@ -42,18 +42,17 @@ const validationSigninSchema = yup.object({
     .required("Password can't be is empty"),
 });
 
-export const SigninForm: FC<TProps> = ({ onLoginSuccess }) => {
+export const SigninForm: FC<TSigninProps> = ({ onLoginSuccess }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isUserLoggedIn } = useAuthUser();
 
   const isLoggin = () => {
-    if (isUserLoggedIn) {
-      onLoginSuccess();
-    }
+    onLoginSuccess();
   };
+
+  const { SIGN_IN_SUCCESSFULLY } = TOAST_MESSAGES;
 
   const handleSubmit = async (
     values: TSigninFormProps,
@@ -74,7 +73,9 @@ export const SigninForm: FC<TProps> = ({ onLoginSuccess }) => {
       );
       navigate("/teachers");
 
-      toast.success("You are was successfully signed ✅");
+      isLoggin();
+
+      toast.success(SIGN_IN_SUCCESSFULLY);
 
       resetForm();
     } catch (error) {
@@ -121,9 +122,7 @@ export const SigninForm: FC<TProps> = ({ onLoginSuccess }) => {
               <ErrMessage name="password" component="p" />
             </InputWrapper>
           </FormWrapper>
-          <BtnSubmit type="submit" onClick={isLoggin}>
-            Log In
-          </BtnSubmit>
+          <BtnSubmit type="submit">Log In</BtnSubmit>
         </Form>
       </Formik>
       <CustomToaster />
