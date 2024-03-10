@@ -1,1 +1,0 @@
-import{j as e,N as o}from"./index-Barc6HSN.js";const t=()=>e.jsxs("div",{children:[e.jsx("p",{children:"Such page wasn't found 😢"}),e.jsx(o,{to:"/",children:"Back to home page"})]});export{t as default};

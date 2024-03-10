@@ -1,4 +1,4 @@
-import{u as i,N as s,j as e,C as c}from"./index-Barc6HSN.js";const a=i.div`
+import{u as i,N as s,j as e,C as c}from"./index-Bm9m3Phf.js";const a=i.div`
   margin-bottom: 24px;
   @media screen and (min-width: 1440px) {
     /* width: 1340px; */
