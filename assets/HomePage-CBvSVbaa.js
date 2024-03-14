@@ -1,21 +1,24 @@
-import{u as i,N as s,j as e,C as c}from"./index-Bm9m3Phf.js";const a=i.div`
+import{u as i,N as s,j as e}from"./index-ClXUFqfX.js";import{C as a}from"./SharedLayout.styled-CwKUvRJu.js";const c=i.div`
   margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+
   @media screen and (min-width: 1440px) {
-    /* width: 1340px; */
+    width: 1344px;
   }
-`,l=i.div`
+`,x=i.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 24px;
-`,x=i.h2`
+`,p=i.h2`
   color: ${({theme:{colors:t}})=>t.mainBlack};
   margin-bottom: 32px;
   font-size: 48px;
   font-weight: 500;
   line-height: 56px;
   letter-spacing: -2%;
-`,p=i.span`
+`,l=i.span`
   font-style: italic;
   font-weight: 400;
   border-radius: 8px;
@@ -49,8 +52,11 @@ import{u as i,N as s,j as e,C as c}from"./index-Bm9m3Phf.js";const a=i.div`
 `,g=i.div`
   border-radius: 30px;
   background-color: ${({theme:{colors:t}})=>t.accentGrey};
+
   padding: 98px 108px 98px 64px;
-  @media screen and (min-width: 1440px) {
+
+  @media screen and (max-width: 1339px) {
+    padding: 48px 98px 48px 32px;
   }
 `,m=i.div`
   flex-shrink: 0;
@@ -72,18 +78,22 @@ import{u as i,N as s,j as e,C as c}from"./index-Bm9m3Phf.js";const a=i.div`
   right: 115px;
   top: 80px;
   bottom: 111px;
-`,j=i.img`
+`,f=i.img`
   position: absolute;
   top: 354px;
   left: 103.64px;
   width: 359.72px;
   height: 300px;
-`,f="/images/stiker_girl.png",w="/images/mac.png",b=()=>e.jsx(a,{children:e.jsxs(l,{children:[e.jsxs(g,{children:[e.jsxs(x,{children:["Unlock your potential with the best"," ",e.jsx(p,{children:"language"})," tutors"]}),e.jsx(d,{children:"Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors."}),e.jsx(h,{to:"/teachers",children:"Get started"})]}),e.jsxs(m,{children:[e.jsx(u,{src:f,alt:"girl_stiker"}),e.jsx(j,{src:w,alt:"girl_stiker"})]})]})}),k=i.div`
-  max-width: 100%;
+`,j="/images/stiker_girl.png",w="/images/mac.png",b=()=>e.jsx(c,{children:e.jsxs(x,{children:[e.jsxs(g,{children:[e.jsxs(p,{children:["Unlock your potential with the best"," ",e.jsx(l,{children:"language"})," tutors"]}),e.jsx(d,{children:"Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors."}),e.jsx(h,{to:"/teachers",children:"Get started"})]}),e.jsxs(m,{children:[e.jsx(u,{src:j,alt:"girl_stiker"}),e.jsx(f,{src:w,alt:"girl_stiker"})]})]})}),k=i.div`
+  /* max-width: 100%; */
   border: 1.5px dashed ${({theme:{colors:t}})=>t.mainYellow};
   border-radius: 30px;
   padding: 40px 124px;
   margin-bottom: 32px;
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1300px;
+  }
 `,y=i.ul`
   display: flex;
   justify-content: space-between;
@@ -118,4 +128,4 @@ import{u as i,N as s,j as e,C as c}from"./index-Bm9m3Phf.js";const a=i.div`
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -2%;
-`,$=()=>e.jsx(e.Fragment,{children:e.jsx(k,{children:e.jsxs(y,{children:[e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]})]})})}),H=()=>e.jsxs(c,{children:[e.jsx(b,{}),e.jsx($,{})]});export{H as default};
+`,$=()=>e.jsx(e.Fragment,{children:e.jsx(k,{children:e.jsxs(y,{children:[e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]})]})})}),B=()=>e.jsxs(a,{children:[e.jsx(b,{}),e.jsx($,{})]});export{B as default};
