@@ -9,7 +9,6 @@ const TeachersPage: FC = () => {
   return (
     <>
       <SectionFormContainer>
-        {" "}
         <Container>
           <Test />
         </Container>

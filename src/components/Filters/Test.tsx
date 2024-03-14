@@ -17,7 +17,7 @@ const prices = Array.from({ length: 9 }, (_, index) => index * 5);
 
 export const Test = () => {
   //! Дописати скрізь setlanguageSelect,setlevelSelect,setPriceSelect
-  const [languageSelect] = useState("All");
+  const [languageSelect, setLanguageSelect] = useState("All");
   const [levelSelect] = useState("All");
   const [priceSelect] = useState("All");
   // const [selectedOption, setSelectedOption] = useState(null);
@@ -32,14 +32,10 @@ export const Test = () => {
     if (type === "price") setIsPrice(!isPrice);
   };
 
-  // const handleChange = (e) => {
-  //   e.preventDefault();
-
-  //   // Use the corresponding set functions to update the state
-  // (e.target.value);
-  //   setLevelSelect(e.target.value);
-  //   setPriceSelect(e.target.value);
-  // };
+  const handleLanguageSelect = (item: string) => {
+    setLanguageSelect(item);
+    handleDropdownClick("language");
+  };
 
   return (
     <Main>
@@ -51,7 +47,7 @@ export const Test = () => {
               <Options
                 name="language"
                 type="text"
-                value={languageSelect || "All"}
+                value={languageSelect}
                 width={221}
                 onClick={handleDropdownClick("language")}
               />
@@ -61,7 +57,12 @@ export const Test = () => {
               <ListOptions>
                 {isLanguage &&
                   languages.map((language) => (
-                    <ListItem key={language}>{language}</ListItem>
+                    <ListItem
+                      key={language}
+                      onClick={() => handleLanguageSelect(language)}
+                    >
+                      {language}
+                    </ListItem>
                   ))}
               </ListOptions>
             </DropDown>
@@ -76,7 +77,7 @@ export const Test = () => {
                 width={194}
                 name="level"
                 type="text"
-                value={levelSelect || "All"}
+                value={levelSelect}
               />
               <ToggleBtn onClick={handleDropdownClick("level")}>
                 <FaChevronUp />
@@ -85,7 +86,12 @@ export const Test = () => {
                 {" "}
                 {isLevel &&
                   levels.map((level) => (
-                    <ListItem key={level}>{level}</ListItem>
+                    <ListItem
+                      key={level}
+                      onClick={() => handleLanguageSelect(level)}
+                    >
+                      {level}
+                    </ListItem>
                   ))}
               </ListOptions>
             </DropDown>
@@ -100,7 +106,7 @@ export const Test = () => {
                 width={123}
                 name="price"
                 type="text"
-                value={priceSelect || "All"}
+                value={priceSelect}
               />
               <ToggleBtn onClick={handleDropdownClick("price")}>
                 <FaChevronUp />

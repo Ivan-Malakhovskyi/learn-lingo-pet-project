@@ -3,8 +3,11 @@ import styled from "styled-components";
 
 export const Hero = styled.div`
   margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+
   @media screen and (min-width: 1440px) {
-    /* width: 1340px; */
+    width: 1344px;
   }
 `;
 
@@ -64,8 +67,11 @@ export const HeroBtn = styled(NavLink)`
 export const HeroBenefits = styled.div`
   border-radius: 30px;
   background-color: ${({ theme: { colors } }) => colors.accentGrey};
+
   padding: 98px 108px 98px 64px;
-  @media screen and (min-width: 1440px) {
+
+  @media screen and (max-width: 1339px) {
+    padding: 48px 98px 48px 32px;
   }
 `;
 

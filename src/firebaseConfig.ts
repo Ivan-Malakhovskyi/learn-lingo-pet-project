@@ -3,16 +3,26 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
+const {
+  VITE_API_KEY,
+  VITE_AUTH_DOMAIN,
+  VITE_DATABASE_URL,
+  VITE_PROJECT_ID,
+  VITE_STORAGE_BUCKET,
+  VITE_MESSAGING_SENDER_ID,
+  VITE_APP_ID,
+  VITE_MEASUREMENT_ID,
+} = import.meta.env;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyA_MfiWlj-UAQOGXJIlHU7cByj3msmgDGg",
-  authDomain: "learn-lingo-pet-project.firebaseapp.com",
-  databaseURL:
-    "https://learn-lingo-pet-project-default-rtdb.europe-west1.firebasedatabase.app/",
-  projectId: "learn-lingo-pet-project",
-  storageBucket: "learn-lingo-pet-project.appspot.com",
-  messagingSenderId: "942087153141",
-  appId: "1:942087153141:web:55319103e47016e9bd2cbc",
-  measurementId: "G-4G8TCGNGP7",
+  apiKey: VITE_API_KEY,
+  authDomain: VITE_AUTH_DOMAIN,
+  databaseURL: VITE_DATABASE_URL,
+  projectId: VITE_PROJECT_ID,
+  storageBucket: VITE_STORAGE_BUCKET,
+  messagingSenderId: VITE_MESSAGING_SENDER_ID,
+  appId: VITE_APP_ID,
+  measurementId: VITE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

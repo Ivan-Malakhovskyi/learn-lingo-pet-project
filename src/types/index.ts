@@ -38,6 +38,16 @@ export type TeacherType = {
   isError: null;
 };
 
+export type TFilterType = {
+  language: null | string;
+  level: null | string;
+  price: null | string;
+};
+
+export type TFilterState = {
+  filters: TFilterType;
+};
+
 export type TInitStateTypes = {
   auth: TAuthType;
   teachers: TeacherType;

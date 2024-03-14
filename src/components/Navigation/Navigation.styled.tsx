@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.ul`
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -25,6 +25,7 @@ export const Nav = styled.nav`
     gap: 15px;
   }
 
+  padding: 0 15px;
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     /* gap: 30px; */
@@ -64,6 +65,11 @@ export const StyledNavLink = styled(NavLink)`
   &.active {
     color: ${({ theme: { colors } }) => colors.mainYellow};
   }
+
+  &:hover,
+  &:focus {
+    color: ${({ theme: { colors } }) => colors.mainYellow};
+  }
 `;
 
 export const LinkWapper = styled.span`
@@ -78,6 +84,14 @@ export const BtnRegister = styled.button`
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+
+  transition: background-color 250ms
+    ${({ theme: { transitions } }) => transitions.cubic};
+
+  &:hover,
+  &:focus {
+    background-color: ${({ theme: { colors } }) => colors.mainBgBlack};
+  }
 `;
 
 export const ListBtnAuth = styled.ul`

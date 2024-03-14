@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 export const StatsBox = styled.div`
-  max-width: 100%;
+  /* max-width: 100%; */
   border: 1.5px dashed ${({ theme: { colors } }) => colors.mainYellow};
   border-radius: 30px;
   padding: 40px 124px;
   margin-bottom: 32px;
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1300px;
+  }
 `;
 
 export const ListStats = styled.ul`

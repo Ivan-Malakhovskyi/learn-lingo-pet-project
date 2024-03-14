@@ -16,6 +16,7 @@ import {
   ListBtnAuth,
   BtnSignin,
   LinkWapper,
+  HeaderWrapper,
 } from "../Navigation/Navigation.styled";
 import { HomeLink } from "../Navigation/Navigation.styled";
 import { TNavProps } from "./Navigation.types";
@@ -68,7 +69,7 @@ export const Navigation: FC = () => {
   };
 
   return (
-    <>
+    <HeaderWrapper>
       <li>
         <LogoLink to="/">
           {" "}
@@ -96,7 +97,7 @@ export const Navigation: FC = () => {
         {isUserLoggedIn ? (
           <BtnRegister onClick={handleSignOut}>Logout</BtnRegister>
         ) : (
-          <>
+          <ListBtnAuth>
             <li>
               <BtnSignin onClick={() => handleToggle("signIn")}>
                 <IconWrapper>
@@ -116,7 +117,7 @@ export const Navigation: FC = () => {
                 Registration
               </BtnRegister>
             </li>
-          </>
+          </ListBtnAuth>
         )}
 
         {isOpen.signIn && (
@@ -143,6 +144,6 @@ export const Navigation: FC = () => {
         )}
       </ListBtnAuth>
       <CustomToaster />
-    </>
+    </HeaderWrapper>
   );
 };
