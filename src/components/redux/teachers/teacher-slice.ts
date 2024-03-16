@@ -3,6 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { TeacherType } from "../../../types";
 import { Teacher } from "../../../types";
 import { signOutUser } from "../auth/auth-slice";
+import { fetchTeachers } from "./operations";
 
 const initialState: TeacherType = {
   items: [],
@@ -28,6 +29,19 @@ const teachersSlice = createSlice({
   },
 
   extraReducers: (builder) => {
+    builder.addCase(fetchTeachers.fulfilled, (state, action) => {
+      state.items = action.payload;
+      state.isLoading = false;
+      state.isError = null;
+    });
+    builder.addCase(fetchTeachers.pending, (state) => {
+      state.isLoading = true;
+      state.isError = null;
+    });
+    builder.addCase(fetchTeachers.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = action.payload;
+    });
     builder.addCase(signOutUser, () => ({ ...initialState }));
   },
 });

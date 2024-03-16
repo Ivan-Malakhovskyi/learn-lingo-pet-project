@@ -13,6 +13,7 @@ import {
 } from "redux-persist";
 import { teacherReducer } from "./teachers/teacher-slice";
 import { TeacherType } from "../../types";
+import { filterReducer } from "./teachers/filter-slice";
 
 const teachersPersistConfig = {
   key: "teachers",
@@ -27,7 +28,7 @@ export const store = configureStore({
       teachersPersistConfig,
       teacherReducer
     ),
-    // filters:
+    filters: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Form = styled.form`
+  display: flex;
+  gap: 20px;
+`;
+
 export const ListFilters = styled.ul`
   display: flex;
   gap: 20px;
@@ -25,10 +30,24 @@ export const Label = styled.span`
   letter-spacing: 0%;
 `;
 
-export const Selector = styled.div`
+export const SelectContainer = styled.div`
   position: relative;
-  margin: 0;
-  width: 224px;
+`;
+
+export const Select = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 18px;
+  padding-left: 18px;
+  width: 198px;
+  height: 48px;
+  border: none;
+  border-radius: 14px;
+  background: #f7f7fb;
+
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
 `;
 
 export const ToggleBtn = styled.button`
@@ -56,6 +75,24 @@ export const DropDown = styled.div`
   line-height: 20px;
   letter-spacing: 0%;
   color: ${({ theme: { colors } }) => colors.mainBlack};
+`;
+
+export const Arrow = styled.img`
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  pointer-events: none;
+
+  transform: rotate(${({ $isOpen }) => ($isOpen ? "180deg" : "360deg")})
+    translateY(-50%);
+  transform-origin: top;
+`;
+
+export const SelectorItem = styled.li`
+  cursor: pointer;
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
 `;
 
 export const Options = styled.input`
