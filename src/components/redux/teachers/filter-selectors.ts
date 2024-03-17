@@ -1,28 +1,26 @@
+import { createSelector } from "@reduxjs/toolkit";
 import { TFilterState } from "../../../types";
-import teachersList from "../../teachers.json";
-
-const { teachers } = teachersList;
+import { selectTeachers } from "./teachers-selectors";
 
 export const selectFilters = (state: TFilterState) => state.filters;
 
 export function filterTeachers(teachers, filters) {
   // Розпакування фільтрів
-  const { language, level, price } = filters;
 
   // Фільтрація учителів за обраними параметрами
   const filteredTeachers = teachers.filter((teacher) => {
     // Фільтрація за мовою
-    if (language && teacher.languages.includes(language)) {
+    if (filters.language && teacher.languages.includes(filters.language)) {
       return true;
     }
 
     // Фільтрація за рівнем
-    if (level && teacher.levels.includes(level)) {
+    if (filters.level && teacher.levels.includes(filters.level)) {
       return true;
     }
 
     // Фільтрація за ціною
-    if (price && teacher.price === price) {
+    if (filters.price && teacher.price === filters.price) {
       return true;
     }
 
@@ -33,10 +31,25 @@ export function filterTeachers(teachers, filters) {
   return filteredTeachers;
 }
 
-const filters = {
-  language: "Korean",
-  level: "Advanced",
-  price: 50,
-};
+export const selectFilteredTeachers = createSelector(
+  [selectTeachers, selectFilters],
+  (teachers, filters) => {
+    const filteredTeachers = teachers.filter((teacher) => {
+      if (filters.language && teacher.languages.includes(filters.language)) {
+        return true;
+      }
 
-console.log(filterTeachers(teachers, filters));
+      if (filters.level && teacher.levels.includes(filters.level)) {
+        return true;
+      }
+
+      if (filters.price && teacher.price === filters.price) {
+        return true;
+      }
+
+      return false;
+    });
+
+    return filteredTeachers;
+  }
+);

@@ -1,41 +1,39 @@
 import { get, query, ref, startAfter } from "firebase/database";
-import { useEffect, FC } from "react";
-import { db } from "../../firebaseConfig";
-import { LoadMoreBtn, TeachersListWrapper } from "./TeachersList.styled";
-// import { List } from "./TeachersList.styled";
-import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
-// import { SectionForm } from "../Filters/Filters.styled";
-// import { Container } from "../layout/SharedLayout.styled";
 
-import { Loader } from "../Loader/Loader";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, FC, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   filterTeachers,
   selectFilters,
 } from "../redux/teachers/filter-selectors";
-import { selectTeachers } from "../redux/teachers/teachers-selectors";
-import { setFilters } from "../redux/teachers/filter-slice";
-import { fetchTeachers } from "../redux/teachers/operations";
-import { useSearchParams } from "react-router-dom";
+import {
+  selectIsLoading,
+  selectTeachers,
+} from "../redux/teachers/teachers-selectors";
+
+import { db } from "../../firebaseConfig";
+import { LoadMoreBtn, TeachersListWrapper } from "./TeachersList.styled";
+import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
+import { Loader } from "../Loader/Loader";
 
 export const TeachersList: FC = () => {
-  const dispatch = useDispatch();
   const { language, level, price } = useSelector(selectFilters);
   const teachersList = useSelector(selectTeachers);
-  const [searchParams] = useSearchParams();
+  const isLoading = useSelector(selectIsLoading);
+  const [filteredTeachers, setFilteredTeachers] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchTeachers());
-  }, [dispatch]);
-
-  useEffect(() => {
-    const filters = {};
-
-    searchParams.forEach((value, key) => (filters[key] = value));
-    const filteredTeachers = filterTeachers(teachersList, { filters });
-
-    dispatch(setFilters({ filteredTeachers }));
-  }, [dispatch, language, teachersList]);
+    if (language || level || price) {
+      const filteredTeachers = filterTeachers(teachersList, {
+        language,
+        level,
+        price,
+      });
+      setFilteredTeachers(filteredTeachers);
+    } else {
+      setFilteredTeachers(teachersList);
+    }
+  }, [language, level, price, teachersList]);
 
   const handleLoadMore = async () => {
     const teachersRef = query(ref(db, "teachers"), startAfter(4));
@@ -63,15 +61,16 @@ export const TeachersList: FC = () => {
       {" "}
       <TeachersListWrapper>
         <ul>
-          {teachersList.length > 0 ? (
-            teachersList.map((teacher) => (
+          {filteredTeachers.length > 0 ? (
+            filteredTeachers.map((teacher) => (
               <TeachersListItem key={teacher.id} teacher={teacher} />
             ))
           ) : (
-            <Loader />
+            <div>No teachers found</div>
           )}
         </ul>
       </TeachersListWrapper>
+      {isLoading && <Loader />}
       {teachersList.length > 0 && (
         <LoadMoreBtn type="button" onClick={handleLoadMore}>
           Load More

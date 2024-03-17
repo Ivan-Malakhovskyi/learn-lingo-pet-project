@@ -3,8 +3,8 @@ import { get, limitToFirst, query, ref } from "firebase/database";
 import { db } from "src/firebaseConfig";
 import { Teacher } from "src/types";
 
-const BASE_URL =
-  "https://learn-lingo-pet-project-default-rtdb.europe-west1.firebasedatabase.app/teachers.json";
+// const BASE_URL =
+//   "https://learn-lingo-pet-project-default-rtdb.europe-west1.firebasedatabase.app/teachers.json";
 
 export const fetchTeachers = createAsyncThunk(
   "teachers/fetchTeachers",
@@ -27,11 +27,3 @@ export const fetchTeachers = createAsyncThunk(
     }
   }
 );
-
-// export const getByFilters = createAsyncThunk('teachers,getbyFilters', async ({},thunkAPI) => {
-// try {
-//   const response = await fetch(`${BASE_URL}?orderBy="levels"`)
-// } catch (error) {
-//   return thunkAPI.rejectWithValue(error)
-// }
-// })

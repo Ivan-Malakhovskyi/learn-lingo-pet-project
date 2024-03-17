@@ -14,22 +14,21 @@ import { useSearchParams } from "react-router-dom";
 import { selectFilters } from "../redux/teachers/filter-selectors";
 import { setFilters } from "../redux/teachers/filter-slice";
 import arrow from "/icons/chevron-down.svg";
+import { toggleDropDown } from "src/utils";
 
 export const Filters = () => {
   const prices = Array.from({ length: 9 }, (_, index) => index * 5);
 
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-
   const { language, level, price } = useSelector(selectFilters);
-
   const [languageSelect, setLanguageSelect] = useState(languages);
   const [levelSelect, setLevelSelect] = useState(levels);
   const [priceSelect, setPriceSelect] = useState(prices);
 
   const [isDropDownOpen, setIsDropDownOpen] = useState({
-    language: false,
-    level: false,
+    languages: false,
+    levels: false,
     price: false,
   });
 
@@ -44,40 +43,45 @@ export const Filters = () => {
       setFilters({
         language: searchParams.get("language"),
         level: searchParams.get("level"),
-        price: Number.parseInt(searchParams.get("price")),
+        price: searchParams.get("price"),
       })
     );
   }, [searchParams, dispatch]);
 
   const handleSelectLanguage = (e: ChangeEventHandler) => {
-    const value = e.target.attributes.value.value;
+    const languageValue = e.target.attributes.value.value;
 
-    setLanguageSelect(value);
-
-    setIsDropDownOpen((prevState) => ({
-      ...prevState,
-      language: !prevState.language,
-    }));
+    setIsDropDownOpen((prevState) => toggleDropDown(prevState, "language"));
 
     setSearchParams((prevParams) => ({
       ...prevParams,
-      language: value ?? "",
+      language: languageValue || "",
     }));
   };
 
   const handleSelectLevel = (e: ChangeEventHandler) => {
-    setLevelSelect(e.target.value);
+    const levelValue = e.target.attributes.value.value;
 
-    const level = levelSelect || "";
+    setLevelSelect(levelValue);
 
-    setSearchParams({ level });
+    setIsDropDownOpen((prevState) => toggleDropDown(prevState, "level"));
+
+    setSearchParams((prevParams) => ({
+      ...prevParams,
+      levels: levelValue || "",
+    }));
   };
 
   const handleSelectPrice = (e: ChangeEventHandler) => {
-    setPriceSelect(e.target.value);
-    const price = priceSelect || "";
+    const priceValue = e.target.attributes.value.value;
+    setPriceSelect(priceValue);
 
-    setSearchParams({ price });
+    setIsDropDownOpen((prevState) => toggleDropDown(prevState, "price"));
+
+    setSearchParams((prevState) => ({
+      ...prevState,
+      price: priceSelect || "",
+    }));
   };
 
   return (
@@ -92,10 +96,9 @@ export const Filters = () => {
               onChange={handleSelectLanguage}
               isOpen={isDropDownOpen.language}
               onClick={() =>
-                setIsDropDownOpen((prevState) => ({
-                  ...prevState,
-                  language: !prevState.language,
-                }))
+                setIsDropDownOpen((prevState) =>
+                  toggleDropDown(prevState, "language")
+                )
               }
             >
               {languageSelect || "Choose your language"}
@@ -106,10 +109,9 @@ export const Filters = () => {
             {isDropDownOpen.language && (
               <DropDown
                 close={() =>
-                  setIsDropDownOpen((prevState) => ({
-                    ...prevState,
-                    language: !prevState.language,
-                  }))
+                  setIsDropDownOpen((prevState) =>
+                    toggleDropDown(prevState, "language")
+                  )
                 }
               >
                 <ul>
@@ -128,29 +130,84 @@ export const Filters = () => {
             )}
           </SelectContainer>
         </label>
-        {/* <label>
+        <label>
           <Label>Levels</Label>
-          <Select value={levelSelect} onChange={handleSelectLevel}>
-            <option value="" disabled>
-              Choose your Level
-            </option>
-
-            {levels.map((level) => (
-              <option value={level}>{level}</option>
-            ))}
+          <Select
+            width="224px"
+            isOpen={isDropDownOpen.levels}
+            onClick={() =>
+              setIsDropDownOpen((prevState) =>
+                toggleDropDown(prevState, "levels")
+              )
+            }
+            onChange={handleSelectLevel}
+          >
+            {levelSelect || " Choose your Level"}
           </Select>
+
+          <Arrow src={arrow} $isOpen={isDropDownOpen.levels} />
+
+          {isDropDownOpen.levels && (
+            <DropDown
+              close={() =>
+                setIsDropDownOpen((prevState) =>
+                  toggleDropDown(prevState, "levels")
+                )
+              }
+            >
+              <ul>
+                {levels.map((option) => (
+                  <SelectorItem
+                    onClick={handleSelectLevel}
+                    key={option}
+                    value={option}
+                    $isActive={levelSelect === option}
+                  >
+                    {option}
+                  </SelectorItem>
+                ))}
+              </ul>
+            </DropDown>
+          )}
         </label>
         <label htmlFor="">
           <Label>Price</Label>
-          <Select value={priceSelect} onChange={handleSelectPrice}>
-            <option value="" disabled>
-              Price
-            </option>
-            {prices.map((price) => (
-              <option value={price}>{price}</option>
-            ))}
+          <Select
+            width="224px"
+            isOpen={isDropDownOpen.price}
+            onClick={() =>
+              setIsDropDownOpen((prevState) =>
+                toggleDropDown(prevState, "price")
+              )
+            }
+            onChange={handleSelectLevel}
+          >
+            {priceSelect || " Choose your price"}
           </Select>
-        </label> */}
+
+          <Arrow src={arrow} $isOpen={isDropDownOpen.price} />
+
+          {isDropDownOpen.price && (
+            <DropDown
+              close={() =>
+                setIsDropDownOpen(toggleDropDown(prevState, "price"))
+              }
+            >
+              <ul>
+                {prices.map((option) => (
+                  <SelectorItem
+                    onClick={handleSelectPrice}
+                    key={option}
+                    value={option}
+                    $isActive={priceSelect === option}
+                  >
+                    {option}
+                  </SelectorItem>
+                ))}
+              </ul>
+            </DropDown>
+          )}
+        </label>
       </Form>
     </>
   );
