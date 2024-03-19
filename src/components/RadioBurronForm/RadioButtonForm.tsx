@@ -1,7 +1,11 @@
 import { Field, Form, Formik, FormikValues } from "formik";
 import { FC, useState } from "react";
 import * as yup from "yup";
-import { RadioValue, RadioWrapper } from "./RadioButtonForm.styled";
+import {
+  RadioValue,
+  RadioWrapper,
+  StyledField,
+} from "./RadioButtonForm.styled";
 import {
   FormWrapper,
   FieldForm,
@@ -79,7 +83,7 @@ export const RadioButtonForm: FC = () => {
             {" "}
             {labels.map(({ id, value }) => (
               <label key={id}>
-                <Field type="radio" name="radioGroup" value={value} />
+                <StyledField type="radio" name="radioGroup" value={value} />
                 <RadioValue>{value}</RadioValue>
               </label>
             ))}

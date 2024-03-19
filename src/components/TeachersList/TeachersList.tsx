@@ -1,4 +1,5 @@
 import { get, query, ref, startAfter } from "firebase/database";
+import { db } from "../../firebaseConfig";
 
 import { useEffect, FC, useState } from "react";
 import { useSelector } from "react-redux";
@@ -11,7 +12,6 @@ import {
   selectTeachers,
 } from "../redux/teachers/teachers-selectors";
 
-import { db } from "../../firebaseConfig";
 import { LoadMoreBtn, TeachersListWrapper } from "./TeachersList.styled";
 import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
 import { Loader } from "../Loader/Loader";
@@ -33,7 +33,7 @@ export const TeachersList: FC = () => {
     } else {
       setFilteredTeachers(teachersList);
     }
-  }, [language, level, price, teachersList]);
+  }, [language, level, teachersList, price]);
 
   const handleLoadMore = async () => {
     const teachersRef = query(ref(db, "teachers"), startAfter(4));
@@ -71,7 +71,7 @@ export const TeachersList: FC = () => {
         </ul>
       </TeachersListWrapper>
       {isLoading && <Loader />}
-      {teachersList.length > 0 && (
+      {teachersList.length > 0 && filteredTeachers.length > 0 && (
         <LoadMoreBtn type="button" onClick={handleLoadMore}>
           Load More
         </LoadMoreBtn>

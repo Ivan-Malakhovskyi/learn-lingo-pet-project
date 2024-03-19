@@ -17,3 +17,5 @@ export const levels = [
   "C1 Advanced",
   "C2 Proficient",
 ];
+
+export const prices = [0, 5, 10, 15, 20, 25, 30, 35, 40];

@@ -15,6 +15,7 @@ export type Teacher = {
   conditions: string[];
   levels: string[];
   experience: string;
+  price_per_hour: number;
   reviews: TReview[];
 };
 
@@ -41,7 +42,7 @@ export type TeacherType = {
 export type TFilterType = {
   language: null | string;
   level: null | string;
-  price: null | string;
+  price: null | number[] | string[];
 };
 
 export type TFilterState = {

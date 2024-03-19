@@ -3,17 +3,17 @@ import styled from "styled-components";
 export const Form = styled.form`
   display: flex;
   gap: 20px;
-`;
-
-export const ListFilters = styled.ul`
-  display: flex;
-  gap: 20px;
 
   @media screen and (max-width: 767px) {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
+`;
+
+export const ListFilters = styled.ul`
+  display: flex;
+  gap: 20px;
 `;
 
 export const LabelWrapper = styled.label`
@@ -43,7 +43,7 @@ export const Select = styled.div`
   height: 48px;
   border: none;
   border-radius: 14px;
-  background: #f7f7fb;
+  background: ${({ theme: { colors } }) => colors.addWhite};
 
   font-size: 18px;
   font-weight: 500;
@@ -68,8 +68,17 @@ export const Main = styled.div`
 `;
 
 export const DropDown = styled.div`
-  position: relative;
-  display: inline-block;
+  position: absolute;
+  z-index: 100;
+  top: calc(100% - 4px);
+  left: 0;
+  width: 190px;
+  padding: 14px;
+  overflow: auto;
+  border: 1px solid ${({ theme: { colors } }) => colors.secondaryAccentBlack};
+  border-radius: 14px;
+  background-color: ${({ theme: { colors } }) => colors.mainWhite};
+  box-shadow: ${({ theme: { colors } }) => colors.accentBlack};
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
@@ -79,20 +88,40 @@ export const DropDown = styled.div`
 
 export const Arrow = styled.img`
   position: absolute;
-  top: 50%;
+  top: 25px;
   right: 14px;
-  pointer-events: none;
+  cursor: pointer;
 
   transform: rotate(${({ $isOpen }) => ($isOpen ? "180deg" : "360deg")})
     translateY(-50%);
+
+  &:hover,
+  &:focus {
+    scale: 1.3;
+  }
+
+  transition: transform 250ms
+      ${({ theme: { transitions } }) => transitions.cubic},
+    scale 250ms ${({ theme: { transitions } }) => transitions.cubic};
   transform-origin: top;
 `;
 
 export const SelectorItem = styled.li`
   cursor: pointer;
+
+  color: ${({ $isActive, theme: { colors } }) =>
+    $isActive ? colors.mainBlack : colors.mainGrey};
+
+  &:hover,
+  &:focus {
+    color: ${({ theme: { colors } }) => colors.mainBlack};
+  }
+
   &:not(:last-child) {
     margin-bottom: 8px;
   }
+
+  transition: color 250ms ${({ theme: { transitions } }) => transitions.cubic};
 `;
 
 export const Options = styled.input`
@@ -105,10 +134,6 @@ export const Options = styled.input`
   border-radius: 14px;
   padding: 18px 16px;
   background-color: ${({ theme: { colors } }) => colors.mainWhite};
-`;
-
-export const ListItem = styled.li`
-  /* background-color: ${({ theme: { colors } }) => colors.mainWhite}; */
 `;
 
 export const ListOptions = styled.ul`
@@ -124,5 +149,5 @@ export const ListOptions = styled.ul`
   padding: 0;
   margin: 0;
   border-radius: 12px;
-  background-color: rgb(255, 255, 255);
+  background-color: ${({ theme: { colors } }) => colors.mainWhite};
 `;

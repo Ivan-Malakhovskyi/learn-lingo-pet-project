@@ -17,6 +17,10 @@ export const RatingText = styled.p`
   margin-left: 4px;
 `;
 
+export const Price = styled.span`
+  color: ${({ theme: { colors } }) => colors.mainGreen};
+`;
+
 export const LevelList = styled.ul`
   display: flex;
   gap: 8px;

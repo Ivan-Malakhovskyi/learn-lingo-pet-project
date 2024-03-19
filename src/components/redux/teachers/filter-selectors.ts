@@ -5,27 +5,22 @@ import { selectTeachers } from "./teachers-selectors";
 export const selectFilters = (state: TFilterState) => state.filters;
 
 export function filterTeachers(teachers, filters) {
-  // Розпакування фільтрів
+  const { language, level, price } = filters;
 
-  // Фільтрація учителів за обраними параметрами
-  const filteredTeachers = teachers.filter((teacher) => {
-    // Фільтрація за мовою
-    if (filters.language && teacher.languages.includes(filters.language)) {
-      return true;
+  return teachers.filter((teacher) => {
+    if (language && !teacher.languages.includes(language)) {
+      return false;
     }
 
-    // Фільтрація за рівнем
-    if (filters.level && teacher.levels.includes(filters.level)) {
-      return true;
+    if (level && !teacher.levels.includes(level)) {
+      return false;
     }
 
-    // Фільтрація за ціною
-    if (filters.price && teacher.price === filters.price) {
-      return true;
+    if (price && teacher.price_per_hour > price) {
+      return false;
     }
 
-    // Якщо немає збігів за жодним параметром, повертаємо false
-    return false;
+    return true;
   });
 
   return filteredTeachers;
@@ -43,7 +38,7 @@ export const selectFilteredTeachers = createSelector(
         return true;
       }
 
-      if (filters.price && teacher.price === filters.price) {
+      if (filters.price && teacher.price_per_hour === filters.price) {
         return true;
       }
 

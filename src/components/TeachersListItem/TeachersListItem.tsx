@@ -15,6 +15,7 @@ import {
 
 import {
   ListItemRating,
+  Price,
   RatingText,
 } from "../TeacherLevelList/TeacherLevelList.styled";
 
@@ -74,6 +75,7 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
     levels,
     experience,
     reviews,
+    price_per_hour,
   } = teacher;
 
   const { isUserLoggedIn } = useAuthUser();
@@ -141,7 +143,9 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
                     <RatingText>Rating: 4.8</RatingText>
                   </ListItemRating>
                   <ListItemRating>
-                    <RatingText>Price / 1 hour: 30$</RatingText>
+                    <RatingText>
+                      Price / 1 hour: <Price>{price_per_hour}$</Price>
+                    </RatingText>
                   </ListItemRating>{" "}
                 </ListRating>
                 <HeartIcon type="button" onClick={handleToggleAddTeacher}>
