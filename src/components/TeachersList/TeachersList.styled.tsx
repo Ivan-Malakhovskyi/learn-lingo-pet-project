@@ -26,3 +26,13 @@ export const LoadMoreBtn = styled.button`
   line-height: 28px;
   letter-spacing: 0%;
 `;
+
+export const EmptyTopic = styled.h3`
+  text-align: center;
+  color: rgb(18, 20, 23);
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+`;

@@ -12,15 +12,20 @@ import {
   selectTeachers,
 } from "../redux/teachers/teachers-selectors";
 
-import { LoadMoreBtn, TeachersListWrapper } from "./TeachersList.styled";
+import {
+  EmptyTopic,
+  LoadMoreBtn,
+  TeachersListWrapper,
+} from "./TeachersList.styled";
 import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
 import { Loader } from "../Loader/Loader";
+import { Teacher } from "src/types";
 
 export const TeachersList: FC = () => {
   const { language, level, price } = useSelector(selectFilters);
   const teachersList = useSelector(selectTeachers);
   const isLoading = useSelector(selectIsLoading);
-  const [filteredTeachers, setFilteredTeachers] = useState([]);
+  const [filteredTeachers, setFilteredTeachers] = useState<Teacher[]>([]);
 
   useEffect(() => {
     if (language || level || price) {
@@ -66,7 +71,7 @@ export const TeachersList: FC = () => {
               <TeachersListItem key={teacher.id} teacher={teacher} />
             ))
           ) : (
-            <div>No teachers found</div>
+            <EmptyTopic>No teachers found, try change filters 😢</EmptyTopic>
           )}
         </ul>
       </TeachersListWrapper>

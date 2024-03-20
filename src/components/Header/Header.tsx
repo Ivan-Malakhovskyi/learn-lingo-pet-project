@@ -1,12 +1,14 @@
 import { FC } from "react";
-import { HeaderStyled, Nav } from "../Navigation/Navigation.styled";
+import { HeaderStyled, Nav, Wrapper } from "../Navigation/Navigation.styled";
 import { Navigation } from "../Navigation/Navigation";
 
 export const Header: FC = () => {
   return (
     <HeaderStyled>
       <Nav>
-        <Navigation />
+        <Wrapper>
+          <Navigation />
+        </Wrapper>
       </Nav>
     </HeaderStyled>
   );

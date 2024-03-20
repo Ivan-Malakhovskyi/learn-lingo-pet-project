@@ -1,3 +1,4 @@
+import { TFilterProps, TFilterSelectorProps } from "./Filters.types";
 import styled from "styled-components";
 
 export const Form = styled.form`
@@ -34,7 +35,7 @@ export const SelectContainer = styled.div`
   position: relative;
 `;
 
-export const Select = styled.div`
+export const Select = styled.div<TFilterProps>`
   display: flex;
   align-items: center;
   padding-left: 18px;
@@ -67,26 +68,7 @@ export const Main = styled.div`
   margin-bottom: 32px;
 `;
 
-export const DropDown = styled.div`
-  position: absolute;
-  z-index: 100;
-  top: calc(100% - 4px);
-  left: 0;
-  width: 190px;
-  padding: 14px;
-  overflow: auto;
-  border: 1px solid ${({ theme: { colors } }) => colors.secondaryAccentBlack};
-  border-radius: 14px;
-  background-color: ${({ theme: { colors } }) => colors.mainWhite};
-  box-shadow: ${({ theme: { colors } }) => colors.accentBlack};
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0%;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-`;
-
-export const Arrow = styled.img`
+export const Arrow = styled.img<TFilterProps>`
   position: absolute;
   top: 25px;
   right: 14px;
@@ -106,7 +88,7 @@ export const Arrow = styled.img`
   transform-origin: top;
 `;
 
-export const SelectorItem = styled.li`
+export const SelectorItem = styled.li<TFilterSelectorProps>`
   cursor: pointer;
 
   color: ${({ $isActive, theme: { colors } }) =>

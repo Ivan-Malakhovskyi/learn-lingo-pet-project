@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DropDownProps } from "./DropDown.types";
 export const ModalStyled = styled.div`
   position: absolute;
   z-index: 100;
@@ -32,4 +33,23 @@ export const ModalStyled = styled.div`
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
+`;
+
+export const DropDown = styled.div<DropDownProps>`
+  position: absolute;
+  z-index: 100;
+  top: calc(100% - 4px);
+  left: 0;
+  width: 190px;
+  padding: 14px;
+  overflow: auto;
+  border: 1px solid ${({ theme: { colors } }) => colors.secondaryAccentBlack};
+  border-radius: 14px;
+  background-color: ${({ theme: { colors } }) => colors.mainWhite};
+  box-shadow: ${({ theme: { colors } }) => colors.accentBlack};
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: ${({ theme: { colors } }) => colors.mainBlack};
 `;

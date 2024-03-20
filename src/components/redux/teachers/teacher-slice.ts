@@ -1,7 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { TeacherType } from "../../../types";
-import { Teacher } from "../../../types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TeacherType, Teacher } from "../../../types";
 import { signOutUser } from "../auth/auth-slice";
 import { fetchTeachers } from "./operations";
 

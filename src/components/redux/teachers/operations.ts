@@ -6,6 +6,10 @@ import { Teacher } from "src/types";
 // const BASE_URL =
 //   "https://learn-lingo-pet-project-default-rtdb.europe-west1.firebasedatabase.app/teachers.json";
 
+interface MyKnownError {
+  errorMessage: string;
+}
+
 export const fetchTeachers = createAsyncThunk(
   "teachers/fetchTeachers",
   async (_, thunkAPI) => {
@@ -23,7 +27,7 @@ export const fetchTeachers = createAsyncThunk(
         console.log("No data");
       }
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error as MyKnownError);
     }
   }
 );

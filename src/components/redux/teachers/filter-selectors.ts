@@ -1,50 +1,21 @@
-import { createSelector } from "@reduxjs/toolkit";
-import { TFilterState } from "../../../types";
-import { selectTeachers } from "./teachers-selectors";
+import { RootState } from "../store";
+import { TFilterType, Teacher } from "../../../types";
 
-export const selectFilters = (state: TFilterState) => state.filters;
+export const selectFilters = (state: RootState): TFilterType => state.filters;
 
-export function filterTeachers(teachers, filters) {
+export function filterTeachers(
+  teachers: Teacher[],
+  filters: TFilterType
+): Teacher[] {
   const { language, level, price } = filters;
 
   return teachers.filter((teacher) => {
-    if (language && !teacher.languages.includes(language)) {
-      return false;
-    }
+    if (language && !teacher.languages.includes(language)) return false;
 
-    if (level && !teacher.levels.includes(level)) {
-      return false;
-    }
+    if (level && !teacher.levels.includes(level)) return false;
 
-    if (price && teacher.price_per_hour > price) {
-      return false;
-    }
+    if (price && teacher.price_per_hour > Number(price)) return false;
 
     return true;
   });
-
-  return filteredTeachers;
 }
-
-export const selectFilteredTeachers = createSelector(
-  [selectTeachers, selectFilters],
-  (teachers, filters) => {
-    const filteredTeachers = teachers.filter((teacher) => {
-      if (filters.language && teacher.languages.includes(filters.language)) {
-        return true;
-      }
-
-      if (filters.level && teacher.levels.includes(filters.level)) {
-        return true;
-      }
-
-      if (filters.price && teacher.price_per_hour === filters.price) {
-        return true;
-      }
-
-      return false;
-    });
-
-    return filteredTeachers;
-  }
-);

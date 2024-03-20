@@ -1,5 +1,5 @@
-import { Field, Form, Formik, FormikValues } from "formik";
-import { FC, useState } from "react";
+import { Form, Formik, FormikValues } from "formik";
+import { FC } from "react";
 import * as yup from "yup";
 import {
   RadioValue,
@@ -11,11 +11,8 @@ import {
   FieldForm,
   ErrMessage,
   InputWrapper,
-  IconsWrapper,
   BtnSubmit,
 } from "../SigninForm/SigninForm.styled";
-import eyeOff from "/icons/eye-off.svg";
-import eyeOn from "/icons/eye-off.svg";
 import { TOptions } from "./RadioButton.types";
 
 const labels = [
@@ -30,30 +27,27 @@ const initState = {
   radioGroup: "",
   fullName: "",
   email: "",
-  password: "",
+  phoneNumber: "",
 };
+
+const emailRegex = /^[-?\w.?%?]+@\w+.{1}\w{2,4}$/;
+const phoneNumberRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
 
 const validationRecordSchema = yup.object({
   fullName: yup.string().required("Full name is required field"),
   email: yup
     .string()
-    .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/, "Invalid email")
+    .matches(emailRegex, "Invalid email")
     .required("Email can't be is empty"),
-  password: yup
+  phoneNumber: yup
     .string()
-    .min(8, "Too short password")
-    .max(48, "Too long password")
-    .matches(/[a-zA-Z]/, "Must contain at least one letter")
-    .required("Password can't be is empty"),
+    .min(6, "Too short phone number")
+    .max(10, "Too long phone number")
+    .matches(phoneNumberRegex, "Invalid format")
+    .required("Phone number can't be is empty"),
 });
 
 export const RadioButtonForm: FC = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handelToggleClick = () => {
-    setShowPassword(!showPassword);
-  };
-
   const filteredEnteredData = (values: TOptions): Partial<TOptions> => {
     const enteredData: Partial<TOptions> = {};
 
@@ -102,18 +96,12 @@ export const RadioButtonForm: FC = () => {
             </div>
             <InputWrapper>
               <FieldForm
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Password"
+                type="tel"
+                name="phoneNumber"
+                placeholder="Phone number"
               />
-              <IconsWrapper onClick={handelToggleClick}>
-                {showPassword ? (
-                  <img src={eyeOn} alt="eye-on-icon" width={20} height={20} />
-                ) : (
-                  <img src={eyeOff} alt="eye-off_icon" width={20} height={20} />
-                )}
-              </IconsWrapper>
-              <ErrMessage name="password" component="p" />
+
+              <ErrMessage name="phoneNumber" component="p" />
             </InputWrapper>
           </FormWrapper>
           <BtnSubmit type="submit">Book</BtnSubmit>

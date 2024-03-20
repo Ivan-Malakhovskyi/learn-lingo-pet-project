@@ -36,13 +36,19 @@ export type TeacherType = {
   favorites: Teacher[];
   isLoading: boolean;
   isFavorite: boolean;
-  isError: null;
+  isError: null | unknown;
+};
+
+export type TeacherFilterType = {
+  language: string;
+  level: string;
+  price: number;
 };
 
 export type TFilterType = {
-  language: null | string;
-  level: null | string;
-  price: null | number[] | string[];
+  language: string | null;
+  level: string | null;
+  price?: number[] | string[] | null;
 };
 
 export type TFilterState = {

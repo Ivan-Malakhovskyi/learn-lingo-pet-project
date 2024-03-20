@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+export const Wrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 export const HeaderWrapper = styled.ul`
   display: flex;
   width: 100%;

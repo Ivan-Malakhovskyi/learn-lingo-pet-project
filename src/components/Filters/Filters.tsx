@@ -1,12 +1,12 @@
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { useEffect, useState, FC, BaseSyntheticEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { selectFilters } from "../redux/teachers/filter-selectors";
 import { setFilters } from "../redux/teachers/filter-slice";
 
 import { toggleDropDown } from "src/utils";
-
 import { languages, levels, prices } from "../constants";
+import { DropDown } from "../Global/DropDown/DropDown.styled";
 
 import {
   Select,
@@ -14,19 +14,22 @@ import {
   Label,
   Form,
   Arrow,
-  DropDown,
   SelectorItem,
 } from "./Filters.styled";
 
 import arrow from "/icons/chevron-down.svg";
 
-export const Filters = () => {
+export const Filters: FC = () => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const { language, level, price } = useSelector(selectFilters);
-  const [languageSelect, setLanguageSelect] = useState(languages);
-  const [levelSelect, setLevelSelect] = useState(levels);
-  const [priceSelect, setPriceSelect] = useState(prices);
+  const [languageSelect, setLanguageSelect] = useState<
+    string[] | null | string
+  >(languages);
+  const [levelSelect, setLevelSelect] = useState<string | null | string[]>(
+    levels
+  );
+  const [priceSelect, setPriceSelect] = useState<number[]>(prices);
   const [isDropDownOpen, setIsDropDownOpen] = useState({
     language: false,
     level: false,
@@ -49,7 +52,10 @@ export const Filters = () => {
     );
   }, [searchParams, dispatch]);
 
-  const handleFilterChange = (filterName: string, filterValue: string[]) => {
+  const handleFilterChange = (
+    filterName: string,
+    filterValue: string | number[] | number
+  ) => {
     if (
       (filterName === "language" && language === filterValue) ||
       (filterName === "level" && level === filterValue) ||
@@ -60,15 +66,15 @@ export const Filters = () => {
 
     switch (filterName) {
       case "language":
-        setLanguageSelect(filterValue);
+        setLanguageSelect(filterValue as string);
         break;
 
       case "level":
-        setLevelSelect(filterValue);
+        setLevelSelect(filterValue as string);
         break;
 
       case "price":
-        setPriceSelect(filterValue);
+        setPriceSelect(filterValue as number[]);
         break;
 
       default:
@@ -79,24 +85,23 @@ export const Filters = () => {
 
     setSearchParams((prevParams) => {
       const newParams = new URLSearchParams(prevParams);
-      newParams.set(filterName, filterValue);
+      newParams.set(filterName, filterValue as string);
       return newParams;
     });
   };
 
-  const handleSelectLanguage = (e: ChangeEventHandler) => {
+  const handleSelectLanguage = (e: BaseSyntheticEvent<HTMLLIElement>) => {
     const languageValue = e.target.attributes.value.value;
 
     handleFilterChange("language", languageValue);
   };
 
-  const handleSelectLevel = (e: ChangeEventHandler) => {
+  const handleSelectLevel = (e: BaseSyntheticEvent<HTMLLIElement>) => {
     const levelValue = e.target.attributes.value.value;
-
     handleFilterChange("level", levelValue);
   };
 
-  const handleSelectPrice = (e: ChangeEventHandler) => {
+  const handleSelectPrice = (e: BaseSyntheticEvent<HTMLLIElement>) => {
     const priceValue = e.target.attributes.value.value;
     const parsedPrice = parseInt(priceValue);
 
@@ -155,7 +160,7 @@ export const Filters = () => {
 
           <SelectContainer>
             <Select $isOpen={isDropDownOpen.level}>
-              {levelSelect || " Choose your Level"}
+              {levelSelect || "All levels"}
             </Select>
 
             <button
@@ -197,7 +202,7 @@ export const Filters = () => {
           <Label>Price</Label>
           <SelectContainer>
             <Select $isOpen={isDropDownOpen.price}>
-              {priceSelect || " Choose your price"}
+              {priceSelect || "All prices"}
             </Select>
 
             <button
@@ -215,7 +220,9 @@ export const Filters = () => {
             {isDropDownOpen.price && (
               <DropDown
                 close={() =>
-                  setIsDropDownOpen(toggleDropDown(prevState, "price"))
+                  setIsDropDownOpen((prevState) =>
+                    toggleDropDown(prevState, "price")
+                  )
                 }
               >
                 <ul>
