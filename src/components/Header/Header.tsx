@@ -5,11 +5,11 @@ import { Navigation } from "../Navigation/Navigation";
 export const Header: FC = () => {
   return (
     <HeaderStyled>
-      <Nav>
-        <Wrapper>
+      <Wrapper>
+        <Nav>
           <Navigation />
-        </Wrapper>
-      </Nav>
+        </Nav>
+      </Wrapper>
     </HeaderStyled>
   );
 };

@@ -1,13 +1,21 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+type ContainerProps = {
+  containerwidth: number;
+};
+
+export const Container = styled.div<ContainerProps>`
+  padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+  max-width: 100%;
+
+  @media screen and (min-width: 1440px) {
+    width: ${({ containerwidth }) => containerwidth}px;
+  }
 `;
 
 export const SectionFormContainer = styled.section`
-  padding: 0 16px;
   padding-top: 96px;
   padding-bottom: 96px;
   min-height: 100vh;

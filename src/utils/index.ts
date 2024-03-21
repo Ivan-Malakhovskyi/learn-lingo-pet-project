@@ -1,4 +1,4 @@
-interface IDropDownState {
+export interface IDropDownState {
   language: boolean;
   level: boolean;
   price: boolean;

@@ -17,7 +17,6 @@ const teachersSlice = createSlice({
   reducers: {
     addTeacher(state, action: PayloadAction<Teacher>) {
       state.favorites.push(action.payload);
-      console.log(state);
     },
     deleteTeacher(state, action: PayloadAction<string>) {
       state.favorites = state.favorites.filter(

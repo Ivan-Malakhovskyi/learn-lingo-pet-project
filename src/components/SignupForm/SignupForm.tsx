@@ -1,6 +1,19 @@
-import { Form, Formik, FormikValues } from "formik";
 import { FC, useState } from "react";
+
+import {
+  AuthError,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+
+import { TOAST_MESSAGES } from "../constants";
+import { TSignupProps } from "../../types";
+
+import { Form, Formik, FormikValues } from "formik";
+import toast from "react-hot-toast";
 import * as yup from "yup";
+
 import {
   FieldForm,
   Paragraph,
@@ -11,20 +24,11 @@ import {
   BtnSubmit,
   ErrMessage,
 } from "../SigninForm/SigninForm.styled";
+import { TSignUpPageProps } from "./SignUp.types";
+import { CustomToaster } from "../Global/Toaster/CustomToaster";
 
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
-import { TSignUpPageProps } from "./SignUp.types";
-import {
-  AuthError,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { auth } from "../../firebaseConfig";
-import { TSignupProps } from "../../types";
-import toast from "react-hot-toast";
-import { TOAST_MESSAGES } from "../constants";
-import { CustomToaster } from "../Global/Toaster/CustomToaster";
 
 const initialValuesFields = {
   name: "",

@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 export const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (min-width: 1440px) {
+    width: 1216px;
+  }
 `;
 
 export const HeaderWrapper = styled.ul`
@@ -33,12 +37,11 @@ export const Nav = styled.nav`
   padding: 0 15px;
   @media screen and (min-width: 1440px) {
     flex-direction: row;
-    /* gap: 30px; */
   }
 `;
 
 export const HeaderStyled = styled.header`
-  padding: 20px 128px;
+  padding: 20px 0;
 `;
 
 export const IconWrapper = styled.span`
@@ -112,4 +115,12 @@ export const BtnSignin = styled.button`
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+`;
+
+export const Topic = styled.p`
+  color: #121417;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
 `;

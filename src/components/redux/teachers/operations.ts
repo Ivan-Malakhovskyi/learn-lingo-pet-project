@@ -12,7 +12,7 @@ interface MyKnownError {
 
 export const fetchTeachers = createAsyncThunk(
   "teachers/fetchTeachers",
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     const teachersRef = query(ref(db, "teachers"), limitToFirst(4));
 
     try {
@@ -27,7 +27,7 @@ export const fetchTeachers = createAsyncThunk(
         console.log("No data");
       }
     } catch (error) {
-      return thunkAPI.rejectWithValue(error as MyKnownError);
+      return rejectWithValue(error as MyKnownError);
     }
   }
 );

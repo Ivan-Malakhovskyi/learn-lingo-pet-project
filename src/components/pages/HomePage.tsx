@@ -5,7 +5,7 @@ import { Container } from "../layout/SharedLayout.styled";
 
 const HomePage: FC = () => {
   return (
-    <Container>
+    <Container containerwidth={1344}>
       <HeroSection />
       <Stats />
     </Container>

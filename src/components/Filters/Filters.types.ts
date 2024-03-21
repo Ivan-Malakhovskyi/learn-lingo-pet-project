@@ -1,3 +1,5 @@
+import { BaseSyntheticEvent } from "react";
+
 export type ToggleBtnProps = {
   $isOpen: boolean;
   onClick: () => void;
@@ -9,5 +11,5 @@ export type TFilterProps = {
 
 export type TFilterSelectorProps = {
   $isActive: boolean;
-  onClick: () => void;
+  onClick: (e: BaseSyntheticEvent<HTMLLIElement>) => void;
 };

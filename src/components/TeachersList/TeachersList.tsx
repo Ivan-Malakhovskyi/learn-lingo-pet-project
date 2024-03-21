@@ -63,10 +63,11 @@ export const TeachersList: FC = () => {
 
   return (
     <>
-      {" "}
+      {isLoading && <Loader />}
+
       <TeachersListWrapper>
         <ul>
-          {filteredTeachers.length > 0 ? (
+          {filteredTeachers.length > 0 && !isLoading ? (
             filteredTeachers.map((teacher) => (
               <TeachersListItem key={teacher.id} teacher={teacher} />
             ))
@@ -75,7 +76,7 @@ export const TeachersList: FC = () => {
           )}
         </ul>
       </TeachersListWrapper>
-      {isLoading && <Loader />}
+
       {teachersList.length > 0 && filteredTeachers.length > 0 && (
         <LoadMoreBtn type="button" onClick={handleLoadMore}>
           Load More

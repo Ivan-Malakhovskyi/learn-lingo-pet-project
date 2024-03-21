@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const TeachersListWrapper = styled.div`
   margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const LoadMoreBtn = styled.button`

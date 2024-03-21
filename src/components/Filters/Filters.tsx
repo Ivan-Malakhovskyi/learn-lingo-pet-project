@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { selectFilters } from "../redux/teachers/filter-selectors";
 import { setFilters } from "../redux/teachers/filter-slice";
 
-import { toggleDropDown } from "src/utils";
+import { IDropDownState, toggleDropDown } from "src/utils";
 import { languages, levels, prices } from "../constants";
 import { DropDown } from "../Global/DropDown/DropDown.styled";
 
@@ -39,7 +39,7 @@ export const Filters: FC = () => {
   useEffect(() => {
     setLanguageSelect(language);
     setLevelSelect(level);
-    setPriceSelect(price);
+    setPriceSelect(price as number[]);
   }, [language, level, price]);
 
   useEffect(() => {
@@ -81,7 +81,9 @@ export const Filters: FC = () => {
         break;
     }
 
-    setIsDropDownOpen((prevState) => toggleDropDown(prevState, filterName));
+    setIsDropDownOpen((prevState) =>
+      toggleDropDown(prevState, filterName as keyof IDropDownState)
+    );
 
     setSearchParams((prevParams) => {
       const newParams = new URLSearchParams(prevParams);
@@ -231,7 +233,7 @@ export const Filters: FC = () => {
                       onClick={handleSelectPrice}
                       key={option}
                       value={option}
-                      $isActive={priceSelect === option}
+                      $isActive={priceSelect === (option as unknown)}
                     >
                       {option}
                     </SelectorItem>

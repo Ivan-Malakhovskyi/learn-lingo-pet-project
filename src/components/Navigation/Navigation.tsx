@@ -17,17 +17,18 @@ import {
   BtnSignin,
   LinkWapper,
   HeaderWrapper,
+  Topic,
 } from "../Navigation/Navigation.styled";
 import { HomeLink } from "../Navigation/Navigation.styled";
 import { TNavProps } from "./Navigation.types";
 import { signOut } from "firebase/auth";
-import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { ERoutes } from "../../enums";
 import { CustomToaster } from "../Global/Toaster/CustomToaster";
 import { TOAST_MESSAGES } from "../constants";
 import { useDispatch } from "react-redux";
 import { signOutUser } from "../redux/auth/auth-slice";
+import { auth } from "src/firebaseConfig";
 
 export const Navigation: FC = () => {
   const [isOpen, setIsOpen] = useState<TNavProps>({
@@ -47,6 +48,9 @@ export const Navigation: FC = () => {
       [key]: !prevState[key],
     }));
   };
+
+  const user = auth?.currentUser;
+  const displayName = user?.displayName;
 
   const handleSuccessLogin = () => {
     handleToggle("signIn");
@@ -95,7 +99,14 @@ export const Navigation: FC = () => {
       </li>
       <ListBtnAuth>
         {isUserLoggedIn ? (
-          <BtnRegister onClick={handleSignOut}>Logout</BtnRegister>
+          <>
+            <li>
+              <Topic>Welcome {displayName}</Topic>
+            </li>
+            <li>
+              <BtnRegister onClick={handleSignOut}>Logout</BtnRegister>
+            </li>
+          </>
         ) : (
           <ListBtnAuth>
             <li>

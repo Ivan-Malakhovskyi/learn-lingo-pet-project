@@ -22,7 +22,7 @@ const Favorites: FC = () => {
     <>
       <TeachersListWrapper>
         <SectionFormContainer>
-          <Container>
+          <Container containerwidth={1216}>
             <ul>
               {favoriteTeachers.length > 0 ? (
                 favoriteTeachers.map((teacher: Teacher) => (

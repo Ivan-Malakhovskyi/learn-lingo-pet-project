@@ -5,9 +5,10 @@ import { Filters } from "../Filters/Filters";
 import { useEffect, FC } from "react";
 import { useDispatch } from "react-redux";
 import { fetchTeachers } from "../redux/teachers/operations";
+import { AppDispatch } from "../redux/store";
 
 const TeachersPage: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchTeachers());
@@ -16,10 +17,10 @@ const TeachersPage: FC = () => {
   return (
     <>
       <SectionFormContainer>
-        <Container>
+        <Container containerwidth={1216}>
           <Filters />
+          <TeachersList />
         </Container>
-        <TeachersList />
       </SectionFormContainer>
     </>
   );
