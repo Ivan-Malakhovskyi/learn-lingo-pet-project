@@ -24,7 +24,6 @@ const teachersSlice = createSlice({
       );
     },
   },
-
   extraReducers: (builder) => {
     builder.addCase(fetchTeachers.fulfilled, (state, action) => {
       state.items = action.payload;

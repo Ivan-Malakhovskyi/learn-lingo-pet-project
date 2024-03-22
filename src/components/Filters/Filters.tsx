@@ -1,5 +1,5 @@
 import { useEffect, useState, FC, BaseSyntheticEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { selectFilters } from "../redux/teachers/filter-selectors";
 import { setFilters } from "../redux/teachers/filter-slice";
@@ -18,9 +18,10 @@ import {
 } from "./Filters.styled";
 
 import arrow from "/icons/chevron-down.svg";
+import { useAppDispatch } from "../redux/store";
 
 export const Filters: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const { language, level, price } = useSelector(selectFilters);
   const [languageSelect, setLanguageSelect] = useState<

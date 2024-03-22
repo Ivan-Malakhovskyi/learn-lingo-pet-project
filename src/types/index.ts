@@ -32,7 +32,7 @@ export type TAuthType = {
 };
 
 export type TeacherType = {
-  items: Teacher[];
+  items: Teacher[] | any;
   favorites: Teacher[];
   isLoading: boolean;
   isFavorite: boolean;

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { get, limitToFirst, query, ref } from "firebase/database";
+
 import { db } from "src/firebaseConfig";
 import { Teacher } from "src/types";
 
@@ -7,12 +8,13 @@ import { Teacher } from "src/types";
 //   "https://learn-lingo-pet-project-default-rtdb.europe-west1.firebasedatabase.app/teachers.json";
 
 interface MyKnownError {
-  errorMessage: string;
+  message: string;
 }
 
 export const fetchTeachers = createAsyncThunk(
   "teachers/fetchTeachers",
-  async (_, { rejectWithValue }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async (_, thunkApi) => {
     const teachersRef = query(ref(db, "teachers"), limitToFirst(4));
 
     try {
@@ -25,9 +27,10 @@ export const fetchTeachers = createAsyncThunk(
         return teachersData;
       } else {
         console.log("No data");
+        return [];
       }
     } catch (error) {
-      return rejectWithValue(error as MyKnownError);
+      return thunkApi.rejectWithValue(error as MyKnownError);
     }
   }
 );

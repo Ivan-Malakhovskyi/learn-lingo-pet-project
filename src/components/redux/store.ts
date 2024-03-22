@@ -14,6 +14,7 @@ import {
 import { teacherReducer } from "./teachers/teacher-slice";
 import { TeacherType } from "../../types";
 import { filterReducer } from "./teachers/filter-slice";
+import { useDispatch } from "react-redux";
 
 const teachersPersistConfig = {
   key: "teachers",
@@ -41,5 +42,7 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
 
 export const persistor = persistStore(store);
