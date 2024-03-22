@@ -1,4 +1,4 @@
-import{u as i,N as s,j as e}from"./index-ClXUFqfX.js";import{C as a}from"./SharedLayout.styled-CwKUvRJu.js";const c=i.div`
+import{u as i,N as s,j as e}from"./index-Da6RIk_E.js";import{C as a}from"./SharedLayout.styled-DDMKvgnS.js";const c=i.div`
   margin-bottom: 24px;
   margin-left: auto;
   margin-right: auto;
@@ -128,4 +128,4 @@ import{u as i,N as s,j as e}from"./index-ClXUFqfX.js";import{C as a}from"./Share
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -2%;
-`,$=()=>e.jsx(e.Fragment,{children:e.jsx(k,{children:e.jsxs(y,{children:[e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]})]})})}),B=()=>e.jsxs(a,{children:[e.jsx(b,{}),e.jsx($,{})]});export{B as default};
+`,$=()=>e.jsx(e.Fragment,{children:e.jsx(k,{children:e.jsxs(y,{children:[e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]})]})})}),B=()=>e.jsxs(a,{containerwidth:1344,children:[e.jsx(b,{}),e.jsx($,{})]});export{B as default};
