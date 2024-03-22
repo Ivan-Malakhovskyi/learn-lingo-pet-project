@@ -1,4 +1,4 @@
-import{u as n,N as e,j as t}from"./index-BOKcth9W.js";const i="/icons/404.svg",c=n.div`
+import{u as n,N as e,j as t}from"./index-CpN64wh4.js";const i="/icons/404.svg",c=n.div`
   display: flex;
   justify-content: center;
   align-items: center;

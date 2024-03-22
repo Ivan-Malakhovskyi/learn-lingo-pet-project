@@ -1,4 +1,4 @@
-import{u as i,N as s,j as e}from"./index-BOKcth9W.js";import{C as a}from"./SharedLayout.styled-C4tbnPLX.js";const c=i.div`
+import{u as i,N as s,j as e}from"./index-CpN64wh4.js";import{C as a}from"./SharedLayout.styled-dinuyagB.js";const c=i.div`
   margin-bottom: 24px;
   margin-left: auto;
   margin-right: auto;
