@@ -1,4 +1,4 @@
-import{u as r,N as s,a as i,j as e}from"./index-Da6RIk_E.js";import{c as o,T as a,b as c}from"./TeachersListItem-3H_ikD3M.js";import{S as l,C as h}from"./SharedLayout.styled-DDMKvgnS.js";const d=r.div`
+import{u as r,N as s,a as i,j as e}from"./index-BOKcth9W.js";import{c as o,T as a,b as c}from"./TeachersListItem-CnioEFUH.js";import{S as l,C as h}from"./SharedLayout.styled-C4tbnPLX.js";const d=r.div`
   display: flex;
   justify-content: center;
   align-items: center;
