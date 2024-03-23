@@ -5,9 +5,9 @@ export const Form = styled.form`
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
 
   @media screen and (max-width: 767px) {
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
