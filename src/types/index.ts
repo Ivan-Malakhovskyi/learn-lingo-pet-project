@@ -21,6 +21,7 @@ export type Teacher = {
 
 export type TeacherProps = {
   teacher: Teacher;
+  close: () => void;
 };
 
 export type TAuthType = {

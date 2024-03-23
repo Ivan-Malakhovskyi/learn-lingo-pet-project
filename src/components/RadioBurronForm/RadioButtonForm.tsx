@@ -13,7 +13,9 @@ import {
   InputWrapper,
   BtnSubmit,
 } from "../SigninForm/SigninForm.styled";
-import { TOptions } from "./RadioButton.types";
+import { TOptions, TProps } from "./RadioButton.types";
+import toast from "react-hot-toast";
+import { TOAST_MESSAGES } from "../constants";
 
 const labels = [
   { id: 1, name: "career", value: "Career and business" },
@@ -47,7 +49,8 @@ const validationRecordSchema = yup.object({
     .required("Phone number can't be is empty"),
 });
 
-export const RadioButtonForm: FC = () => {
+export const RadioButtonForm: FC<TProps> = ({ close }) => {
+  const { BOOK_TRIAL_SUCCESS } = TOAST_MESSAGES;
   const filteredEnteredData = (values: TOptions): Partial<TOptions> => {
     const enteredData: Partial<TOptions> = {};
 
@@ -62,7 +65,9 @@ export const RadioButtonForm: FC = () => {
 
   const handleFormSubmit = (values: TOptions, { resetForm }: FormikValues) => {
     filteredEnteredData(values);
+    toast.success(BOOK_TRIAL_SUCCESS);
     resetForm();
+    close();
   };
 
   return (

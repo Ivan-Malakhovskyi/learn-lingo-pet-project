@@ -4,3 +4,7 @@ export type TOptions = {
   email: string;
   phoneNumber: string;
 };
+
+export type TProps = {
+  close: () => void;
+};

@@ -11,7 +11,7 @@ import {
 import { Label } from "../LabelsList/LabelList.styled";
 import { RadioButtonForm } from "../RadioBurronForm/RadioButtonForm";
 
-export const BookTrial: FC<TeacherProps> = ({ teacher }) => {
+export const BookTrial: FC<TeacherProps> = ({ teacher, close }) => {
   const { name, surname, avatar_url } = teacher;
 
   return (
@@ -37,7 +37,7 @@ export const BookTrial: FC<TeacherProps> = ({ teacher }) => {
         What is your main reason for learning English?
       </TopicEnglishInfo>
 
-      <RadioButtonForm />
+      <RadioButtonForm close={close} />
     </>
   );
 };

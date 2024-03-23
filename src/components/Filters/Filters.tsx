@@ -90,7 +90,6 @@ export const Filters: FC = () => {
 
     setIsBtnActive(isFiltersSelected as boolean);
 
-    console.log(isFiltersSelected);
     setSearchParams((prevParams) => {
       const newParams = new URLSearchParams(prevParams);
       newParams.set(filterName, filterValue as string);

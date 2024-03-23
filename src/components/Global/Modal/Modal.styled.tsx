@@ -10,7 +10,7 @@ export const Backdrop = styled.div<TModalTypes>`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: ${({ theme: { colors } }) => colors.mainBgBlack};
   z-index: 1200;
 
