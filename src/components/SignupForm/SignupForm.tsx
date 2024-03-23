@@ -29,6 +29,8 @@ import { CustomToaster } from "../Global/Toaster/CustomToaster";
 
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
+import { useAppDispatch } from "../redux/store";
+import { setUser } from "../redux/auth/auth-slice";
 
 const initialValuesFields = {
   name: "",
@@ -51,6 +53,7 @@ const validationSignupSchema = yup.object({
 });
 
 export const Signup: FC<TSignupProps> = ({ onRegisterSuccess }) => {
+  const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const { SIGN_UP_ERROR, SIGN_UP_SUCCESSFULLY } = TOAST_MESSAGES;
@@ -63,7 +66,10 @@ export const Signup: FC<TSignupProps> = ({ onRegisterSuccess }) => {
       const { name, email, password } = values;
 
       await createUserWithEmailAndPassword(auth, email, password);
-      updateProfile(auth.currentUser!, { displayName: name });
+
+      dispatch(setUser({ name, email }));
+
+      await updateProfile(auth.currentUser!, { displayName: name });
 
       onRegisterSuccess();
 
@@ -75,6 +81,7 @@ export const Signup: FC<TSignupProps> = ({ onRegisterSuccess }) => {
 
       if (errMessage === "auth/email-already-in-use") {
         toast.error(SIGN_UP_ERROR);
+        return;
       }
     }
   };

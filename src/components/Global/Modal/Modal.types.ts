@@ -1,4 +1,4 @@
 export type TModalTypes = {
-  maxHeight?: number;
-  maxWidth?: number;
+  maxheight?: number;
+  maxwidth?: number;
 };

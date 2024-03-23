@@ -14,9 +14,9 @@ import {
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
 import { TSigninFormProps } from "./SigninForm.types";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { AuthError, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
-import { signIn } from "../redux/auth/auth-slice";
+import { setUser } from "../redux/auth/auth-slice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CustomToaster } from "../Global/Toaster/CustomToaster";
@@ -52,7 +52,7 @@ export const SigninForm: FC<TSigninProps> = ({ onLoginSuccess }) => {
     onLoginSuccess();
   };
 
-  const { SIGN_IN_SUCCESSFULLY } = TOAST_MESSAGES;
+  const { SIGN_IN_SUCCESSFULLY, SIGN_IN_ERROR } = TOAST_MESSAGES;
 
   const handleSubmit = async (
     values: TSigninFormProps,
@@ -60,17 +60,12 @@ export const SigninForm: FC<TSigninProps> = ({ onLoginSuccess }) => {
   ) => {
     try {
       const { email, password } = values;
-
-      const signinUser = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const signedUser = signinUser.user;
+      const signedIn = await signInWithEmailAndPassword(auth, email, password);
 
       dispatch(
-        signIn({ name: signedUser.displayName, email: signedUser.email })
+        setUser({ name: signedIn.user.displayName, email: signedIn.user.email })
       );
+
       navigate("/teachers");
 
       isLoggin();
@@ -79,7 +74,12 @@ export const SigninForm: FC<TSigninProps> = ({ onLoginSuccess }) => {
 
       resetForm();
     } catch (error) {
-      console.log((error as Error).message);
+      const errMessage = (error as AuthError).code;
+
+      if (errMessage === "auth/invalid-credential") {
+        toast.error(SIGN_IN_ERROR);
+        return;
+      }
     }
   };
 

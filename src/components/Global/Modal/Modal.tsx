@@ -10,8 +10,8 @@ const modalRoot = document.querySelector("#modal-root")!;
 export const Modal: FC<DropDownProps> = ({
   close,
   children,
-  maxWidth,
-  maxHeight,
+  maxwidth,
+  maxheight,
 }) => {
   useEffect(() => {
     const handleEscClick = ({ code }: KeyboardEvent) => {
@@ -40,8 +40,8 @@ export const Modal: FC<DropDownProps> = ({
   };
 
   return createPortal(
-    <Backdrop onClick={handleBackdropClick} maxHeight={maxHeight}>
-      <ModalContent maxWidth={maxWidth}>
+    <Backdrop onClick={handleBackdropClick} maxheight={maxheight}>
+      <ModalContent maxwidth={maxwidth}>
         <CloseButton onClick={close}>
           <img src={iconClose} alt="icon_close" width={32} height={32} />
         </CloseButton>

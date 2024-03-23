@@ -14,13 +14,13 @@ export const Backdrop = styled.div<TModalTypes>`
   background-color: ${({ theme: { colors } }) => colors.mainBgBlack};
   z-index: 1200;
 
-  @media screen and (max-height: ${({ maxHeight }) => maxHeight}px) {
+  @media screen and (max-height: ${({ maxheight }) => maxheight}px) {
     align-items: flex-start;
   }
 `;
 
 export const ModalContent = styled.div<TModalTypes>`
-  max-width: ${({ maxWidth }) => maxWidth}px;
+  max-width: ${({ maxwidth }) => maxwidth}px;
   position: relative;
   padding: 64px;
   border-radius: 30px;

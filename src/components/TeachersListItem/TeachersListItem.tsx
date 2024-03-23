@@ -191,7 +191,7 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
             )}
 
             {showModal && (
-              <Modal maxWidth={600} maxHeight={972} close={handleToggleClick}>
+              <Modal maxwidth={600} maxheight={972} close={handleToggleClick}>
                 <BookTrial teacher={teacher} />
               </Modal>
             )}

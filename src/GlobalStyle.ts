@@ -5,6 +5,7 @@ export const theme = {
     rootBodyColor: "rgb(238, 238, 238)",
     addBodyColor: "#ffffff",
     mainBlack: "#121417",
+    notActive: "red",
     accentBlack: "rgba(18, 20, 23, 0.1)",
     addAccentBlack: "#121417B3",
     secondaryAccentBlack: "rgba(18, 20, 23, 0.05)",
@@ -24,6 +25,11 @@ export const theme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
+
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
 font-family: 'Roboto', sans-serif;

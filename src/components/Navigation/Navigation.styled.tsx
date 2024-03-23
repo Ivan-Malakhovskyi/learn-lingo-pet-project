@@ -84,7 +84,7 @@ export const LinkWapper = styled.span`
   margin-left: 28px;
 `;
 
-export const BtnRegister = styled.button`
+export const Btn = styled.button`
   padding: 14px 39px;
   border-radius: 12px;
   background-color: ${({ theme: { colors } }) => colors.mainBlack};

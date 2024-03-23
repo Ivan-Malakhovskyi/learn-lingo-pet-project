@@ -12,7 +12,7 @@ import {
   IconWrapper,
   LogoLink,
   StyledNavLink,
-  BtnRegister,
+  Btn,
   ListBtnAuth,
   BtnSignin,
   LinkWapper,
@@ -26,11 +26,15 @@ import { useNavigate } from "react-router-dom";
 import { ERoutes } from "../../enums";
 import { CustomToaster } from "../Global/Toaster/CustomToaster";
 import { TOAST_MESSAGES } from "../constants";
-import { useDispatch } from "react-redux";
 import { signOutUser } from "../redux/auth/auth-slice";
 import { auth } from "src/firebaseConfig";
+import { useAppDispatch } from "../redux/store";
+import { useSelector } from "react-redux";
+import { selectUser } from "../redux/auth/auth-selectors";
 
 export const Navigation: FC = () => {
+  const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
+
   const [isOpen, setIsOpen] = useState<TNavProps>({
     signIn: false,
     signUp: false,
@@ -38,9 +42,8 @@ export const Navigation: FC = () => {
 
   const { isUserLoggedIn } = useAuthUser();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
+  const user = useSelector(selectUser);
+  const dispatch = useAppDispatch();
 
   const handleToggle = (key: "signIn" | "signUp") => {
     setIsOpen((prevState) => ({
@@ -48,9 +51,6 @@ export const Navigation: FC = () => {
       [key]: !prevState[key],
     }));
   };
-
-  const user = auth?.currentUser;
-  const displayName = user?.displayName;
 
   const handleSuccessLogin = () => {
     handleToggle("signIn");
@@ -101,10 +101,10 @@ export const Navigation: FC = () => {
         {isUserLoggedIn ? (
           <>
             <li>
-              <Topic>Welcome {displayName}</Topic>
+              <Topic>Welcome {user && user.name}</Topic>
             </li>
             <li>
-              <BtnRegister onClick={handleSignOut}>Logout</BtnRegister>
+              <Btn onClick={handleSignOut}>Logout</Btn>
             </li>
           </>
         ) : (
@@ -124,17 +124,17 @@ export const Navigation: FC = () => {
             </li>
             <li>
               {" "}
-              <BtnRegister type="button" onClick={() => handleToggle("signUp")}>
+              <Btn type="button" onClick={() => handleToggle("signUp")}>
                 Registration
-              </BtnRegister>
+              </Btn>
             </li>
           </ListBtnAuth>
         )}
 
         {isOpen.signIn && (
           <Modal
-            maxWidth={566}
-            maxHeight={506}
+            maxwidth={566}
+            maxheight={506}
             close={() => handleToggle("signIn")}
           >
             <SignInPage onLoginSuccess={handleSuccessLogin} />
@@ -145,8 +145,8 @@ export const Navigation: FC = () => {
           <div>
             {" "}
             <Modal
-              maxWidth={566}
-              maxHeight={600}
+              maxwidth={566}
+              maxheight={600}
               close={() => handleToggle("signUp")}
             >
               <SignUpPage onRegisterSuccess={handleSuccessRegister} />

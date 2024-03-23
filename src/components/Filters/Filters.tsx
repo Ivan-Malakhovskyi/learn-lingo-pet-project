@@ -15,6 +15,7 @@ import {
   Form,
   Arrow,
   SelectorItem,
+  BtnReset,
 } from "./Filters.styled";
 
 import arrow from "/icons/chevron-down.svg";
@@ -36,6 +37,7 @@ export const Filters: FC = () => {
     level: false,
     price: false,
   });
+  const [isBtnActive, setIsBtnActive] = useState(false);
 
   useEffect(() => {
     setLanguageSelect(language);
@@ -57,13 +59,13 @@ export const Filters: FC = () => {
     filterName: string,
     filterValue: string | number[] | number
   ) => {
-    if (
-      (filterName === "language" && language === filterValue) ||
-      (filterName === "level" && level === filterValue) ||
-      (filterName === "price" && price === filterValue)
-    ) {
-      return; // Не оновлюємо, якщо значення не змінилося
-    }
+    const isFiltersSelected =
+      filterValue &&
+      !!(
+        filterName === "language" ||
+        filterName === "level" ||
+        filterName === "price"
+      );
 
     switch (filterName) {
       case "language":
@@ -86,6 +88,9 @@ export const Filters: FC = () => {
       toggleDropDown(prevState, filterName as keyof IDropDownState)
     );
 
+    setIsBtnActive(isFiltersSelected as boolean);
+
+    console.log(isFiltersSelected);
     setSearchParams((prevParams) => {
       const newParams = new URLSearchParams(prevParams);
       newParams.set(filterName, filterValue as string);
@@ -111,12 +116,20 @@ export const Filters: FC = () => {
     handleFilterChange("price", parsedPrice);
   };
 
+  const handleResetFilters = () => {
+    setLanguageSelect(language);
+    setLevelSelect(level);
+    setPriceSelect(price as number[]);
+    setIsBtnActive(false);
+    setSearchParams(new URLSearchParams());
+  };
+
   return (
     <>
       <Form>
         {" "}
-        <label htmlFor="">
-          <Label>Languages</Label>
+        <label htmlFor="language">
+          <Label id="language">Languages</Label>
           <SelectContainer>
             <Select $isOpen={isDropDownOpen.language}>
               {languageSelect || "All languages"}
@@ -158,8 +171,8 @@ export const Filters: FC = () => {
             )}
           </SelectContainer>
         </label>
-        <label>
-          <Label>Levels</Label>
+        <label htmlFor="level">
+          <Label id="level">Levels</Label>
 
           <SelectContainer>
             <Select $isOpen={isDropDownOpen.level}>
@@ -201,8 +214,8 @@ export const Filters: FC = () => {
             )}
           </SelectContainer>
         </label>
-        <label htmlFor="">
-          <Label>Price</Label>
+        <label htmlFor="price">
+          <Label id="price">Price</Label>
           <SelectContainer>
             <Select $isOpen={isDropDownOpen.price}>
               {priceSelect || "All prices"}
@@ -229,21 +242,31 @@ export const Filters: FC = () => {
                 }
               >
                 <ul>
-                  {prices.map((option) => (
-                    <SelectorItem
-                      onClick={handleSelectPrice}
-                      key={option}
-                      value={option}
-                      $isActive={priceSelect === (option as unknown)}
-                    >
-                      {option}
-                    </SelectorItem>
-                  ))}
+                  {prices.map((option) => {
+                    console.log(typeof option);
+                    return (
+                      <SelectorItem
+                        onClick={handleSelectPrice}
+                        key={option}
+                        value={option}
+                        $isActive={priceSelect === (option as any)}
+                      >
+                        {option}
+                      </SelectorItem>
+                    );
+                  })}
                 </ul>
               </DropDown>
             )}
           </SelectContainer>
         </label>
+        <BtnReset
+          type="button"
+          disabled={!isBtnActive}
+          onClick={handleResetFilters}
+        >
+          Reset filters
+        </BtnReset>
       </Form>
     </>
   );

@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const Form = styled.form`
   display: flex;
   gap: 20px;
+  align-items: center;
 
   @media screen and (max-width: 767px) {
     flex-wrap: wrap;
@@ -15,12 +16,6 @@ export const Form = styled.form`
 export const ListFilters = styled.ul`
   display: flex;
   gap: 20px;
-`;
-
-export const LabelWrapper = styled.label`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 `;
 
 export const Label = styled.span`
@@ -132,4 +127,26 @@ export const ListOptions = styled.ul`
   margin: 0;
   border-radius: 12px;
   background-color: ${({ theme: { colors } }) => colors.mainWhite};
+`;
+
+export const BtnReset = styled.button`
+  padding: 14px 39px;
+  border-radius: 12px;
+  background-color: ${({ theme: { colors }, disabled }) =>
+    disabled ? colors.mainGrey : colors.mainBlack};
+  color: ${({ theme: { colors } }) => colors.mainWhite};
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+
+  transition: background-color 250ms
+    ${({ theme: { transitions } }) => transitions.cubic};
+
+  &:hover,
+  &:focus {
+    background-color: ${({ theme: { colors }, disabled }) =>
+      disabled ? null : colors.mainBgBlack};
+  }
+
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
