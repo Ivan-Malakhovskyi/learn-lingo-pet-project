@@ -1,4 +1,4 @@
-import{a as v,r as o,j as t,L as q,q as Y,s as _,b as K,d as H,g as J,u as r,c as I,e as Q,f as V,h as X}from"./index-BKRvSEq0.js";import{s as Z,a as N,T as ee,b as te,E as se,L as ne}from"./TeachersListItem-BpD_FOtH.js";import{S as re,C as ae}from"./SharedLayout.styled-d3ZBRlzW.js";const E=["English","Spanish","French","German","Mandarin Chinese","Italian","Korean","Vietnamese"],z=["A1 Beginner","A2 Elementary","B1 Intermediate","B2 Upper-Intermediate","C1 Advanced","C2 Proficient"],D=[0,5,10,15,20,25,30,35,40],O=e=>e.filters;function le(e,n){const{language:d,level:a,price:p}=n;return e.filter(l=>!(d&&!l.languages.includes(d)||a&&!l.levels.includes(a)||p&&l.price_per_hour>Number(p)))}const ie=()=>{const{language:e,level:n,price:d}=v(O),a=v(Z),p=v(N),[l,m]=o.useState([]);o.useEffect(()=>{if(e||n||d){const c=le(a,{language:e,level:n,price:d});m(c)}else m(a)},[e,n,a,d]);const b=async()=>{const c=Y(K(H,"teachers"),_(4));console.log(c);try{(await J(c)).exists()||console.log("No data")}catch(x){console.log(x.message)}};return t.jsxs(t.Fragment,{children:[p&&t.jsx(q,{}),t.jsx(ee,{children:t.jsx("ul",{children:l.length>0&&!p?l.map(c=>t.jsx(te,{teacher:c},c.id)):t.jsx(se,{children:"No teachers found, try change filters 😢"})})}),a.length>0&&l.length>0&&t.jsx(ne,{type:"button",onClick:b,children:"Load More"})]})},u=(e,n)=>({...e,[n]:!e[n]});r.div`
+import{a as v,r as o,j as t,L as q,q as Y,s as _,b as K,d as H,g as J,u as r,c as I,e as Q,f as V,h as X}from"./index-DJCYLgtd.js";import{s as Z,a as N,T as ee,b as te,E as se,L as ne}from"./TeachersListItem-BoUda0vY.js";import{S as re,C as ae}from"./SharedLayout.styled-Dzp-ICb8.js";const E=["English","Spanish","French","German","Mandarin Chinese","Italian","Korean","Vietnamese"],z=["A1 Beginner","A2 Elementary","B1 Intermediate","B2 Upper-Intermediate","C1 Advanced","C2 Proficient"],D=[0,5,10,15,20,25,30,35,40],O=e=>e.filters;function le(e,n){const{language:d,level:a,price:p}=n;return e.filter(l=>!(d&&!l.languages.includes(d)||a&&!l.levels.includes(a)||p&&l.price_per_hour>Number(p)))}const ie=()=>{const{language:e,level:n,price:d}=v(O),a=v(Z),p=v(N),[l,m]=o.useState([]);o.useEffect(()=>{if(e||n||d){const c=le(a,{language:e,level:n,price:d});m(c)}else m(a)},[e,n,a,d]);const b=async()=>{const c=Y(K(H,"teachers"),_(4));console.log(c);try{(await J(c)).exists()||console.log("No data")}catch(x){console.log(x.message)}};return t.jsxs(t.Fragment,{children:[p&&t.jsx(q,{}),t.jsx(ee,{children:t.jsx("ul",{children:l.length>0&&!p?l.map(c=>t.jsx(te,{teacher:c},c.id)):t.jsx(se,{children:"No teachers found, try change filters 😢"})})}),a.length>0&&l.length>0&&t.jsx(ne,{type:"button",onClick:b,children:"Load More"})]})},u=(e,n)=>({...e,[n]:!e[n]});r.div`
   position: absolute;
   z-index: 100;
   top: calc(100% + 4px);
@@ -52,9 +52,9 @@ import{a as v,r as o,j as t,L as q,q as Y,s as _,b as K,d as H,g as J,u as r,c a
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
 
   @media screen and (max-width: 767px) {
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
