@@ -1,4 +1,4 @@
-import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I as O,B as V,r as w,p as J,a as K,t as Q,M as X,C as Z,_ as m,v as ee,w as te,T as ne}from"./index-DJCYLgtd.js";const tt=t=>t.teachers.items,ie=t=>t.teachers.favorites,nt=t=>t.teachers.isLoading,it=n.div`
+import{u as n,j as e,F as O,i as Y,k as m,l as P,m as q,n as H,o as g,E as u,I as V,B as K,_ as p,T as k,r as v,p as J,a as Q,t as X,M as Z,C as ee,v as te,w as ne}from"./index-BhPIIRIn.js";const tt=t=>t.teachers.items,ie=t=>t.teachers.favorites,nt=t=>t.teachers.isLoading,it=n.div`
   margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
@@ -23,7 +23,7 @@ import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I a
   font-weight: 700;
   line-height: 28px;
   letter-spacing: 0%;
-`,at=n.h3`
+`,ot=n.h3`
   text-align: center;
   color: rgb(18, 20, 23);
   font-family: Roboto;
@@ -35,7 +35,7 @@ import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I a
   width: 96px;
   height: 96px;
   border-radius: 100px;
-`,ae=n.div`
+`,oe=n.div`
   flex-shrink: 0;
   position: relative;
   width: 120px;
@@ -46,7 +46,7 @@ import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I a
   border: 3px solid rgb(251, 233, 186);
   border-radius: 100px;
   background: rgb(255, 255, 255);
-`,oe=n.div`
+`,ae=n.div`
   position: absolute;
   width: 12px;
   height: 12px;
@@ -144,7 +144,7 @@ import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I a
   @media screen and (max-width: 1339px) {
     flex-wrap: wrap;
   }
-`,c=n.li`
+`,d=n.li`
   display: flex;
   align-items: center;
 
@@ -155,7 +155,7 @@ import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I a
     background-color: ${({theme:{colors:t}})=>t.mainGrey};
     margin-left: 16px;
   }
-`,d=n.p`
+`,h=n.p`
   margin-left: 4px;
 `,ue=n.span`
   color: ${({theme:{colors:t}})=>t.mainGreen};
@@ -234,26 +234,26 @@ import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I a
   @media screen and (max-width: 1339px) {
     flex-wrap: wrap;
   }
-`,l=n.p`
+`,c=n.p`
   color: ${({theme:{colors:t}})=>t.mainGrey};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0%;
-`,g=n.span`
+`,f=n.span`
   color: ${({theme:{colors:t}})=>t.mainBlack};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0%;
-`,Ie=n.span`
+`,Be=n.span`
   color: ${({theme:{colors:t}})=>t.mainBlack};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0%;
   text-decoration: underline;
-`,Be="/icons/profile-male.svg",v="/icons/icon_star.svg",Se=({experience:t,reviews:i})=>e.jsxs(e.Fragment,{children:[e.jsx(we,{children:t}),e.jsx("ul",{children:i.map(({reviewer_name:s,reviewer_rating:a,comment:r},o)=>e.jsxs(ke,{children:[e.jsxs(ye,{children:[e.jsx("div",{children:e.jsx(ve,{src:Be,alt:s})}),e.jsxs("div",{children:[e.jsx(l,{children:s}),e.jsxs(Le,{children:[e.jsx("img",{src:v,alt:"icon_star",width:16,height:16})," ",e.jsxs("span",{children:[a,".0"]})]})]})]}),e.jsx(g,{children:r})]},o))})]}),Re=({levels:t})=>e.jsx(e.Fragment,{children:e.jsx(fe,{children:t.map((i,s)=>e.jsx(je,{children:e.jsxs(be,{children:["#",i]})},s))})}),Ee="/icons/active_status.svg",Fe="/icons/heart.svg",_e="/icons/active_icon.svg",Ce="/icons/book-open-01.svg",ze=n.h2`
+`,Ie="/icons/profile-male.svg",y="/icons/icon_star.svg",Se=({experience:t,reviews:i})=>e.jsxs(e.Fragment,{children:[e.jsx(we,{children:t}),e.jsx("ul",{children:i.map(({reviewer_name:s,reviewer_rating:r,comment:a},o)=>e.jsxs(ke,{children:[e.jsxs(ye,{children:[e.jsx("div",{children:e.jsx(ve,{src:Ie,alt:s})}),e.jsxs("div",{children:[e.jsx(c,{children:s}),e.jsxs(Le,{children:[e.jsx("img",{src:y,alt:"icon_star",width:16,height:16})," ",e.jsxs("span",{children:[r,".0"]})]})]})]}),e.jsx(f,{children:a})]},o))})]}),Re=({levels:t})=>e.jsx(e.Fragment,{children:e.jsx(fe,{children:t.map((i,s)=>e.jsx(je,{children:e.jsxs(be,{children:["#",i]})},s))})}),Ee="/icons/active_status.svg",_e="/icons/heart.svg",Fe="/icons/active_icon.svg",Ce="/icons/book-open-01.svg",ze=n.h2`
   margin-bottom: 20px;
   color: ${({theme:{colors:t}})=>t.mainBlack};
   font-size: 40px;
@@ -278,13 +278,13 @@ import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I a
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
-`,Ge=n.h4`
+`,Ue=n.h4`
   margin-bottom: 21px;
   color: ${({theme:{colors:t}})=>t.mainBlack};
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
-`,Ue=n.div`
+`,Ge=n.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -295,6 +295,6 @@ import{u as n,j as e,F as D,i as Y,k as h,l as P,m as q,n as H,o as p,E as x,I a
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
-`,Ye=n(D)`
+`,Oe=n(O)`
   cursor: pointer;
-`,Pe=[{id:1,name:"career",value:"Career and business"},{id:2,name:"lesson",value:"Lesson for kids"},{id:3,name:"abroad",value:"Living abroad"},{id:4,name:"exams",value:"Exams and coursework"},{id:5,name:"travel",value:"Culture, travel or hobby"}],qe={radioGroup:"",fullName:"",email:"",phoneNumber:""},He=/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/,Oe=/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/,Ve=Y({fullName:h().required("Full name is required field"),email:h().matches(He,"Invalid email").required("Email can't be is empty"),phoneNumber:h().min(6,"Too short phone number").max(10,"Too long phone number").matches(Oe,"Invalid format").required("Phone number can't be is empty")}),Je=()=>{const t=s=>{const a={};for(const[r,o]of Object.entries(s))o!==""&&(a[r]=o);return a},i=(s,{resetForm:a})=>{t(s),a()};return e.jsx(e.Fragment,{children:e.jsx(P,{initialValues:qe,onSubmit:i,validationSchema:Ve,children:e.jsxs(q,{children:[e.jsxs(Ue,{children:[" ",Pe.map(({id:s,value:a})=>e.jsxs("label",{children:[e.jsx(Ye,{type:"radio",name:"radioGroup",value:a}),e.jsx(De,{children:a})]},s))]}),e.jsxs(H,{children:[e.jsxs("div",{children:[" ",e.jsx(p,{type:"text",name:"fullName",placeholder:"Full Name"}),e.jsx(x,{name:"fullName",component:"p"})]}),e.jsxs("div",{children:[" ",e.jsx(p,{type:"email",name:"email",placeholder:"Email"}),e.jsx(x,{name:"email",component:"p"})]}),e.jsxs(O,{children:[e.jsx(p,{type:"tel",name:"phoneNumber",placeholder:"Phone number"}),e.jsx(x,{name:"phoneNumber",component:"p"})]})]}),e.jsx(V,{type:"submit",children:"Book"})]})})})},Ke=({teacher:t})=>{const{name:i,surname:s,avatar_url:a}=t;return e.jsxs(e.Fragment,{children:[e.jsx(ze,{children:"Book trial lesson"}),e.jsx(We,{children:"Our experienced tutor will assess your current language level, discuss your learning goals, and tailor the lesson to your specific needs."}),e.jsxs(Ae,{children:[e.jsx("li",{children:e.jsx(Ne,{src:a,alt:i})}),e.jsxs("li",{children:[e.jsx(l,{children:"Your teacher"}),e.jsxs(Me,{children:[i," ",s]})]})]}),e.jsx(Ge,{children:"What is your main reason for learning English?"}),e.jsx(Je,{})]})},Qe="useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";let Xe=(t=21)=>{let i="",s=crypto.getRandomValues(new Uint8Array(t));for(;t--;)i+=Qe[s[t]&63];return i};const Ze=({languages:t,conditions:i,lessonInfo:s})=>e.jsxs($e,{children:[e.jsxs("li",{children:[" ",e.jsxs(l,{children:["Speaks: ",e.jsx(Ie,{children:t.join(", ")})]})]}),e.jsxs("li",{children:[" ",e.jsxs(l,{children:["Lesson Info: ",e.jsx(g,{children:s})]})]}),e.jsxs("li",{children:[" ",e.jsxs(l,{children:["Conditions: ",e.jsx(g,{children:i})]})]})]}),ot=({teacher:t})=>{const[i,s]=w.useState(!1),[a,r]=w.useState(!1),o=J(),k=K(ie),u=()=>{r(!a)},{DELETE_SUCCESS:y,ADD_SUCCESS:L,AUTH_ERROR:T}=ne,$=Xe(),{id:f,avatar_url:I,name:B,surname:j,languages:S,lesson_info:R,lessons_done:E,conditions:F,levels:_,experience:C,reviews:z,price_per_hour:W}=t,{isUserLoggedIn:A}=Q(),N=()=>{s(!i)},b=G=>k.some(U=>U.id===G),M=()=>{if(!A){m.error(T);return}b(f)?(o(ee(t.id)),m.success(y)):(o(te(t)),m.success(L))};return e.jsxs(e.Fragment,{children:[e.jsxs(re,{children:[e.jsxs(ae,{children:[e.jsx(se,{src:I,width:96,height:96,alt:j}),e.jsx(oe,{children:e.jsx("img",{src:Ee,alt:""})})]}),e.jsx(le,{children:e.jsxs("div",{children:[e.jsxs(me,{children:[e.jsxs("div",{children:[e.jsx(ce,{children:"Languages"}),e.jsxs(de,{children:[B," ",j]})]}),e.jsxs(xe,{children:[e.jsxs(ge,{children:[e.jsxs(c,{children:[e.jsxs("span",{children:[" ",e.jsx("img",{src:Ce,alt:"book_icon"})]}),e.jsxs(d,{children:["Lessons online ",e.jsx("span",{})]})]}),e.jsx(c,{children:e.jsxs(d,{children:["Lessons done: ",e.jsx("span",{children:E})]})}),e.jsxs(c,{children:[e.jsx("span",{children:e.jsx("img",{src:v,alt:"icon_star"})}),e.jsx(d,{children:"Rating: 4.8"})]}),e.jsx(c,{children:e.jsxs(d,{children:["Price / 1 hour: ",e.jsxs(ue,{children:[W,"$"]})]})})," "]}),e.jsx(pe,{type:"button",onClick:M,children:b(f)?e.jsx("img",{src:_e,alt:"active_icon",width:26,height:26}):e.jsx("img",{src:Fe,alt:"default_icon",width:26,height:26})})]})]}),e.jsx(Ze,{languages:S,lessonInfo:R,conditions:F}),!i&&e.jsx(he,{onClick:N,children:"Read more"}),i&&e.jsx(Se,{experience:C,reviews:z}),e.jsx(Re,{levels:_}),i&&e.jsx(Te,{type:"button",onClick:u,children:"Book trial lesson"}),a&&e.jsx(X,{maxwidth:600,maxheight:972,close:u,children:e.jsx(Ke,{teacher:t})})]})})]},$),e.jsx(Z,{})]})};export{at as E,st as L,it as T,nt as a,ot as b,ie as c,tt as s};
+`,Ye=[{id:1,name:"career",value:"Career and business"},{id:2,name:"lesson",value:"Lesson for kids"},{id:3,name:"abroad",value:"Living abroad"},{id:4,name:"exams",value:"Exams and coursework"},{id:5,name:"travel",value:"Culture, travel or hobby"}],Pe={radioGroup:"",fullName:"",email:"",phoneNumber:""},qe=/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/,He=/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/,Ve=Y({fullName:m().required("Full name is required field"),email:m().matches(qe,"Invalid email").required("Email can't be is empty"),phoneNumber:m().min(6,"Too short phone number").max(10,"Too long phone number").matches(He,"Invalid format").required("Phone number can't be is empty")}),Ke=({closeBookTrial:t})=>{const{BOOK_TRIAL_SUCCESS:i}=k,s=a=>{const o={};for(const[x,l]of Object.entries(a))l!==""&&(o[x]=l);return o},r=(a,{resetForm:o})=>{s(a),p.success(i),o(),t()};return e.jsx(e.Fragment,{children:e.jsx(P,{initialValues:Pe,onSubmit:r,validationSchema:Ve,children:e.jsxs(q,{children:[e.jsxs(Ge,{children:[" ",Ye.map(({id:a,value:o})=>e.jsxs("label",{children:[e.jsx(Oe,{type:"radio",name:"radioGroup",value:o}),e.jsx(De,{children:o})]},a))]}),e.jsxs(H,{children:[e.jsxs("div",{children:[" ",e.jsx(g,{type:"text",name:"fullName",placeholder:"Full Name"}),e.jsx(u,{name:"fullName",component:"p"})]}),e.jsxs("div",{children:[" ",e.jsx(g,{type:"email",name:"email",placeholder:"Email"}),e.jsx(u,{name:"email",component:"p"})]}),e.jsxs(V,{children:[e.jsx(g,{type:"tel",name:"phoneNumber",placeholder:"Phone number"}),e.jsx(u,{name:"phoneNumber",component:"p"})]})]}),e.jsx(K,{type:"submit",children:"Book"})]})})})},Je=({teacher:t,close:i})=>{const{name:s,surname:r,avatar_url:a}=t;return e.jsxs(e.Fragment,{children:[e.jsx(ze,{children:"Book trial lesson"}),e.jsx(We,{children:"Our experienced tutor will assess your current language level, discuss your learning goals, and tailor the lesson to your specific needs."}),e.jsxs(Ae,{children:[e.jsx("li",{children:e.jsx(Ne,{src:a,alt:s})}),e.jsxs("li",{children:[e.jsx(c,{children:"Your teacher"}),e.jsxs(Me,{children:[s," ",r]})]})]}),e.jsx(Ue,{children:"What is your main reason for learning English?"}),e.jsx(Ke,{closeBookTrial:i})]})},Qe="useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";let Xe=(t=21)=>{let i="",s=crypto.getRandomValues(new Uint8Array(t));for(;t--;)i+=Qe[s[t]&63];return i};const Ze=({languages:t,conditions:i,lessonInfo:s})=>e.jsxs($e,{children:[e.jsxs("li",{children:[" ",e.jsxs(c,{children:["Speaks: ",e.jsx(Be,{children:t.join(", ")})]})]}),e.jsxs("li",{children:[" ",e.jsxs(c,{children:["Lesson Info: ",e.jsx(f,{children:s})]})]}),e.jsxs("li",{children:[" ",e.jsxs(c,{children:["Conditions: ",e.jsx(f,{children:i})]})]})]}),at=({teacher:t})=>{const[i,s]=v.useState(!1),[r,a]=v.useState(!1),o=J(),x=Q(ie),l=()=>{a(!r)},{DELETE_SUCCESS:L,ADD_SUCCESS:T,AUTH_ERROR:$}=k,B=Xe(),{id:j,avatar_url:I,name:S,surname:b,languages:R,lesson_info:E,lessons_done:_,conditions:F,levels:C,experience:z,reviews:W,price_per_hour:A}=t,{isUserLoggedIn:N}=X(),M=()=>{s(!i)},w=G=>x.some(D=>D.id===G),U=()=>{if(!N){p.error($);return}w(j)?(o(te(t.id)),p.success(L)):(o(ne(t)),p.success(T))};return e.jsxs(e.Fragment,{children:[e.jsxs(re,{children:[e.jsxs(oe,{children:[e.jsx(se,{src:I,width:96,height:96,alt:b}),e.jsx(ae,{children:e.jsx("img",{src:Ee,alt:""})})]}),e.jsx(le,{children:e.jsxs("div",{children:[e.jsxs(me,{children:[e.jsxs("div",{children:[e.jsx(ce,{children:"Languages"}),e.jsxs(de,{children:[S," ",b]})]}),e.jsxs(xe,{children:[e.jsxs(ge,{children:[e.jsxs(d,{children:[e.jsxs("span",{children:[" ",e.jsx("img",{src:Ce,alt:"book_icon"})]}),e.jsxs(h,{children:["Lessons online ",e.jsx("span",{})]})]}),e.jsx(d,{children:e.jsxs(h,{children:["Lessons done: ",e.jsx("span",{children:_})]})}),e.jsxs(d,{children:[e.jsx("span",{children:e.jsx("img",{src:y,alt:"icon_star"})}),e.jsx(h,{children:"Rating: 4.8"})]}),e.jsx(d,{children:e.jsxs(h,{children:["Price / 1 hour: ",e.jsxs(ue,{children:[A,"$"]})]})})," "]}),e.jsx(pe,{type:"button",onClick:U,children:w(j)?e.jsx("img",{src:Fe,alt:"active_icon",width:26,height:26}):e.jsx("img",{src:_e,alt:"default_icon",width:26,height:26})})]})]}),e.jsx(Ze,{languages:R,lessonInfo:E,conditions:F}),!i&&e.jsx(he,{onClick:M,children:"Read more"}),i&&e.jsx(Se,{experience:z,reviews:W}),e.jsx(Re,{levels:C}),i&&e.jsx(Te,{type:"button",onClick:l,children:"Book trial lesson"}),r&&e.jsx(Z,{maxwidth:600,maxheight:972,close:l,children:e.jsx(Je,{teacher:t,close:l})})]})})]},B),e.jsx(ee,{})]})};export{ot as E,st as L,it as T,nt as a,at as b,ie as c,tt as s};
