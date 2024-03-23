@@ -6,5 +6,5 @@ export type TOptions = {
 };
 
 export type TProps = {
-  close: () => void;
+  closeBookTrial: () => void;
 };

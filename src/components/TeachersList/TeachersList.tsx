@@ -27,6 +27,11 @@ export const TeachersList: FC = () => {
   const teachersList = useSelector(selectTeachers);
   const isLoading = useSelector(selectIsLoading);
   const [filteredTeachers, setFilteredTeachers] = useState<Teacher[]>([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
 
   useEffect(() => {
     if (language || level || price) {
@@ -70,7 +75,11 @@ export const TeachersList: FC = () => {
         <ul>
           {filteredTeachers.length > 0 && !isLoading ? (
             filteredTeachers.map((teacher) => (
-              <TeachersListItem key={teacher.id} teacher={teacher} />
+              <TeachersListItem
+                close={toggleModal}
+                key={teacher.id}
+                teacher={teacher}
+              />
             ))
           ) : (
             <EmptyTopic>No teachers found, try change filters 😢</EmptyTopic>

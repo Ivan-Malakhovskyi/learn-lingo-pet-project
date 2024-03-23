@@ -49,7 +49,7 @@ const validationRecordSchema = yup.object({
     .required("Phone number can't be is empty"),
 });
 
-export const RadioButtonForm: FC<TProps> = ({ close }) => {
+export const RadioButtonForm: FC<TProps> = ({ closeBookTrial }) => {
   const { BOOK_TRIAL_SUCCESS } = TOAST_MESSAGES;
   const filteredEnteredData = (values: TOptions): Partial<TOptions> => {
     const enteredData: Partial<TOptions> = {};
@@ -67,7 +67,7 @@ export const RadioButtonForm: FC<TProps> = ({ close }) => {
     filteredEnteredData(values);
     toast.success(BOOK_TRIAL_SUCCESS);
     resetForm();
-    close();
+    closeBookTrial();
   };
 
   return (

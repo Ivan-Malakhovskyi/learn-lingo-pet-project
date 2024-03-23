@@ -37,7 +37,7 @@ export const BookTrial: FC<TeacherProps> = ({ teacher, close }) => {
         What is your main reason for learning English?
       </TopicEnglishInfo>
 
-      <RadioButtonForm close={close} />
+      <RadioButtonForm closeBookTrial={close} />
     </>
   );
 };

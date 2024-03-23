@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { selectFavoriteTeachers } from "../redux/teachers/teachers-selectors";
@@ -16,6 +16,11 @@ import empty from "/icons/no-data.svg";
 import { Teacher } from "../../types";
 
 const Favorites: FC = () => {
+  const [showModal, setShowModal] = useState(false);
+  const toogleModal = () => {
+    setShowModal(!showModal);
+  };
+
   const favoriteTeachers = useSelector(selectFavoriteTeachers);
 
   return (
@@ -26,7 +31,11 @@ const Favorites: FC = () => {
             <ul>
               {favoriteTeachers.length > 0 ? (
                 favoriteTeachers.map((teacher: Teacher) => (
-                  <TeachersListItem key={teacher.id} teacher={teacher} />
+                  <TeachersListItem
+                    close={toogleModal}
+                    key={teacher.id}
+                    teacher={teacher}
+                  />
                 ))
               ) : (
                 <TextWrapper>

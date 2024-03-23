@@ -3,11 +3,11 @@ import { Backdrop, CloseButton, ModalContent } from "./Modal.styled";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { FC, useEffect } from "react";
 import iconClose from "/icons/x.svg";
-import { DropDownProps } from "../DropDown/DropDown.types";
+import { TModalProps } from "./Modal.types";
 
 const modalRoot = document.querySelector("#modal-root")!;
 
-export const Modal: FC<DropDownProps> = ({
+export const Modal: FC<TModalProps> = ({
   close,
   children,
   maxwidth,
