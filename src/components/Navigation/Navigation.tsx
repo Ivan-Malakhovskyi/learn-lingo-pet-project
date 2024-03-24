@@ -85,7 +85,9 @@ export const Navigation: FC = () => {
       </li>
       <li>
         <HomeLink>
-          <StyledNavLink to="/">Home</StyledNavLink>
+          <StyledNavLink to="/" aria-current="page">
+            Home
+          </StyledNavLink>
         </HomeLink>
       </li>
       <li>
