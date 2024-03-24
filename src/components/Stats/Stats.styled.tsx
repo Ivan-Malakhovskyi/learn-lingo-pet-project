@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const StatsBox = styled.div`
-  /* max-width: 100%; */
   border: 1.5px dashed ${({ theme: { colors } }) => colors.mainYellow};
   border-radius: 30px;
   padding: 40px 124px;
   margin-bottom: 32px;
 
-  @media screen and (min-width: 1440px) {
+  @media (width >= 1440px) {
     max-width: 1300px;
   }
 `;
@@ -15,19 +14,16 @@ export const StatsBox = styled.div`
 export const ListStats = styled.ul`
   display: flex;
   justify-content: space-between;
-
   align-items: center;
 
-  @media screen and (max-width: 1023px) {
+  @media (width <= 1339px) {
     flex-wrap: wrap;
-    justify-content: center;
+
     gap: 10px;
   }
 
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
+  @media (width <= 767px) {
     justify-content: center;
-    gap: 10px;
   }
 `;
 
