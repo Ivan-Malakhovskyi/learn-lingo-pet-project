@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Route, Routes } from "react-router-dom";
 import { GlobalStyle } from "../GlobalStyle";
 import { SharedLayout } from "./layout/SharedLayout";
@@ -53,6 +54,7 @@ const App: FC = () => {
         </Route>
       </Routes>
       <GlobalStyle />
+      <SpeedInsights />
     </>
   );
 };

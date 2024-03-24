@@ -1,11 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { get, limitToFirst, query, ref } from "firebase/database";
+import { get, query, ref } from "firebase/database";
 
 import { db } from "src/firebaseConfig";
 import { Teacher } from "src/types";
-
-// const BASE_URL =
-//   "https://learn-lingo-pet-project-default-rtdb.europe-west1.firebasedatabase.app/teachers.json";
 
 interface MyKnownError {
   message: string;
@@ -15,7 +12,7 @@ export const fetchTeachers = createAsyncThunk(
   "teachers/fetchTeachers",
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async (_, thunkApi) => {
-    const teachersRef = query(ref(db, "teachers"), limitToFirst(4));
+    const teachersRef = query(ref(db, "teachers"));
 
     try {
       const data = await get(teachersRef);

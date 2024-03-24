@@ -241,19 +241,16 @@ export const Filters: FC = () => {
                 }
               >
                 <ul>
-                  {prices.map((option) => {
-                    console.log(typeof option);
-                    return (
-                      <SelectorItem
-                        onClick={handleSelectPrice}
-                        key={option}
-                        value={option}
-                        $isActive={priceSelect === (option as any)}
-                      >
-                        {option}
-                      </SelectorItem>
-                    );
-                  })}
+                  {prices.map((option) => (
+                    <SelectorItem
+                      onClick={handleSelectPrice}
+                      key={option}
+                      value={option}
+                      $isActive={priceSelect === (option as any)}
+                    >
+                      {option}
+                    </SelectorItem>
+                  ))}
                 </ul>
               </DropDown>
             )}
