@@ -1,4 +1,4 @@
-import{u as t}from"./index-BhPIIRIn.js";const n=t.div`
+import{u as t}from"./index-ymX_epWv.js";const n=t.div`
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;

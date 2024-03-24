@@ -1,4 +1,4 @@
-import{u as i,N as s,j as e}from"./index-BhPIIRIn.js";import{C as a}from"./SharedLayout.styled-BLJ2xM60.js";const c=i.div`
+import{u as i,N as s,j as e}from"./index-ymX_epWv.js";import{C as a}from"./SharedLayout.styled-BEyUMAUp.js";const c=i.div`
   margin-bottom: 24px;
   margin-left: auto;
   margin-right: auto;
