@@ -1,4 +1,4 @@
-import{u as i,N as s,j as e}from"./index-DH02TXRn.js";import{C as a}from"./SharedLayout.styled-Cfd5nMUI.js";const c=i.div`
+import{u as i,N as s,j as e}from"./index-BYxIqKWB.js";import{C as a}from"./SharedLayout.styled-CJkVTWUE.js";const c=i.div`
   margin-bottom: 24px;
   margin-left: auto;
   margin-right: auto;
@@ -6,7 +6,7 @@ import{u as i,N as s,j as e}from"./index-DH02TXRn.js";import{C as a}from"./Share
   @media screen and (min-width: 1440px) {
     width: 1344px;
   }
-`,x=i.div`
+`,l=i.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,7 @@ import{u as i,N as s,j as e}from"./index-DH02TXRn.js";import{C as a}from"./Share
   font-weight: 500;
   line-height: 56px;
   letter-spacing: -2%;
-`,l=i.span`
+`,x=i.span`
   font-style: italic;
   font-weight: 400;
   border-radius: 8px;
@@ -78,38 +78,34 @@ import{u as i,N as s,j as e}from"./index-DH02TXRn.js";import{C as a}from"./Share
   right: 115px;
   top: 80px;
   bottom: 111px;
-`,f=i.img`
+`,j=i.img`
   position: absolute;
   top: 354px;
   left: 103.64px;
   width: 359.72px;
   height: 300px;
-`,j="/images/stiker_girl.png",w="/images/mac.png",b=()=>e.jsx(c,{children:e.jsxs(x,{children:[e.jsxs(g,{children:[e.jsxs(p,{children:["Unlock your potential with the best"," ",e.jsx(l,{children:"language"})," tutors"]}),e.jsx(d,{children:"Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors."}),e.jsx(h,{to:"/teachers",children:"Get started"})]}),e.jsxs(m,{children:[e.jsx(u,{src:j,alt:"girl_stiker"}),e.jsx(f,{src:w,alt:"girl_stiker"})]})]})}),k=i.div`
-  /* max-width: 100%; */
+`,w="/images/stiker_girl.png",f="/images/mac.png",b=()=>e.jsx(c,{children:e.jsxs(l,{children:[e.jsxs(g,{children:[e.jsxs(p,{children:["Unlock your potential with the best"," ",e.jsx(x,{children:"language"})," tutors"]}),e.jsx(d,{children:"Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors."}),e.jsx(h,{to:"/teachers",children:"Get started"})]}),e.jsxs(m,{children:[e.jsx(u,{src:w,alt:"girl_stiker"}),e.jsx(j,{src:f,alt:"girl_stiker"})]})]})}),k=i.div`
   border: 1.5px dashed ${({theme:{colors:t}})=>t.mainYellow};
   border-radius: 30px;
   padding: 40px 124px;
   margin-bottom: 32px;
 
-  @media screen and (min-width: 1440px) {
+  @media (width >= 1440px) {
     max-width: 1300px;
   }
 `,y=i.ul`
   display: flex;
   justify-content: space-between;
-
   align-items: center;
 
-  @media screen and (max-width: 1023px) {
+  @media (width <= 1339px) {
     flex-wrap: wrap;
-    justify-content: center;
+
     gap: 10px;
   }
 
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
+  @media (width <= 767px) {
     justify-content: center;
-    gap: 10px;
   }
 `,n=i.li`
   display: flex;
@@ -128,4 +124,4 @@ import{u as i,N as s,j as e}from"./index-DH02TXRn.js";import{C as a}from"./Share
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -2%;
-`,$=()=>e.jsx(e.Fragment,{children:e.jsx(k,{children:e.jsxs(y,{children:[e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]})]})})}),B=()=>e.jsxs(a,{containerwidth:1344,children:[e.jsx(b,{}),e.jsx($,{})]});export{B as default};
+`,$=()=>e.jsx(e.Fragment,{children:e.jsx(k,{children:e.jsxs(y,{children:[e.jsxs(n,{children:[e.jsx(r,{children:"32,000 +"})," ",e.jsx(o,{children:"Experienced tutors"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"300,000 +"})," ",e.jsx(o,{children:"5-star tutor reviews"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"120 +"})," ",e.jsx(o,{children:"Subjects taught"})]}),e.jsxs(n,{children:[e.jsx(r,{children:"200 +"})," ",e.jsx(o,{children:"Tutor nationalities"})]})]})})}),B=()=>e.jsxs(a,{containerwidth:1344,children:[e.jsx(b,{}),e.jsx($,{})]});export{B as default};
