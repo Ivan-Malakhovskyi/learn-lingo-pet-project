@@ -32,7 +32,7 @@ This application is designed for a company that offers online language learning 
 
 -- **Add teachers to the user's favorites list.**
 
--- **View detailed information about a teacher and reviews from students.Booking trial lessons through a modal window.**
+-- **View detailed information about a teacher and reviews from students. Booking trial lessons through a modal window.**
 
 #### Favorites Page
 
@@ -56,7 +56,7 @@ This application is designed for a company that offers online language learning 
 
 #### `"Favorites" Functionality`
 
--- **Store selected teachers using localStorage or Firebase Realtime Database.**
+-- **Store selected teachers using redux-persist.**
 
 -- **Display the state of selected teachers after page refresh.**
 
@@ -64,4 +64,4 @@ This application is designed for a company that offers online language learning 
 
 -- **Implement React Router for application routing.**
 
--- **Add functionality for filtering by language, students' proficiency level, and hourly rate.**
+-- **Add functionality for filtering by language, students' proficiency level, and pricing $.**
