@@ -6,13 +6,13 @@
 
 -- **dev** - `npm run dev` or `yarn dev`
 
--- **build** - `npm run build` or ``yarn build
+-- **build** - `npm run build` or `yarn build`
 
 ## Introductions and Usage
 
 This application is designed for a company that offers online language learning services. The app consists of three main pages: `"Home"`, `"Teachers"` and `"Favorites."`
 
-1.`Home Page`: Learn about the company's advantages and navigate to the "Teachers" page.
+1.`Home Page`: Learn about the company's advantages and navigate to the `"Teachers"` page.
 
 2. `Teachers Page`: Choose teachers based on your preferences, adding them to your favorites. Get more information and book a trial lesson
 
