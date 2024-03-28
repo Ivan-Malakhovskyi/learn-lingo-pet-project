@@ -1,4 +1,4 @@
-import{u as n,j as e,F as O,d as Y,e as m,g as P,h as q,i as H,k as g,E as u,I as V,B as K,_ as x,T as k,r as v,l as J,a as Q,m as X,M as Z,C as ee,n as te,o as ne}from"./index-BYxIqKWB.js";const tt=t=>t.teachers.items,ie=t=>t.teachers.favorites,nt=t=>t.teachers.isLoading,it=n.div`
+import{u as n,j as e,F as O,d as Y,e as m,g as P,h as q,i as H,k as g,E as u,I as V,B as K,_ as x,T as k,r as v,l as J,a as Q,m as X,M as Z,C as ee,n as te,o as ne}from"./index-BS23Xn8Q.js";const tt=t=>t.teachers.items,ie=t=>t.teachers.favorites,nt=t=>t.teachers.isLoading,it=n.div`
   margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
