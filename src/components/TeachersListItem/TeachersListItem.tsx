@@ -84,7 +84,7 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
     setShowInfo(!showInfo);
   };
 
-  const isFavoriteCar = (id: string) =>
+  const isFavoriteTeacher = (id: string) =>
     favorites.some((teacher: Teacher) => teacher.id === id);
 
   const handleToggleAddTeacher = () => {
@@ -93,7 +93,7 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
       return;
     }
 
-    if (isFavoriteCar(id)) {
+    if (isFavoriteTeacher(id)) {
       dispatch(deleteTeacher(teacher.id));
       toast.success(DELETE_SUCCESS);
     } else {
@@ -149,7 +149,7 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
                   </ListItemRating>{" "}
                 </ListRating>
                 <HeartIcon type="button" onClick={handleToggleAddTeacher}>
-                  {isFavoriteCar(id) ? (
+                  {isFavoriteTeacher(id) ? (
                     <img
                       src={activeHeart}
                       alt="active_icon"

@@ -1,5 +1,5 @@
 export const TOAST_MESSAGES = {
-  DELETE_SUCCESS: "Successfully deleted ✅",
+  DELETE_SUCCESS: "Successfully deleted",
   ADD_SUCCESS: "Teacher was added 🧔",
   AUTH_ERROR: "You need to authenticate",
   SIGN_OUT_SUCCESS: "Logout successfully ",
