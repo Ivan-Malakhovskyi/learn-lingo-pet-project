@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   GirlImg,
   HeroWrapper,
@@ -12,7 +13,6 @@ import {
 } from "./Hero.styled";
 import girl from "/images/stiker_girl.png";
 import mac from "/images/mac.png";
-import { FC } from "react";
 
 export const HeroSection: FC = () => {
   return (

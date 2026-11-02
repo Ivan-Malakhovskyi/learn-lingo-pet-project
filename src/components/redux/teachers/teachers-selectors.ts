@@ -1,4 +1,4 @@
-import { TInitStateTypes } from "../../../types";
+import { TInitStateTypes } from "src/types";
 
 export const selectTeachers = (state: TInitStateTypes) => state.teachers.items;
 

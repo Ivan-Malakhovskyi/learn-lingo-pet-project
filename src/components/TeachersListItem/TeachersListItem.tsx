@@ -1,3 +1,12 @@
+import { FC, useState } from "react";
+import toast from "react-hot-toast";
+import { nanoid } from "nanoid";
+import { useDispatch, useSelector } from "react-redux";
+
+import { selectFavoriteTeachers } from "../redux/teachers/teachers-selectors";
+import { addTeacher, deleteTeacher } from "../redux/teachers/teacher-slice";
+import { useAuthUser } from "../hooks/useAuthUser";
+
 import {
   ActiveImg,
   ContentWrapper,
@@ -19,13 +28,10 @@ import {
   RatingText,
 } from "../TeacherLevelList/TeacherLevelList.styled";
 
-import { FC, useState } from "react";
 import { AdditionalInfo } from "../AdditionalInfo/AdditionalInfo";
 import { TeacherLevelList } from "../TeacherLevelList/TeacherLevelList";
 
 import { BookTrialBtn } from "../AdditionalInfo/AdditonalInfo.styled";
-
-import toast from "react-hot-toast";
 
 import activeStatus from "/icons/active_status.svg";
 import heart from "/icons/heart.svg";
@@ -34,16 +40,10 @@ import book from "/icons/book-open-01.svg";
 import star from "/icons/icon_star.svg";
 
 import { BookTrial } from "../BookTrial/BookTrial";
-import { Teacher, TeacherProps } from "../../types";
+import { Teacher, TeacherProps } from "src/types";
 import { Modal } from "../Global/Modal/Modal";
-
-import { nanoid } from "nanoid";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFavoriteTeachers } from "../redux/teachers/teachers-selectors";
-import { addTeacher, deleteTeacher } from "../redux/teachers/teacher-slice";
 import { CustomToaster } from "../Global/Toaster/CustomToaster";
 import { LabelsList } from "../LabelsList/LabelsList";
-import { useAuthUser } from "../hooks/useAuthUser";
 
 import { TOAST_MESSAGES } from "../constants";
 

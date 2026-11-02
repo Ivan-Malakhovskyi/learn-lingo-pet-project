@@ -1,15 +1,15 @@
 import { RootState } from "../store";
-import { TFilterType, Teacher } from "../../../types";
+import { TFilterType, Teacher } from "src/types";
 
 export const selectFilters = (state: RootState): TFilterType => state.filters;
 
 export function filterTeachers(
   teachers: Teacher[],
-  filters: TFilterType
+  filters: TFilterType,
 ): Teacher[] {
   const { language, level, price } = filters;
 
-  return teachers.filter((teacher) => {
+  return teachers.filter(teacher => {
     if (language && !teacher.languages.includes(language)) return false;
 
     if (level && !teacher.levels.includes(level)) return false;

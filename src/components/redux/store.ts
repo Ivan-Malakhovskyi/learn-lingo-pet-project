@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
+import { useDispatch } from "react-redux";
 import { authReducer } from "./auth/auth-slice";
 import {
   persistReducer,
@@ -14,7 +15,6 @@ import {
 import { teacherReducer } from "./teachers/teacher-slice";
 import { TeacherType } from "../../types";
 import { filterReducer } from "./teachers/filter-slice";
-import { useDispatch } from "react-redux";
 
 const teachersPersistConfig = {
   key: "teachers",
@@ -27,11 +27,11 @@ export const store = configureStore({
     auth: authReducer,
     teachers: persistReducer<TeacherType>(
       teachersPersistConfig,
-      teacherReducer
+      teacherReducer,
     ),
     filters: filterReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoreActions: true,

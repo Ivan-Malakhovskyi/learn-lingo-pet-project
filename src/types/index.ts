@@ -25,7 +25,7 @@ export type TeacherProps = {
 };
 
 export type TAuthType = {
-  user: { name: null | string; email: null | string };
+  user: { displayName: null | string; email: null | string };
   isLoggedIn: boolean;
   isRefresh: boolean;
   isLoading: boolean;
@@ -62,9 +62,9 @@ export type TInitStateTypes = {
 };
 
 export type TSigninProps = {
-  onLoginSuccess: () => void;
+  onLoginClose: () => void;
 };
 
 export type TSignupProps = {
-  onRegisterSuccess: () => void | undefined;
+  onRegisterClose: () => void | undefined;
 };

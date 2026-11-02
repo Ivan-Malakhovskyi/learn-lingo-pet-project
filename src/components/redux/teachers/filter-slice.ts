@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TFilterType } from "../../../types";
+import { TFilterType } from "src/types";
 
 const initialState: TFilterType = {
   language: null,

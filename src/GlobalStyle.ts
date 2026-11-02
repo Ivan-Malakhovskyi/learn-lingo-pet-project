@@ -14,6 +14,7 @@ export const theme = {
     addWhite: "#f7f7fb",
     mainGrey: "#8A8A89",
     accentGrey: "#F8F8F8",
+    addAccentGrey: "#F6F7FB",
     mainYellow: "#F4C550",
     accentYellow: "#FBE9BA",
     mainRed: "#EF5050",

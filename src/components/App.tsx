@@ -1,10 +1,9 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Route, Routes } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { FC, lazy, useEffect } from "react";
 import { GlobalStyle } from "../GlobalStyle";
 import { SharedLayout } from "./layout/SharedLayout";
-import { FC, lazy, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebaseConfig";
 import { getCurrentUser } from "./redux/auth/auth-slice";
 import { useAuthUser } from "./hooks/useAuthUser";
 import { PrivateRoute } from "../PrivateRoute";
@@ -12,6 +11,7 @@ import { ERoutes } from "../enums";
 import "../App.css";
 import { Loader } from "./Loader/Loader";
 import { useAppDispatch } from "./redux/store";
+import { useGoogleAuth } from "./hooks/useGoogleAuth";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const TeachersPage = lazy(() => import("./pages/TeachersPage"));
@@ -22,16 +22,21 @@ const App: FC = () => {
   const dispatch = useAppDispatch();
 
   const { isUserRefresh } = useAuthUser();
+  const { auth } = useGoogleAuth();
 
+  //! If use signInWithPopup
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, user => {
       if (user) {
         dispatch(
-          getCurrentUser({ name: user?.displayName, email: user?.email })
+          getCurrentUser({
+            displayName: user?.displayName,
+            email: user?.email,
+          }),
         );
       }
     });
-  }, [dispatch]);
+  }, [dispatch, auth]);
 
   return isUserRefresh ? (
     <Loader />

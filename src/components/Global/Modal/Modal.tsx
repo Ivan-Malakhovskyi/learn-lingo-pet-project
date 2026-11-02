@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
-import { Backdrop, CloseButton, ModalContent } from "./Modal.styled";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { FC, useEffect } from "react";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { Backdrop, CloseButton, ModalContent } from "./Modal.styled";
 import iconClose from "/icons/x.svg";
 import { TModalProps } from "./Modal.types";
 
@@ -49,6 +49,6 @@ export const Modal: FC<TModalProps> = ({
         {children}
       </ModalContent>
     </Backdrop>,
-    modalRoot
+    modalRoot,
   );
 };

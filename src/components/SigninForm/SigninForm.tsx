@@ -1,5 +1,9 @@
-import { Formik, Form, FormikValues } from "formik";
 import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthError, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { Formik, Form, FormikValues } from "formik";
+import toast from "react-hot-toast";
 import * as yup from "yup";
 import {
   FieldForm,
@@ -10,19 +14,21 @@ import {
   InputWrapper,
   BtnSubmit,
   ErrMessage,
+  StyledText,
+  StyledGoogleBtn,
+  GoogleWrapper,
 } from "./SigninForm.styled";
+import { auth } from "src/firebaseConfig";
+import { setLoading, setUser } from "../redux/auth/auth-slice";
+import { CustomToaster } from "../Global/Toaster/CustomToaster";
+
+import { TOAST_MESSAGES } from "../constants";
+import { TSigninProps } from "src/types";
+import { TSigninFormProps } from "./SigninForm.types";
+import { useGoogleAuth } from "../hooks/useGoogleAuth";
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
-import { TSigninFormProps } from "./SigninForm.types";
-import { AuthError, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebaseConfig";
-import { setUser } from "../redux/auth/auth-slice";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { CustomToaster } from "../Global/Toaster/CustomToaster";
-import toast from "react-hot-toast";
-import { TSigninProps } from "../../types";
-import { TOAST_MESSAGES } from "../constants";
+import google from "/icons/google.svg";
 
 const initialValuesFields = {
   email: "",
@@ -42,33 +48,34 @@ const validationSigninSchema = yup.object({
     .required("Password can't be is empty"),
 });
 
-export const SigninForm: FC<TSigninProps> = ({ onLoginSuccess }) => {
+const { SIGN_IN_SUCCESSFULLY, SIGN_IN_ERROR } = TOAST_MESSAGES;
+
+export const SigninForm: FC<TSigninProps> = ({ onLoginClose }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const isLoggin = () => {
-    onLoginSuccess();
-  };
-
-  const { SIGN_IN_SUCCESSFULLY, SIGN_IN_ERROR } = TOAST_MESSAGES;
+  const { signinWithGoogle } = useGoogleAuth();
 
   const handleSubmit = async (
     values: TSigninFormProps,
-    { resetForm }: FormikValues
+    { resetForm }: FormikValues,
   ) => {
     try {
       const { email, password } = values;
+      setLoading(true);
       const signedIn = await signInWithEmailAndPassword(auth, email, password);
 
       dispatch(
-        setUser({ name: signedIn.user.displayName, email: signedIn.user.email })
+        setUser({
+          displayName: signedIn.user.displayName,
+          email: signedIn.user.email,
+        }),
       );
-
+      setLoading(false);
       navigate("/teachers");
 
-      isLoggin();
+      onLoginClose();
 
       toast.success(SIGN_IN_SUCCESSFULLY);
 
@@ -85,6 +92,20 @@ export const SigninForm: FC<TSigninProps> = ({ onLoginSuccess }) => {
 
   const handelToggleClick = () => {
     setShowPassword(!showPassword);
+  };
+
+  const loginWithGoogle = async () => {
+    try {
+      setLoading(true);
+      await signinWithGoogle();
+
+      onLoginClose();
+      setLoading(false);
+
+      toast.success(SIGN_IN_SUCCESSFULLY);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -124,7 +145,14 @@ export const SigninForm: FC<TSigninProps> = ({ onLoginSuccess }) => {
           </FormWrapper>
           <BtnSubmit type="submit">Log In</BtnSubmit>
         </Form>
-      </Formik>
+      </Formik>{" "}
+      <GoogleWrapper>
+        {" "}
+        <StyledText>Увійти з Google</StyledText>{" "}
+        <StyledGoogleBtn type="button" onClick={loginWithGoogle}>
+          <img src={google} alt="google_icon" /> Google
+        </StyledGoogleBtn>
+      </GoogleWrapper>
       <CustomToaster />
     </>
   );

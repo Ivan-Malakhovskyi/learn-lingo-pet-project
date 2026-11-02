@@ -1,5 +1,7 @@
 import { FC, useState } from "react";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import logo from "/icons/ukraine_blue_yellow.svg";
 import iconLogin from "/icons/log-in-01.svg";
@@ -21,49 +23,52 @@ import {
 } from "../Navigation/Navigation.styled";
 import { HomeLink } from "../Navigation/Navigation.styled";
 import { TNavProps } from "./Navigation.types";
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { ERoutes } from "../../enums";
 import { CustomToaster } from "../Global/Toaster/CustomToaster";
 import { TOAST_MESSAGES } from "../constants";
-import { signOutUser } from "../redux/auth/auth-slice";
-import { auth } from "src/firebaseConfig";
+import { setLoading, signOutUser } from "../redux/auth/auth-slice";
 import { useAppDispatch } from "../redux/store";
-import { useSelector } from "react-redux";
 import { selectUser } from "../redux/auth/auth-selectors";
+import { Loader } from "../Loader/Loader";
+import { useGoogleAuth } from "../hooks/useGoogleAuth";
+import { selectIsLoading } from "../redux/teachers/teachers-selectors";
+
+const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
 
 export const Navigation: FC = () => {
-  const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
-
   const [isOpen, setIsOpen] = useState<TNavProps>({
     signIn: false,
     signUp: false,
   });
 
-  const { isUserLoggedIn } = useAuthUser();
   const navigate = useNavigate();
   const user = useSelector(selectUser);
+  const isLoading = useSelector(selectIsLoading);
+  const { isUserRefresh, isUserLoggedIn } = useAuthUser();
+  const { signOutWithGoogle } = useGoogleAuth();
   const dispatch = useAppDispatch();
 
   const handleToggle = (key: "signIn" | "signUp") => {
-    setIsOpen((prevState) => ({
+    setIsOpen(prevState => ({
       ...prevState,
       [key]: !prevState[key],
     }));
   };
 
-  const handleSuccessLogin = () => {
+  const handleLoginClose = () => {
     handleToggle("signIn");
   };
 
-  const handleSuccessRegister = () => {
+  const handleRegisterClose = () => {
     handleToggle("signUp");
   };
 
   const handleSignOut = async () => {
     try {
-      await signOut(auth);
+      setLoading(true);
+      await signOutWithGoogle();
       dispatch(signOutUser());
+      setLoading(false);
 
       toast.success(SIGN_OUT_SUCCESS);
       navigate(ERoutes.Root);
@@ -71,6 +76,8 @@ export const Navigation: FC = () => {
       console.log((error as Error).message);
     }
   };
+
+  const showUser = isUserLoggedIn && !isUserRefresh && !isLoading;
 
   return (
     <HeaderWrapper>
@@ -93,26 +100,30 @@ export const Navigation: FC = () => {
       <li>
         {" "}
         <StyledNavLink to="/teachers">Teachers</StyledNavLink>
-        {isUserLoggedIn && (
+        {showUser && (
           <LinkWapper>
             <StyledNavLink to="/favorites">Favorites</StyledNavLink>
           </LinkWapper>
         )}
       </li>
       <ListBtnAuth>
-        {isUserLoggedIn ? (
+        {showUser && (
           <>
             <li>
-              <Topic>Welcome {user && user.name}</Topic>
+              <Topic>Welcome {user?.displayName}</Topic>
             </li>
             <li>
               <Btn onClick={handleSignOut}>Logout</Btn>
             </li>
           </>
-        ) : (
+        )}
+
+        {isLoading && <Loader width={40} height={40} />}
+
+        {!isUserLoggedIn && (
           <ListBtnAuth>
             <li>
-              <BtnSignin onClick={() => handleToggle("signIn")}>
+              <BtnSignin onClick={handleLoginClose}>
                 <IconWrapper>
                   <img
                     src={iconLogin}
@@ -126,7 +137,7 @@ export const Navigation: FC = () => {
             </li>
             <li>
               {" "}
-              <Btn type="button" onClick={() => handleToggle("signUp")}>
+              <Btn type="button" onClick={handleRegisterClose}>
                 Registration
               </Btn>
             </li>
@@ -139,7 +150,7 @@ export const Navigation: FC = () => {
             maxheight={506}
             close={() => handleToggle("signIn")}
           >
-            <SignInPage onLoginSuccess={handleSuccessLogin} />
+            <SignInPage onLoginClose={handleLoginClose} />
           </Modal>
         )}
 
@@ -151,7 +162,7 @@ export const Navigation: FC = () => {
               maxheight={600}
               close={() => handleToggle("signUp")}
             >
-              <SignUpPage onRegisterSuccess={handleSuccessRegister} />
+              <SignUpPage onRegisterClose={handleRegisterClose} />
             </Modal>
           </div>
         )}

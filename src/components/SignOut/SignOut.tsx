@@ -1,8 +1,8 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebaseConfig";
-import { useNavigate } from "react-router-dom";
-import { ERoutes } from "../../enums";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "src/firebaseConfig";
+import { ERoutes } from "src/enums";
 
 export const SignOut: FC = () => {
   const navigate = useNavigate();

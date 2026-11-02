@@ -76,3 +76,50 @@ export const ErrMessage = styled(ErrorMessage)`
   font-weight: 400;
   line-height: 24px;
 `;
+
+export const GoogleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+
+  /* @media screen and (max-width: 767px) {
+    justify-content: center;
+    gap: 20px;
+  } */
+`;
+
+export const StyledText = styled.p`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 4%;
+`;
+
+export const StyledGoogleBtn = styled.button`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 26px;
+  height: 40px;
+  width: 120px;
+  color: ${({ theme }) => theme.colors.mainBlack};
+  background-color: ${({ theme }) => theme.colors.addAccentGrey};
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 2%;
+  box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.2);
+  transition:
+    background-color 250ms ${({ theme: { transitions } }) => transitions.cubic},
+    color ${({ theme: { transitions } }) => transitions.cubic};
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: ${({ theme }) => theme.colors.mainBgBlack};
+    color: ${({ theme }) => theme.colors.addBodyColor};
+  }
+`;

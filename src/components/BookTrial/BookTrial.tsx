@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { TeacherProps } from "../../types";
+import { TeacherProps } from "src/types";
 import {
   List,
   Paragraph,

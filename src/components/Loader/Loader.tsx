@@ -1,15 +1,20 @@
 import { Oval } from "react-loader-spinner";
 import { LoaderWrapper } from "./Loader.styled";
-import { FC } from "react";
 
-export const Loader: FC = () => {
+export const Loader = ({
+  width = 80,
+  height = 80,
+}: {
+  width?: number;
+  height?: number;
+}) => {
   return (
     <LoaderWrapper>
       <Oval
         visible={true}
         color="#F4C550"
-        height="80"
-        width="80"
+        height={height}
+        width={width}
         ariaLabel="oval-loading"
       />
     </LoaderWrapper>

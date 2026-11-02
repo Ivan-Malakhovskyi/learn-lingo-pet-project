@@ -5,14 +5,13 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../../firebaseConfig";
-
-import { TOAST_MESSAGES } from "../constants";
-import { TSignupProps } from "../../types";
-
 import { Form, Formik, FormikValues } from "formik";
 import toast from "react-hot-toast";
 import * as yup from "yup";
+import { auth } from "src/firebaseConfig";
+
+import { TOAST_MESSAGES } from "../constants";
+import { TSignupProps } from "src/types";
 
 import {
   FieldForm,
@@ -52,7 +51,7 @@ const validationSignupSchema = yup.object({
     .required("Password can't be is empty"),
 });
 
-export const Signup: FC<TSignupProps> = ({ onRegisterSuccess }) => {
+export const Signup: FC<TSignupProps> = ({ onRegisterClose }) => {
   const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -60,18 +59,18 @@ export const Signup: FC<TSignupProps> = ({ onRegisterSuccess }) => {
 
   const handleSubmit = async (
     values: TSignUpPageProps,
-    { resetForm }: FormikValues
+    { resetForm }: FormikValues,
   ) => {
     try {
-      const { name, email, password } = values;
+      const { name: displayName, email, password } = values;
 
       await createUserWithEmailAndPassword(auth, email, password);
 
-      dispatch(setUser({ name, email }));
+      dispatch(setUser({ displayName, email }));
 
-      await updateProfile(auth.currentUser!, { displayName: name });
+      await updateProfile(auth.currentUser!, { displayName });
 
-      onRegisterSuccess();
+      onRegisterClose();
 
       toast.success(SIGN_UP_SUCCESSFULLY);
 

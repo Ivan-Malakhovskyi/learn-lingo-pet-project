@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TeacherType, Teacher } from "../../../types";
 import { signOutUser } from "../auth/auth-slice";
 import { fetchTeachers } from "./operations";
+import { TeacherType, Teacher } from "src/types";
 
 const initialState: TeacherType = {
   items: [],
@@ -20,17 +20,17 @@ const teachersSlice = createSlice({
     },
     deleteTeacher(state, action: PayloadAction<string>) {
       state.favorites = state.favorites.filter(
-        (teacher) => teacher.id !== action.payload
+        teacher => teacher.id !== action.payload,
       );
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(fetchTeachers.fulfilled, (state, action) => {
       state.items = action.payload;
       state.isLoading = false;
       state.isError = null;
     });
-    builder.addCase(fetchTeachers.pending, (state) => {
+    builder.addCase(fetchTeachers.pending, state => {
       state.isLoading = true;
       state.isError = null;
     });
