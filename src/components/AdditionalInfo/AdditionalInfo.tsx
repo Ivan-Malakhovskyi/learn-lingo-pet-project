@@ -8,8 +8,8 @@ import {
 } from "./AdditonalInfo.styled";
 
 import { Label, MainText } from "../LabelsList/LabelList.styled";
-
 import { AdditionalInfoProps } from "./AdditionalInfo.types";
+
 import user from "/icons/profile-male.svg";
 import star from "/icons/icon_star.svg";
 

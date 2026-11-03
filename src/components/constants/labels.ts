@@ -19,3 +19,11 @@ export const levels = [
 ];
 
 export const prices: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
+
+export const labels = [
+  { id: 1, name: "career", value: "Career and business" },
+  { id: 2, name: "lesson", value: "Lesson for kids" },
+  { id: 3, name: "abroad", value: "Living abroad" },
+  { id: 4, name: "exams", value: "Exams and coursework" },
+  { id: 5, name: "travel", value: "Culture, travel or hobby" },
+];

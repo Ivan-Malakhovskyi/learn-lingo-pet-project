@@ -13,7 +13,7 @@ export const ModalStyled = styled.div`
   padding: 14px 8px 4px 18px;
   border: 1px solid rgba(18, 20, 23, 0.05);
   border-radius: 14px;
-  background-color: ${({ theme: { colors } }) => colors.primeryWhite};
+  background-color: ${({ theme }) => theme.primeryWhite};
   box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
 
   color: rgba(18, 20, 23, 0.2);
@@ -43,13 +43,13 @@ export const DropDown = styled.div<DropDownProps>`
   width: 190px;
   padding: 14px;
   overflow: auto;
-  border: 1px solid ${({ theme: { colors } }) => colors.secondaryAccentBlack};
+  border: 1px solid ${({ theme }) => theme.blackSubtle};
   border-radius: 14px;
-  background-color: ${({ theme: { colors } }) => colors.mainWhite};
-  box-shadow: ${({ theme: { colors } }) => colors.accentBlack};
+  background-color: ${({ theme }) => theme.primaryWhite};
+  box-shadow: ${({ theme }) => theme.blackTransparent};
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0%;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
 `;

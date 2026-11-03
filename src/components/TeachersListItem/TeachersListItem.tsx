@@ -3,8 +3,8 @@ import toast from "react-hot-toast";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectFavoriteTeachers } from "../redux/teachers/teachers-selectors";
-import { addTeacher, deleteTeacher } from "../redux/teachers/teacher-slice";
+import { selectFavoriteTeachers } from "src/redux/teachers/teachers-selectors";
+import { addTeacher, deleteTeacher } from "src/redux/teachers/teacher-slice";
 import { useAuthUser } from "../hooks/useAuthUser";
 
 import {
@@ -42,7 +42,6 @@ import star from "/icons/icon_star.svg";
 import { BookTrial } from "../BookTrial/BookTrial";
 import { Teacher, TeacherProps } from "src/types";
 import { Modal } from "../Global/Modal/Modal";
-import { CustomToaster } from "../Global/Toaster/CustomToaster";
 import { LabelsList } from "../LabelsList/LabelsList";
 
 import { TOAST_MESSAGES } from "../constants";
@@ -198,7 +197,6 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
           </div>
         </ContentWrapper>
       </ListItem>
-      <CustomToaster />
     </>
   );
 };

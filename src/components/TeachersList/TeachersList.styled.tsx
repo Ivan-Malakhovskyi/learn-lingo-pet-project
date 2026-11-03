@@ -13,14 +13,14 @@ export const LoadMoreBtn = styled.button`
   margin-top: 64px;
   padding: 16px 48px;
   border-radius: 12px;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-  background: ${({ theme: { colors } }) => colors.mainYellow};
+  color: ${({ theme }) => theme.primaryText};
+  background: ${({ theme }) => theme.primary};
   transition: background-color 250ms
     ${({ theme: { transitions } }) => transitions.cubic};
 
   &:hover,
   &:focus {
-    background-color: ${({ theme: { colors } }) => colors.accentYellow};
+    background-color: ${({ theme }) => theme.secondary};
   }
 
   font-size: 18px;

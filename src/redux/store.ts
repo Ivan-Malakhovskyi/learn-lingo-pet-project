@@ -1,35 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
+
 import { useDispatch } from "react-redux";
 import { authReducer } from "./auth/auth-slice";
-import {
-  persistReducer,
-  // FLUSH,
-  // REHYDRATE,
-  // PAUSE,
-  // PURGE,
-  // PERSIST,
-  // REGISTER,
-  persistStore,
-} from "redux-persist";
-import { teacherReducer } from "./teachers/teacher-slice";
-import { TeacherType } from "../../types";
+import { persistStore } from "redux-persist";
+import { teacherPersistReducer } from "./teachers/teacher-slice";
 import { filterReducer } from "./teachers/filter-slice";
-
-const teachersPersistConfig = {
-  key: "teachers",
-  storage,
-  whitelist: ["favorites"],
-};
+import { themePersistReducer } from "./theme/themeSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    teachers: persistReducer<TeacherType>(
-      teachersPersistConfig,
-      teacherReducer,
-    ),
+    teachers: teacherPersistReducer,
     filters: filterReducer,
+    theme: themePersistReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

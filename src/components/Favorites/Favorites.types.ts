@@ -1,4 +1,4 @@
-import { Teacher } from "../../types";
+import { Teacher } from "src/types";
 
 export type TFavoritesType = {
   id: string;

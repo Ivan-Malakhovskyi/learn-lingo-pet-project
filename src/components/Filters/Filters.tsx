@@ -1,8 +1,6 @@
 import { useEffect, useState, FC, BaseSyntheticEvent } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { selectFilters } from "../redux/teachers/filter-selectors";
-import { setFilters } from "../redux/teachers/filter-slice";
 
 import { IDropDownState, toggleDropDown } from "src/utils";
 import { languages, levels, prices } from "../constants";
@@ -19,7 +17,9 @@ import {
 } from "./Filters.styled";
 
 import arrow from "/icons/chevron-down.svg";
-import { useAppDispatch } from "../redux/store";
+import { useAppDispatch } from "src/redux/store";
+import { selectFilters } from "src/redux/teachers/filter-selectors";
+import { setFilters } from "src/redux/teachers/filter-slice";
 
 export const Filters: FC = () => {
   const dispatch = useAppDispatch();
@@ -29,7 +29,7 @@ export const Filters: FC = () => {
     string[] | null | string
   >(languages);
   const [levelSelect, setLevelSelect] = useState<string | null | string[]>(
-    levels
+    levels,
   );
   const [priceSelect, setPriceSelect] = useState<number[]>(prices);
   const [isDropDownOpen, setIsDropDownOpen] = useState({
@@ -51,13 +51,13 @@ export const Filters: FC = () => {
         language: searchParams.get("language"),
         level: searchParams.get("level"),
         price: searchParams.get("price"),
-      })
+      }),
     );
   }, [searchParams, dispatch]);
 
   const handleFilterChange = (
     filterName: string,
-    filterValue: string | number[] | number
+    filterValue: string | number[] | number,
   ) => {
     const isFiltersSelected =
       filterValue &&
@@ -84,13 +84,13 @@ export const Filters: FC = () => {
         break;
     }
 
-    setIsDropDownOpen((prevState) =>
-      toggleDropDown(prevState, filterName as keyof IDropDownState)
+    setIsDropDownOpen(prevState =>
+      toggleDropDown(prevState, filterName as keyof IDropDownState),
     );
 
     setIsBtnActive(isFiltersSelected as boolean);
 
-    setSearchParams((prevParams) => {
+    setSearchParams(prevParams => {
       const newParams = new URLSearchParams(prevParams);
       newParams.set(filterName, filterValue as string);
       return newParams;
@@ -137,8 +137,8 @@ export const Filters: FC = () => {
             <button
               type="button"
               onClick={() =>
-                setIsDropDownOpen((prevState) =>
-                  toggleDropDown(prevState, "language")
+                setIsDropDownOpen(prevState =>
+                  toggleDropDown(prevState, "language"),
                 )
               }
             >
@@ -149,13 +149,13 @@ export const Filters: FC = () => {
             {isDropDownOpen.language && (
               <DropDown
                 close={() =>
-                  setIsDropDownOpen((prevState) =>
-                    toggleDropDown(prevState, "language")
+                  setIsDropDownOpen(prevState =>
+                    toggleDropDown(prevState, "language"),
                   )
                 }
               >
                 <ul>
-                  {languages.map((option) => (
+                  {languages.map(option => (
                     <SelectorItem
                       onClick={handleSelectLanguage}
                       key={option}
@@ -181,8 +181,8 @@ export const Filters: FC = () => {
             <button
               type="button"
               onClick={() =>
-                setIsDropDownOpen((prevState) =>
-                  toggleDropDown(prevState, "level")
+                setIsDropDownOpen(prevState =>
+                  toggleDropDown(prevState, "level"),
                 )
               }
             >
@@ -192,13 +192,13 @@ export const Filters: FC = () => {
             {isDropDownOpen.level && (
               <DropDown
                 close={() =>
-                  setIsDropDownOpen((prevState) =>
-                    toggleDropDown(prevState, "level")
+                  setIsDropDownOpen(prevState =>
+                    toggleDropDown(prevState, "level"),
                   )
                 }
               >
                 <ul>
-                  {levels.map((option) => (
+                  {levels.map(option => (
                     <SelectorItem
                       onClick={handleSelectLevel}
                       key={option}
@@ -223,8 +223,8 @@ export const Filters: FC = () => {
             <button
               type="button"
               onClick={() =>
-                setIsDropDownOpen((prevState) =>
-                  toggleDropDown(prevState, "price")
+                setIsDropDownOpen(prevState =>
+                  toggleDropDown(prevState, "price"),
                 )
               }
             >
@@ -235,13 +235,13 @@ export const Filters: FC = () => {
             {isDropDownOpen.price && (
               <DropDown
                 close={() =>
-                  setIsDropDownOpen((prevState) =>
-                    toggleDropDown(prevState, "price")
+                  setIsDropDownOpen(prevState =>
+                    toggleDropDown(prevState, "price"),
                   )
                 }
               >
                 <ul>
-                  {prices.map((option) => (
+                  {prices.map(option => (
                     <SelectorItem
                       onClick={handleSelectPrice}
                       key={option}

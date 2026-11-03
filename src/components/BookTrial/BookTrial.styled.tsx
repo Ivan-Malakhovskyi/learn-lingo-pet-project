@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Topic = styled.h2`
   margin-bottom: 20px;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 40px;
   font-weight: 500;
   line-height: 48px;
@@ -10,7 +10,7 @@ export const Topic = styled.h2`
 
 export const Paragraph = styled.p`
   margin-bottom: 20px;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
@@ -29,7 +29,7 @@ export const TeacherImg = styled.img`
 `;
 
 export const Title = styled.h3`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -37,7 +37,7 @@ export const Title = styled.h3`
 
 export const TopicEnglishInfo = styled.h4`
   margin-bottom: 21px;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;

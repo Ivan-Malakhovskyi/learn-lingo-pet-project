@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { HeroSection } from "../Hero/Hero";
-import { Stats } from "../Stats/Stats";
+import { Hero } from "../Hero";
+import { Stats } from "../Stats";
 import { Container } from "../layout/SharedLayout.styled";
 
 const HomePage: FC = () => {
   return (
     <Container containerwidth={1344}>
-      <HeroSection />
+      <Hero />
       <Stats />
     </Container>
   );

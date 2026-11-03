@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StatsBox = styled.div`
-  border: 1.5px dashed ${({ theme: { colors } }) => colors.mainYellow};
+  border: 1.5px dashed ${({ theme }) => theme.primary};
   border-radius: 30px;
   padding: 40px 124px;
   margin-bottom: 32px;
@@ -35,7 +35,7 @@ export const ListItemStats = styled.li`
 
 export const StatsNumberWrapper = styled.p`
   display: inline-flex;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 28px;
   font-weight: 500;
   line-height: 32px;
@@ -43,7 +43,7 @@ export const StatsNumberWrapper = styled.p`
 `;
 
 export const StatsTextWrapper = styled.p`
-  color: ${({ theme: { colors } }) => colors.addAccentBlack};
+  color: ${({ theme }) => theme.secondaryText};
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;

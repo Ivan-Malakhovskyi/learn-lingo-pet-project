@@ -10,7 +10,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const Paragraph = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 24px;
   font-weight: 400;
   line-height: 22px;
@@ -18,8 +18,8 @@ export const Paragraph = styled.p`
 `;
 
 export const StyledLink = styled(NavLink)`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-  background-color: ${({ theme: { colors } }) => colors.mainYellow};
+  color: ${({ theme }) => theme.primaryText};
+  background-color: ${({ theme }) => theme.primary};
   padding: 16px 40px;
   border-radius: 12px;
   font-size: 18px;
@@ -32,6 +32,6 @@ export const StyledLink = styled(NavLink)`
 
   &:hover,
   &:focus {
-    background-color: ${({ theme: { colors } }) => colors.accentYellow};
+    background-color: ${({ theme }) => theme.secondary};
   }
 `;

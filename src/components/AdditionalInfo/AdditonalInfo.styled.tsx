@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ExperienceText = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -35,8 +35,8 @@ export const RatingWrapper = styled.div`
 
 export const BookTrialBtn = styled.button`
   display: block;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-  background-color: ${({ theme: { colors } }) => colors.mainYellow};
+  color: ${({ theme }) => theme.primaryText};
+  background-color: ${({ theme }) => theme.primary};
   padding: 16px 48px;
   border-radius: 12px;
   font-size: 18px;
@@ -49,6 +49,6 @@ export const BookTrialBtn = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${({ theme: { colors } }) => colors.accentYellow};
+    background-color: ${({ theme }) => theme.secondary};
   }
 `;

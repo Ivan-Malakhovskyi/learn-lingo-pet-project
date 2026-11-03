@@ -6,24 +6,22 @@ import "./fonts/Roboto/Roboto-Medium.ttf";
 import "./fonts/Roboto/Roboto-Regular.ttf";
 import "./font.css";
 import "./index.css";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./GlobalStyle.ts";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
-import { persistor } from "./components/redux/store.ts";
 import { Provider } from "react-redux";
-import { store } from "./components/redux/store.ts";
+import { CustomThemeProvider } from "./CustomThemeProvider.tsx";
+import { persistor, store } from "./redux/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <ThemeProvider theme={theme}>
+          <CustomThemeProvider>
             <App />
-          </ThemeProvider>
+          </CustomThemeProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

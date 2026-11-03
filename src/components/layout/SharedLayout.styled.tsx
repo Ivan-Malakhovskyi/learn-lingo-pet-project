@@ -19,5 +19,5 @@ export const SectionFormContainer = styled.section`
   padding-top: 96px;
   padding-bottom: 96px;
   min-height: 100vh;
-  background-color: ${({ theme: { colors } }) => colors.rootBodyColor};
+  background-color: ${({ theme }) => theme.primaryBackground};
 `;

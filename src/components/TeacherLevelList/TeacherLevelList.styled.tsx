@@ -8,7 +8,7 @@ export const ListItemRating = styled.li`
     content: "";
     width: 1px;
     height: 16px;
-    background-color: ${({ theme: { colors } }) => colors.mainGrey};
+    background-color: ${({ theme }) => theme.primaryGrey};
     margin-left: 16px;
   }
 `;
@@ -18,7 +18,7 @@ export const RatingText = styled.p`
 `;
 
 export const Price = styled.span`
-  color: ${({ theme: { colors } }) => colors.mainGreen};
+  color: ${({ theme }) => theme.primaryGreen};
 `;
 
 export const LevelList = styled.ul`
@@ -35,10 +35,10 @@ export const LevelListItem = styled.li`
   padding: 8px 12px;
   border-radius: 35px;
   &:first-child {
-    background-color: ${({ theme: { colors } }) => colors.mainYellow};
+    background-color: ${({ theme }) => theme.primaryYellow};
     border: none;
   }
-  border: 1px solid ${({ theme: { colors } }) => colors.accentBlack};
+  border: 1px solid ${({ theme }) => theme.blackTransparent};
   background-color: transparent;
 
   font-size: 14px;
@@ -48,7 +48,7 @@ export const LevelListItem = styled.li`
 `;
 
 export const LevelText = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;

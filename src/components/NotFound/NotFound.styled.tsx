@@ -10,7 +10,7 @@ export const NotFoundWrapper = styled.div`
 `;
 
 export const Topic = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 20px;
   font-weight: 500;
   line-height: 48px;
@@ -21,14 +21,14 @@ export const HomeLink = styled(NavLink)`
   padding: 16px 48px;
   margin-bottom: 40px;
   border-radius: 12px;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-  background: ${({ theme: { colors } }) => colors.mainYellow};
+  color: ${({ theme }) => theme.primaryText};
+  background: ${({ theme }) => theme.primary};
   transition: background-color 250ms
     ${({ theme: { transitions } }) => transitions.cubic};
 
   &:hover,
   &:focus {
-    background-color: ${({ theme: { colors } }) => colors.accentYellow};
+    background-color: ${({ theme }) => theme.primaryBg};
   }
 
   font-size: 18px;

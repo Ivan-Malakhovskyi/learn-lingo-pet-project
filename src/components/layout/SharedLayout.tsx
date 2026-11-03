@@ -1,8 +1,8 @@
 import { FC, Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { Header } from "../Header/Header";
+import { Header } from "../Header";
 // import { Container } from "./SharedLayout.styled";
-import { Loader } from "../Loader/Loader";
+import { Loader } from "../Loader";
 
 export const SharedLayout: FC = () => {
   return (

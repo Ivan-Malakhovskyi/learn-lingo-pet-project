@@ -1,32 +1,52 @@
 import { createGlobalStyle } from "styled-components";
 
-export const theme = {
-  colors: {
-    rootBodyColor: "rgb(238, 238, 238)",
-    addBodyColor: "#ffffff",
-    mainBlack: "#121417",
-    notActive: "red",
-    accentBlack: "rgba(18, 20, 23, 0.1)",
-    addAccentBlack: "#121417B3",
-    secondaryAccentBlack: "rgba(18, 20, 23, 0.05)",
-    mainBgBlack: "rgba(0, 0, 0, 0.8)",
-    mainWhite: "rgb(255, 255, 255)",
-    addWhite: "#f7f7fb",
-    mainGrey: "#8A8A89",
-    accentGrey: "#F8F8F8",
-    addAccentGrey: "#F6F7FB",
-    mainYellow: "#F4C550",
-    accentYellow: "#FBE9BA",
-    mainRed: "#EF5050",
-    mainGreen: "#38CD3E",
+import mac_yellow from "../public/images/mac_yellow_short.png";
+import mac_sage from "../public/images/mac_sage.png";
+import mac_blue from "../public/images/mac_blue.png";
+import mac_peach from "../public/images/mac_peach.png";
+import mac_red from "../public/images/mac_red.png";
+
+export const themeVariants = {
+  yellow: { primary: "#F4C550", secondary: "#FBE9BA", image: mac_yellow },
+  sage: { primary: "#9FBAAE", secondary: "#CBDED3", image: mac_sage },
+  blue: { primary: "#9FB7CE", secondary: "#BFD6EA", image: mac_blue },
+  rose: { primary: "#E0A39A", secondary: "#F2C0BD", image: mac_peach },
+  peach: { primary: "#F0AA8D", secondary: "#F4C8BA", image: mac_red },
+  gray: { primary: "#8A8A89", secondary: "#8A8A89", image: mac_yellow },
+};
+
+export const commonColors = {
+  primaryBackground: "#EEEEEE",
+  secondaryBackground: "#FFFFFF",
+
+  primaryText: "#121417",
+  secondaryText: "#121417B3",
+
+  primaryWhite: "#FFFFFF",
+  secondaryWhite: "#F7F7FB",
+
+  primaryGrey: "#8A8A89",
+  secondaryGrey: "#F8F8F8",
+  tertiaryGrey: "#F6F7FB",
+
+  primaryRed: "#EF5050",
+  primaryGreen: "#38CD3E",
+
+  blackOverlay: "rgba(0, 0, 0, 0.8)",
+  blackTransparent: "rgba(18, 20, 23, 0.1)",
+  blackSubtle: "rgba(18, 20, 23, 0.05)",
+  transitions: {
+    cubic: "cubic-bezier(0.4, 0, 0.2, 1)",
   },
+};
+
+export const theme = {
   transitions: {
     cubic: "cubic-bezier(0.4, 0, 0.2, 1)",
   },
 };
 
 export const GlobalStyle = createGlobalStyle`
-
 
 html {
   scroll-behavior: smooth;
@@ -35,8 +55,7 @@ html {
 body {
 font-family: 'Roboto', sans-serif;
 line-height: 1.5;
- background-color: ${({ theme: { colors } }) => colors.addBodyColor};
-
+ background-color: ${({ theme }) => theme.secondaryBackground};
 }
 
 h1,

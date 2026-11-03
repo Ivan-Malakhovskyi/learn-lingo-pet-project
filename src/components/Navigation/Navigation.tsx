@@ -2,9 +2,11 @@ import { FC, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-import logo from "/icons/ukraine_blue_yellow.svg";
-import iconLogin from "/icons/log-in-01.svg";
+import { setLoading, signOutUser } from "src/redux/auth/auth-slice";
+import { useAppDispatch } from "src/redux/store";
+import { selectUser } from "src/redux/auth/auth-selectors";
+import { useGoogleAuth } from "../hooks/useGoogleAuth";
+import { selectIsLoading } from "src/redux/teachers/teachers-selectors";
 
 import { Modal } from "../Global/Modal/Modal";
 import { SignInPage } from "../pages/SignInPage";
@@ -24,14 +26,14 @@ import {
 import { HomeLink } from "../Navigation/Navigation.styled";
 import { TNavProps } from "./Navigation.types";
 import { ERoutes } from "../../enums";
-import { CustomToaster } from "../Global/Toaster/CustomToaster";
+import { CustomToaster } from "../Global/CustomToaster";
 import { TOAST_MESSAGES } from "../constants";
-import { setLoading, signOutUser } from "../redux/auth/auth-slice";
-import { useAppDispatch } from "../redux/store";
-import { selectUser } from "../redux/auth/auth-selectors";
-import { Loader } from "../Loader/Loader";
-import { useGoogleAuth } from "../hooks/useGoogleAuth";
-import { selectIsLoading } from "../redux/teachers/teachers-selectors";
+import { Loader } from "../Loader";
+
+import logo from "/icons/ukraine_blue_yellow.svg";
+import iconLogin from "/icons/log-in-01.svg";
+import arrow from "/icons/chevron-down.svg";
+import { ThemeModal } from "../ThemeModal";
 
 const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
 
@@ -40,6 +42,12 @@ export const Navigation: FC = () => {
     signIn: false,
     signUp: false,
   });
+
+  const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
+
+  const handleToggleColorModal = () => {
+    setIsColorMenuOpen(!isColorMenuOpen);
+  };
 
   const navigate = useNavigate();
   const user = useSelector(selectUser);
@@ -120,6 +128,15 @@ export const Navigation: FC = () => {
 
         {isLoading && <Loader width={40} height={40} />}
 
+        <div>
+          {" "}
+          <button type="button" onClick={handleToggleColorModal}>
+            Theme color <img src={arrow} alt="arrow_up" />
+          </button>
+        </div>
+
+        {isColorMenuOpen && <ThemeModal toggle={handleToggleColorModal} />}
+
         {!isUserLoggedIn && (
           <ListBtnAuth>
             <li>
@@ -155,16 +172,13 @@ export const Navigation: FC = () => {
         )}
 
         {isOpen.signUp && (
-          <div>
-            {" "}
-            <Modal
-              maxwidth={566}
-              maxheight={600}
-              close={() => handleToggle("signUp")}
-            >
-              <SignUpPage onRegisterClose={handleRegisterClose} />
-            </Modal>
-          </div>
+          <Modal
+            maxwidth={566}
+            maxheight={600}
+            close={() => handleToggle("signUp")}
+          >
+            <SignUpPage onRegisterClose={handleRegisterClose} />
+          </Modal>
         )}
       </ListBtnAuth>
       <CustomToaster />

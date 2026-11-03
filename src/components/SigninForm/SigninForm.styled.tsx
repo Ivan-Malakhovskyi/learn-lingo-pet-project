@@ -17,7 +17,7 @@ export const Title = styled.h2`
 `;
 
 export const Paragraph = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainBgBlack};
+  color: ${({ theme }) => theme.blackOverlay};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.37;
@@ -27,11 +27,11 @@ export const Paragraph = styled.p`
 export const FieldForm = styled(Field)`
   width: calc(100% - 35px);
   padding: 16px 18px;
-  border: 1px solid ${({ theme: { colors } }) => colors.accentBlack};
+  border: 1px solid ${({ theme }) => theme.blackTransparent};
   border-radius: 12px;
 
   &::placeholder {
-    color: ${({ theme: { colors } }) => colors.mainBlack};
+    color: ${({ theme }) => theme.primaryText};
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
@@ -50,7 +50,7 @@ export const IconsWrapper = styled.div`
 `;
 
 export const BtnSubmit = styled.button`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   width: 100%;
   padding: 16px 21px;
   font-size: 18px;
@@ -58,19 +58,19 @@ export const BtnSubmit = styled.button`
   line-height: 28px;
   border: none;
   border-radius: 12px;
-  background-color: ${({ theme: { colors } }) => colors.mainYellow};
+  background-color: ${({ theme }) => theme.primary};
 
   transition: background-color 250ms
     ${({ theme: { transitions } }) => transitions.cubic};
 
   &:hover,
   &:focus {
-    background-color: ${({ theme: { colors } }) => colors.accentYellow};
+    background-color: ${({ theme }) => theme.secondary};
   }
 `;
 
 export const ErrMessage = styled(ErrorMessage)`
-  color: ${({ theme: { colors } }) => colors.mainRed};
+  color: ${({ theme }) => theme.primaryRed};
   margin-top: 4px;
   font-size: 16px;
   font-weight: 400;
@@ -104,8 +104,8 @@ export const StyledGoogleBtn = styled.button`
   border-radius: 26px;
   height: 40px;
   width: 120px;
-  color: ${({ theme }) => theme.colors.mainBlack};
-  background-color: ${({ theme }) => theme.colors.addAccentGrey};
+  color: ${({ theme }) => theme.primaryText};
+  background-color: ${({ theme }) => theme.primary};
   padding: 10px 20px;
   font-weight: 500;
   font-size: 14px;
@@ -119,7 +119,7 @@ export const StyledGoogleBtn = styled.button`
   &:hover,
   &:focus,
   &:active {
-    background-color: ${({ theme }) => theme.colors.mainBgBlack};
-    color: ${({ theme }) => theme.colors.addBodyColor};
+    background-color: ${({ theme }) => theme.secondary};
+    /* color: ${({ theme }) => theme.secondaryBackground};   */
   }
 `;

@@ -4,15 +4,15 @@ import { useSelector } from "react-redux";
 import {
   filterTeachers,
   selectFilters,
-} from "../redux/teachers/filter-selectors";
+} from "src/redux/teachers/filter-selectors";
 import {
   selectIsLoading,
   selectTeachers,
-} from "../redux/teachers/teachers-selectors";
+} from "src/redux/teachers/teachers-selectors";
 
 import { EmptyTopic, TeachersListWrapper } from "./TeachersList.styled";
-import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
-import { Loader } from "../Loader/Loader";
+import { TeachersListItem } from "../TeachersListItem";
+import { Loader } from "../Loader";
 import { Teacher } from "src/types";
 
 export const TeachersList: FC = () => {
@@ -48,7 +48,7 @@ export const TeachersList: FC = () => {
       <TeachersListWrapper>
         <ul>
           {filteredTeachers.length > 0 && !isLoading
-            ? filteredTeachers.map((teacher) => (
+            ? filteredTeachers.map(teacher => (
                 <TeachersListItem
                   close={toggleModal}
                   key={teacher.id}

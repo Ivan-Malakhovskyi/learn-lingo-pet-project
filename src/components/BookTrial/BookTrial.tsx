@@ -9,7 +9,7 @@ import {
   TopicEnglishInfo,
 } from "./BookTrial.styled";
 import { Label } from "../LabelsList/LabelList.styled";
-import { RadioButtonForm } from "../RadioBurronForm/RadioButtonForm";
+import { RadioButtonForm } from "../RadioButtonForm";
 
 export const BookTrial: FC<TeacherProps> = ({ teacher, close }) => {
   const { name, surname, avatar_url } = teacher;

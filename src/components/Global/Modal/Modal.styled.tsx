@@ -11,7 +11,7 @@ export const Backdrop = styled.div<TModalTypes>`
   justify-content: center;
   align-items: center;
   overflow-y: auto;
-  background-color: ${({ theme: { colors } }) => colors.mainBgBlack};
+  background-color: ${({ theme }) => theme.blackOverlay};
   z-index: 1200;
 
   @media screen and (max-height: ${({ maxheight }) => maxheight}px) {
@@ -24,7 +24,7 @@ export const ModalContent = styled.div<TModalTypes>`
   position: relative;
   padding: 64px;
   border-radius: 30px;
-  background-color: ${({ theme: { colors } }) => colors.mainWhite};
+  background-color: ${({ theme }) => theme.primaryWhite};
 `;
 
 export const CloseButton = styled.button`

@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
 import { signOutUser } from "../auth/auth-slice";
 import { fetchTeachers } from "./operations";
 import { TeacherType, Teacher } from "src/types";
@@ -42,5 +44,14 @@ const teachersSlice = createSlice({
   },
 });
 
+const config = {
+  key: "teachers",
+  storage,
+  whitelist: ["favorites"],
+};
+
 export const { addTeacher, deleteTeacher } = teachersSlice.actions;
-export const teacherReducer = teachersSlice.reducer;
+export const teacherPersistReducer = persistReducer(
+  config,
+  teachersSlice.reducer,
+);

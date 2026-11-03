@@ -1,10 +1,10 @@
 import { FC, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { selectFavoriteTeachers } from "../redux/teachers/teachers-selectors";
+import { selectFavoriteTeachers } from "src/redux/teachers/teachers-selectors";
 import { TeachersListWrapper } from "../TeachersList/TeachersList.styled";
 import { Container, SectionFormContainer } from "../layout/SharedLayout.styled";
-import { TeachersListItem } from "../TeachersListItem/TeachersListItem";
+import { TeachersListItem } from "../TeachersListItem";
 import {
   Paragraph,
   StyledLink,

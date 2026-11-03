@@ -19,7 +19,7 @@ export const ListFilters = styled.ul`
 `;
 
 export const Label = styled.span`
-  color: ${({ theme: { colors } }) => colors.mainGrey};
+  color: ${({ theme }) => theme.primaryGrey};
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
@@ -39,7 +39,7 @@ export const Select = styled.div<TFilterProps>`
   height: 48px;
   border: none;
   border-radius: 14px;
-  background: ${({ theme: { colors } }) => colors.addWhite};
+  background: ${({ theme }) => theme.tertiaryGrey};
 
   font-size: 18px;
   font-weight: 500;
@@ -77,8 +77,8 @@ export const Arrow = styled.img<TFilterProps>`
     scale: 1.3;
   }
 
-  transition: transform 250ms
-      ${({ theme: { transitions } }) => transitions.cubic},
+  transition:
+    transform 250ms ${({ theme: { transitions } }) => transitions.cubic},
     scale 250ms ${({ theme: { transitions } }) => transitions.cubic};
   transform-origin: top;
 `;
@@ -86,12 +86,12 @@ export const Arrow = styled.img<TFilterProps>`
 export const SelectorItem = styled.li<TFilterSelectorProps>`
   cursor: pointer;
 
-  color: ${({ $isActive, theme: { colors } }) =>
-    $isActive ? colors.mainBlack : colors.mainGrey};
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.primaryText : theme.primaryGrey};
 
   &:hover,
   &:focus {
-    color: ${({ theme: { colors } }) => colors.mainBlack};
+    color: ${({ theme }) => theme.primaryText};
   }
 
   &:not(:last-child) {
@@ -110,7 +110,7 @@ export const Options = styled.input`
   font-weight: 500;
   border-radius: 14px;
   padding: 18px 16px;
-  background-color: ${({ theme: { colors } }) => colors.mainWhite};
+  background-color: ${({ theme }) => theme.primaryWhite};
 `;
 
 export const ListOptions = styled.ul`
@@ -126,15 +126,15 @@ export const ListOptions = styled.ul`
   padding: 0;
   margin: 0;
   border-radius: 12px;
-  background-color: ${({ theme: { colors } }) => colors.mainWhite};
+  background-color: ${({ theme }) => theme.primaryWhite};
 `;
 
 export const BtnReset = styled.button`
   padding: 14px 39px;
   border-radius: 12px;
-  background-color: ${({ theme: { colors }, disabled }) =>
-    disabled ? colors.mainGrey : colors.mainBlack};
-  color: ${({ theme: { colors } }) => colors.mainWhite};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.primaryGrey : theme.primaryText};
+  color: ${({ theme }) => theme.primaryWhite};
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
@@ -144,8 +144,8 @@ export const BtnReset = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${({ theme: { colors }, disabled }) =>
-      disabled ? null : colors.mainBgBlack};
+    background-color: ${({ theme, disabled }) =>
+      disabled ? null : theme.blackOverlay};
   }
 
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};

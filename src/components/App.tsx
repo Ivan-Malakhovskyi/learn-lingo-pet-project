@@ -2,16 +2,17 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Route, Routes } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { FC, lazy, useEffect } from "react";
+import { useAppDispatch } from "src/redux/store";
+import { getCurrentUser } from "src/redux/auth/auth-slice";
 import { GlobalStyle } from "../GlobalStyle";
 import { SharedLayout } from "./layout/SharedLayout";
-import { getCurrentUser } from "./redux/auth/auth-slice";
 import { useAuthUser } from "./hooks/useAuthUser";
 import { PrivateRoute } from "../PrivateRoute";
 import { ERoutes } from "../enums";
 import "../App.css";
-import { Loader } from "./Loader/Loader";
-import { useAppDispatch } from "./redux/store";
+import { Loader } from "./Loader";
 import { useGoogleAuth } from "./hooks/useGoogleAuth";
+import { CustomToaster } from "./Global/CustomToaster";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const TeachersPage = lazy(() => import("./pages/TeachersPage"));
@@ -58,6 +59,7 @@ const App: FC = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <CustomToaster />
       <GlobalStyle />
       <SpeedInsights />
     </>

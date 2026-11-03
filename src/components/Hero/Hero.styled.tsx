@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const Hero = styled.div`
+export const HeroStyled = styled.div`
   margin-bottom: 24px;
   margin-left: auto;
   margin-right: auto;
@@ -19,7 +19,7 @@ export const HeroWrapper = styled.div`
 `;
 
 export const HeroTitle = styled.h2`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   margin-bottom: 32px;
   font-size: 48px;
   font-weight: 500;
@@ -31,11 +31,11 @@ export const HeroTitleWrapper = styled.span`
   font-style: italic;
   font-weight: 400;
   border-radius: 8px;
-  background-color: ${({ theme: { colors } }) => colors.accentYellow};
+  background-color: ${({ theme }) => theme.secondary};
 `;
 
 export const HeroMainText = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   max-width: 471px;
   margin-bottom: 64px;
   font-size: 16px;
@@ -46,8 +46,8 @@ export const HeroMainText = styled.p`
 
 export const HeroBtn = styled(NavLink)`
   display: inline-block;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
-  background-color: ${({ theme: { colors } }) => colors.mainYellow};
+  color: ${({ theme }) => theme.primaryText};
+  background-color: ${({ theme }) => theme.primary};
   padding: 16px 88px;
   border-radius: 12px;
   font-size: 18px;
@@ -60,13 +60,13 @@ export const HeroBtn = styled(NavLink)`
 
   &:hover,
   &:focus {
-    background-color: ${({ theme: { colors } }) => colors.accentYellow};
+    background-color: ${({ theme }) => theme.secondary};
   }
 `;
 
 export const HeroBenefits = styled.div`
   border-radius: 30px;
-  background-color: ${({ theme: { colors } }) => colors.accentGrey};
+  background-color: ${({ theme }) => theme.secondaryGrey};
 
   padding: 98px 108px 98px 64px;
 
@@ -82,7 +82,7 @@ export const HeroBgImg = styled.div`
   width: 568px;
   height: 530px;
   border-radius: 30px;
-  background-color: ${({ theme: { colors } }) => colors.accentYellow};
+  background-color: ${({ theme }) => theme.secondary};
 
   @media screen and (max-width: 1339px) {
     display: none;
@@ -99,10 +99,15 @@ export const GirlImg = styled.img`
   bottom: 111px;
 `;
 
-export const MacImg = styled.img`
+export const MacImg = styled.img.attrs(({ theme }) => ({
+  src: theme.image,
+  alt: "theme banner",
+}))`
   position: absolute;
   top: 354px;
   left: 103.64px;
   width: 359.72px;
-  height: 300px;
+  height: 175px;
+
+  /* height: 300px; */
 `;

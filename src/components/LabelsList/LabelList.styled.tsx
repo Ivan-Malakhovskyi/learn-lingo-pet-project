@@ -12,7 +12,7 @@ export const LabelList = styled.ul`
 `;
 
 export const Label = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainGrey};
+  color: ${({ theme }) => theme.primaryGrey};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -20,7 +20,7 @@ export const Label = styled.p`
 `;
 
 export const MainText = styled.span`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -28,7 +28,7 @@ export const MainText = styled.span`
 `;
 
 export const UnderlineText = styled.span`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;

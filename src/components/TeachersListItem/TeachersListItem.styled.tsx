@@ -35,7 +35,7 @@ export const ListItem = styled.li`
   gap: 48px;
   max-width: 1184px;
   border-radius: 24px;
-  background-color: ${({ theme: { colors } }) => colors.mainWhite};
+  background-color: ${({ theme }) => theme.primaryWhite};
   padding: 24px;
   &:not(:last-child) {
     margin-bottom: 32px;
@@ -55,7 +55,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const LanguageLabel = styled.p`
-  color: ${({ theme: { colors } }) => colors.mainGrey};
+  color: ${({ theme }) => theme.primaryGrey};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -64,7 +64,7 @@ export const LanguageLabel = styled.p`
 `;
 
 export const Heading = styled.h3`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 24px;
   font-weight: 500;
   line-height: 24px;
@@ -75,7 +75,7 @@ export const Heading = styled.h3`
 export const ReadMoreBtn = styled.button`
   display: block;
   margin-bottom: 16px;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;

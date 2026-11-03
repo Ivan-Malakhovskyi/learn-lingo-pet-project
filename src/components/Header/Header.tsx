@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { HeaderStyled, Nav, Wrapper } from "../Navigation/Navigation.styled";
-import { Navigation } from "../Navigation/Navigation";
+import { Navigation } from "../Navigation";
 
 export const Header: FC = () => {
   return (

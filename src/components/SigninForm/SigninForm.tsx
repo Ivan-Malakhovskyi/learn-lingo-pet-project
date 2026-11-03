@@ -19,8 +19,8 @@ import {
   GoogleWrapper,
 } from "./SigninForm.styled";
 import { auth } from "src/firebaseConfig";
-import { setLoading, setUser } from "../redux/auth/auth-slice";
-import { CustomToaster } from "../Global/Toaster/CustomToaster";
+import { setLoading, setUser } from "src/redux/auth/auth-slice";
+import { CustomToaster } from "../Global/CustomToaster";
 
 import { TOAST_MESSAGES } from "../constants";
 import { TSigninProps } from "src/types";

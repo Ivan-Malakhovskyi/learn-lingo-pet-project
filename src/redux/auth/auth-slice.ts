@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TAuthType } from "../../../types";
+import { TAuthType } from "src/types";
 
 const initialState: TAuthType = {
   user: { displayName: null, email: null },

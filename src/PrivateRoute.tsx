@@ -1,4 +1,3 @@
-// import { FC, ReactElement } from "react";
 import { Navigate } from "react-router-dom";
 import { FC, ReactNode } from "react";
 import { useAuthUser } from "./components/hooks/useAuthUser";

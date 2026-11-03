@@ -61,6 +61,19 @@ export type TInitStateTypes = {
   teachers: TeacherType;
 };
 
+export enum themeVariants {
+  Yellow = "yellow",
+  Sage = "sage",
+  Blue = "blue",
+  Rose = "rose",
+  Peach = "peach",
+  Gray = "gray",
+}
+
+export type TTheme = {
+  currentTheme: themeVariants;
+};
+
 export type TSigninProps = {
   onLoginClose: () => void;
 };

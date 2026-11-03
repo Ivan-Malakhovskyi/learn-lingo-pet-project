@@ -24,12 +24,12 @@ import {
   ErrMessage,
 } from "../SigninForm/SigninForm.styled";
 import { TSignUpPageProps } from "./SignUp.types";
-import { CustomToaster } from "../Global/Toaster/CustomToaster";
+import { CustomToaster } from "../Global/CustomToaster/CustomToaster";
 
 import eyeOff from "/icons/eye-off.svg";
 import eyeOn from "/icons/eye-on.svg";
-import { useAppDispatch } from "../redux/store";
-import { setUser } from "../redux/auth/auth-slice";
+import { useAppDispatch } from "src/redux/store";
+import { setUser } from "src/redux/auth/auth-slice";
 
 const initialValuesFields = {
   name: "",
@@ -51,7 +51,7 @@ const validationSignupSchema = yup.object({
     .required("Password can't be is empty"),
 });
 
-export const Signup: FC<TSignupProps> = ({ onRegisterClose }) => {
+export const SignupForm: FC<TSignupProps> = ({ onRegisterClose }) => {
   const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState(false);
 

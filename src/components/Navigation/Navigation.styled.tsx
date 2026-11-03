@@ -51,7 +51,7 @@ export const IconWrapper = styled.span`
 export const LogoLink = styled(NavLink)`
   display: flex;
   align-items: center;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
@@ -63,7 +63,7 @@ export const HomeLink = styled.span`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
@@ -71,12 +71,12 @@ export const StyledNavLink = styled(NavLink)`
   transition: color 250ms ${({ theme: { transitions } }) => transitions.cubic};
 
   &.active {
-    color: ${({ theme: { colors } }) => colors.mainYellow};
+    color: ${({ theme }) => theme.primary};
   }
 
   &:hover,
   &:focus {
-    color: ${({ theme: { colors } }) => colors.mainYellow};
+    color: ${({ theme }) => theme.primary};
   }
 `;
 
@@ -87,8 +87,8 @@ export const LinkWapper = styled.span`
 export const Btn = styled.button`
   padding: 14px 39px;
   border-radius: 12px;
-  background-color: ${({ theme: { colors } }) => colors.mainBlack};
-  color: ${({ theme: { colors } }) => colors.mainWhite};
+  background-color: ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => theme.primaryWhite};
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
@@ -98,7 +98,7 @@ export const Btn = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${({ theme: { colors } }) => colors.mainBgBlack};
+    background-color: ${({ theme }) => theme.blackOverlay};
   }
 `;
 
@@ -111,7 +111,7 @@ export const ListBtnAuth = styled.ul`
 
 export const BtnSignin = styled.button`
   display: flex;
-  color: ${({ theme: { colors } }) => colors.mainBlack};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;

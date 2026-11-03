@@ -9,14 +9,13 @@ import {
   HeroTitleWrapper,
   HeroMainText,
   HeroBtn,
-  Hero,
+  HeroStyled,
 } from "./Hero.styled";
 import girl from "/images/stiker_girl.png";
-import mac from "/images/mac.png";
 
-export const HeroSection: FC = () => {
+export const Hero: FC = () => {
   return (
-    <Hero>
+    <HeroStyled>
       <HeroWrapper>
         <HeroBenefits>
           <HeroTitle>
@@ -32,9 +31,9 @@ export const HeroSection: FC = () => {
         </HeroBenefits>
         <HeroBgImg>
           <GirlImg src={girl} alt="girl_stiker" />
-          <MacImg src={mac} alt="girl_stiker" />
+          <MacImg />
         </HeroBgImg>
       </HeroWrapper>
-    </Hero>
+    </HeroStyled>
   );
 };

@@ -1,10 +1,10 @@
-import { TeachersList } from "../TeachersList/TeachersList";
+import { useEffect, FC } from "react";
+import { fetchTeachers } from "src/redux/teachers/operations";
+import { useAppDispatch } from "src/redux/store";
+import { TeachersList } from "../TeachersList";
 import { Container } from "../layout/SharedLayout.styled";
 import { SectionFormContainer } from "../layout/SharedLayout.styled";
-import { Filters } from "../Filters/Filters";
-import { useEffect, FC } from "react";
-import { fetchTeachers } from "../redux/teachers/operations";
-import { useAppDispatch } from "../redux/store";
+import { Filters } from "../Filters";
 
 const TeachersPage: FC = () => {
   const dispatch = useAppDispatch();
