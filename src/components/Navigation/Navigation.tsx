@@ -118,6 +118,18 @@ export const Navigation: FC = () => {
           </LinkWapper>
         )}
       </li>
+      <li>
+        {" "}
+        <StyledBtn type="button" onClick={handleToggleColorModal}>
+          Theme color{" "}
+          <Arrow $isOpen={isColorMenuOpen} src={arrow} alt="arrow_up" />
+        </StyledBtn>{" "}
+      </li>
+
+      <AnimatePresence>
+        {isColorMenuOpen && <ThemeModal toggle={handleToggleColorModal} />}
+      </AnimatePresence>
+
       <ListBtnAuth>
         {showUser && (
           <>
@@ -131,15 +143,6 @@ export const Navigation: FC = () => {
         )}
 
         {isLoading && <Loader width={40} height={40} />}
-
-        <StyledBtn type="button" onClick={handleToggleColorModal}>
-          Theme color{" "}
-          <Arrow $isOpen={isColorMenuOpen} src={arrow} alt="arrow_up" />
-        </StyledBtn>
-
-        <AnimatePresence>
-          {isColorMenuOpen && <ThemeModal toggle={handleToggleColorModal} />}
-        </AnimatePresence>
 
         {!isUserLoggedIn && (
           <ListBtnAuth>
@@ -189,6 +192,7 @@ export const Navigation: FC = () => {
           )}
         </AnimatePresence>
       </ListBtnAuth>
+
       <CustomToaster />
     </HeaderWrapper>
   );

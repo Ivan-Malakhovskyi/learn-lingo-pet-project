@@ -20,6 +20,10 @@ export const HeaderWrapper = styled.ul`
     justify-content: space-between;
     flex-direction: row;
   }
+
+  @media screen and (max-width: 767px) {
+    gap: 12px;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -106,7 +110,15 @@ export const ListBtnAuth = styled.ul`
   display: flex;
   gap: 16px;
   align-items: center;
-  margin-right: 14px;
+
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-left: 12px;
+  }
 `;
 
 export const BtnSignin = styled.button`
@@ -123,12 +135,21 @@ export const Topic = styled.p`
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0%;
+
+  @media screen and (max-width: 767px) {
+    text-align: center;
+  }
 `;
 
 export const StyledBtn = styled.button`
   display: flex;
+  align-items: center;
   gap: 12px;
   transition: color 250ms ${({ theme }) => theme.transitions.cubic};
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0%;
 
   &:hover,
   &:focus {

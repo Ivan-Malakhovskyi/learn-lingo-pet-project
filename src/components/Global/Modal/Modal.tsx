@@ -53,7 +53,6 @@ export const Modal: FC<TModalProps> = ({
         <CloseButton onClick={close}>
           <img src={iconClose} alt="icon_close" width={32} height={32} />
         </CloseButton>
-
         {children}
       </ModalContent>
     </Backdrop>,
