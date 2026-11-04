@@ -68,9 +68,13 @@ export const HeroBenefits = styled.div`
   border-radius: 30px;
   background-color: ${({ theme }) => theme.secondaryGrey};
 
-  padding: 98px 108px 98px 64px;
+  padding: 24px 44px 24px 16px;
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (min-width: 1200px) {
+    padding: 98px 108px 98px 64px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
     padding: 48px 98px 48px 32px;
   }
 `;

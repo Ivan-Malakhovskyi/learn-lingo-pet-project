@@ -92,108 +92,110 @@ export const Navigation: FC = () => {
   const showUser = isUserLoggedIn && !isUserRefresh && !isLoading;
 
   return (
-    <HeaderWrapper>
-      <li>
-        <LogoLink to="/">
+    <>
+      <HeaderWrapper>
+        <li>
+          <LogoLink to="/">
+            {" "}
+            <IconWrapper>
+              <img src={logo} width={28} height={28} alt="logo_ukraine" />{" "}
+            </IconWrapper>
+            Learn Lingo
+          </LogoLink>
+        </li>
+        <li>
+          <HomeLink>
+            <StyledNavLink to="/" aria-current="page">
+              Home
+            </StyledNavLink>
+          </HomeLink>
+        </li>
+        <li>
           {" "}
-          <IconWrapper>
-            <img src={logo} width={28} height={28} alt="logo_ukraine" />{" "}
-          </IconWrapper>
-          Learn Lingo
-        </LogoLink>
-      </li>
-      <li>
-        <HomeLink>
-          <StyledNavLink to="/" aria-current="page">
-            Home
-          </StyledNavLink>
-        </HomeLink>
-      </li>
-      <li>
-        {" "}
-        <StyledNavLink to="/teachers">Teachers</StyledNavLink>
-        {showUser && (
-          <LinkWapper>
-            <StyledNavLink to="/favorites">Favorites</StyledNavLink>
-          </LinkWapper>
-        )}
-      </li>
-      <li>
-        {" "}
-        <StyledBtn type="button" onClick={handleToggleColorModal}>
-          Theme color{" "}
-          <Arrow $isOpen={isColorMenuOpen} src={arrow} alt="arrow_up" />
-        </StyledBtn>{" "}
-      </li>
+          <StyledNavLink to="/teachers">Teachers</StyledNavLink>
+          {showUser && (
+            <LinkWapper>
+              <StyledNavLink to="/favorites">Favorites</StyledNavLink>
+            </LinkWapper>
+          )}
+        </li>
+        <li>
+          {" "}
+          <StyledBtn type="button" onClick={handleToggleColorModal}>
+            Theme color{" "}
+            <Arrow $isOpen={isColorMenuOpen} src={arrow} alt="arrow_up" />
+          </StyledBtn>{" "}
+        </li>
+
+        <ListBtnAuth>
+          {showUser && (
+            <>
+              <li>
+                <Topic>Welcome {user?.displayName}</Topic>
+              </li>
+              <li>
+                <Btn onClick={handleSignOut}>Logout</Btn>
+              </li>
+            </>
+          )}
+
+          {isLoading && <Loader width={40} height={40} />}
+
+          {!isUserLoggedIn && (
+            <ListBtnAuth>
+              <li>
+                <BtnSignin onClick={handleLoginClose}>
+                  <IconWrapper>
+                    <img
+                      src={iconLogin}
+                      width={20}
+                      height={20}
+                      alt="icon_login"
+                    />{" "}
+                  </IconWrapper>
+                  Log in
+                </BtnSignin>
+              </li>
+              <li>
+                {" "}
+                <Btn type="button" onClick={handleRegisterClose}>
+                  Registration
+                </Btn>
+              </li>
+            </ListBtnAuth>
+          )}
+        </ListBtnAuth>
+
+        <CustomToaster />
+      </HeaderWrapper>
 
       <AnimatePresence>
         {isColorMenuOpen && <ThemeModal toggle={handleToggleColorModal} />}
       </AnimatePresence>
 
-      <ListBtnAuth>
-        {showUser && (
-          <>
-            <li>
-              <Topic>Welcome {user?.displayName}</Topic>
-            </li>
-            <li>
-              <Btn onClick={handleSignOut}>Logout</Btn>
-            </li>
-          </>
+      <AnimatePresence>
+        {isOpen.signUp && (
+          <Modal
+            maxwidth={566}
+            maxheight={600}
+            close={() => handleToggle("signUp")}
+          >
+            <SignUpPage onRegisterClose={handleRegisterClose} />
+          </Modal>
         )}
+      </AnimatePresence>
 
-        {isLoading && <Loader width={40} height={40} />}
-
-        {!isUserLoggedIn && (
-          <ListBtnAuth>
-            <li>
-              <BtnSignin onClick={handleLoginClose}>
-                <IconWrapper>
-                  <img
-                    src={iconLogin}
-                    width={20}
-                    height={20}
-                    alt="icon_login"
-                  />{" "}
-                </IconWrapper>
-                Log in
-              </BtnSignin>
-            </li>
-            <li>
-              {" "}
-              <Btn type="button" onClick={handleRegisterClose}>
-                Registration
-              </Btn>
-            </li>
-          </ListBtnAuth>
+      <AnimatePresence>
+        {isOpen.signIn && (
+          <Modal
+            maxwidth={566}
+            maxheight={506}
+            close={() => handleToggle("signIn")}
+          >
+            <SignInPage onLoginClose={handleLoginClose} />
+          </Modal>
         )}
-
-        <AnimatePresence>
-          {isOpen.signIn && (
-            <Modal
-              maxwidth={566}
-              maxheight={506}
-              close={() => handleToggle("signIn")}
-            >
-              <SignInPage onLoginClose={handleLoginClose} />
-            </Modal>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {isOpen.signUp && (
-            <Modal
-              maxwidth={566}
-              maxheight={600}
-              close={() => handleToggle("signUp")}
-            >
-              <SignUpPage onRegisterClose={handleRegisterClose} />
-            </Modal>
-          )}
-        </AnimatePresence>
-      </ListBtnAuth>
-
-      <CustomToaster />
-    </HeaderWrapper>
+      </AnimatePresence>
+    </>
   );
 };

@@ -3,8 +3,13 @@ import styled from "styled-components";
 export const StatsBox = styled.div`
   border: 1.5px dashed ${({ theme }) => theme.primary};
   border-radius: 30px;
-  padding: 40px 124px;
   margin-bottom: 32px;
+
+  padding: 20px 62px;
+
+  @media screen and (min-width: 768px) {
+    padding: 40px 124px;
+  }
 
   @media (width >= 1440px) {
     max-width: 1300px;

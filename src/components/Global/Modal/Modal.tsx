@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { FC, useEffect } from "react";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { Backdrop, CloseButton, ModalContent } from "./Modal.styled";
+import { Backdrop, CloseButton, CloseIcon, ModalContent } from "./Modal.styled";
 import iconClose from "/icons/x.svg";
 import { TModalProps } from "./Modal.types";
 import { modalContentVariants } from "./animations";
@@ -51,7 +51,7 @@ export const Modal: FC<TModalProps> = ({
     >
       <ModalContent maxwidth={maxwidth} variants={modalContentVariants}>
         <CloseButton onClick={close}>
-          <img src={iconClose} alt="icon_close" width={32} height={32} />
+          <CloseIcon src={iconClose} alt="icon_close" />
         </CloseButton>
         {children}
       </ModalContent>
