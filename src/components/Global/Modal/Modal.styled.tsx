@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { TModalTypes } from "./Modal.types";
 
-export const Backdrop = styled.div<TModalTypes>`
+export const Backdrop = styled(motion.div)<TModalTypes>`
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +20,7 @@ export const Backdrop = styled.div<TModalTypes>`
   }
 `;
 
-export const ModalContent = styled.div<TModalTypes>`
+export const ModalContent = styled(motion.div)<TModalTypes>`
   max-width: ${({ maxwidth }) => maxwidth}px;
   position: relative;
   padding: 64px;
@@ -36,7 +37,9 @@ export const CloseButton = styled.button`
   top: 20px;
   right: 20px;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover {
+
+  &:hover,
+  &:focus {
     transform: scale(1.2);
   }
 `;

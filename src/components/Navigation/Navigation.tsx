@@ -2,13 +2,15 @@ import { FC, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
 import { setLoading, signOutUser } from "src/redux/auth/auth-slice";
 import { useAppDispatch } from "src/redux/store";
 import { selectUser } from "src/redux/auth/auth-selectors";
 import { useGoogleAuth } from "../hooks/useGoogleAuth";
 import { selectIsLoading } from "src/redux/teachers/teachers-selectors";
 
-import { Modal } from "../Global/Modal/Modal";
+import { Modal } from "../Global/Modal";
 import { SignInPage } from "../pages/SignInPage";
 import { SignUpPage } from "../pages/SignUpPage";
 import { useAuthUser } from "../hooks/useAuthUser";
@@ -22,7 +24,10 @@ import {
   LinkWapper,
   HeaderWrapper,
   Topic,
+  StyledBtn,
+  Arrow,
 } from "../Navigation/Navigation.styled";
+import { ThemeModal } from "../ThemeModal";
 import { HomeLink } from "../Navigation/Navigation.styled";
 import { TNavProps } from "./Navigation.types";
 import { ERoutes } from "../../enums";
@@ -33,7 +38,6 @@ import { Loader } from "../Loader";
 import logo from "/icons/ukraine_blue_yellow.svg";
 import iconLogin from "/icons/log-in-01.svg";
 import arrow from "/icons/chevron-down.svg";
-import { ThemeModal } from "../ThemeModal";
 
 const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
 
@@ -45,16 +49,16 @@ export const Navigation: FC = () => {
 
   const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
 
-  const handleToggleColorModal = () => {
-    setIsColorMenuOpen(!isColorMenuOpen);
-  };
-
   const navigate = useNavigate();
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectIsLoading);
   const { isUserRefresh, isUserLoggedIn } = useAuthUser();
   const { signOutWithGoogle } = useGoogleAuth();
   const dispatch = useAppDispatch();
+
+  const handleToggleColorModal = () => {
+    setIsColorMenuOpen(!isColorMenuOpen);
+  };
 
   const handleToggle = (key: "signIn" | "signUp") => {
     setIsOpen(prevState => ({
@@ -128,14 +132,14 @@ export const Navigation: FC = () => {
 
         {isLoading && <Loader width={40} height={40} />}
 
-        <div>
-          {" "}
-          <button type="button" onClick={handleToggleColorModal}>
-            Theme color <img src={arrow} alt="arrow_up" />
-          </button>
-        </div>
+        <StyledBtn type="button" onClick={handleToggleColorModal}>
+          Theme color{" "}
+          <Arrow $isOpen={isColorMenuOpen} src={arrow} alt="arrow_up" />
+        </StyledBtn>
 
-        {isColorMenuOpen && <ThemeModal toggle={handleToggleColorModal} />}
+        <AnimatePresence>
+          {isColorMenuOpen && <ThemeModal toggle={handleToggleColorModal} />}
+        </AnimatePresence>
 
         {!isUserLoggedIn && (
           <ListBtnAuth>
@@ -161,25 +165,29 @@ export const Navigation: FC = () => {
           </ListBtnAuth>
         )}
 
-        {isOpen.signIn && (
-          <Modal
-            maxwidth={566}
-            maxheight={506}
-            close={() => handleToggle("signIn")}
-          >
-            <SignInPage onLoginClose={handleLoginClose} />
-          </Modal>
-        )}
+        <AnimatePresence>
+          {isOpen.signIn && (
+            <Modal
+              maxwidth={566}
+              maxheight={506}
+              close={() => handleToggle("signIn")}
+            >
+              <SignInPage onLoginClose={handleLoginClose} />
+            </Modal>
+          )}
+        </AnimatePresence>
 
-        {isOpen.signUp && (
-          <Modal
-            maxwidth={566}
-            maxheight={600}
-            close={() => handleToggle("signUp")}
-          >
-            <SignUpPage onRegisterClose={handleRegisterClose} />
-          </Modal>
-        )}
+        <AnimatePresence>
+          {isOpen.signUp && (
+            <Modal
+              maxwidth={566}
+              maxheight={600}
+              close={() => handleToggle("signUp")}
+            >
+              <SignUpPage onRegisterClose={handleRegisterClose} />
+            </Modal>
+          )}
+        </AnimatePresence>
       </ListBtnAuth>
       <CustomToaster />
     </HeaderWrapper>

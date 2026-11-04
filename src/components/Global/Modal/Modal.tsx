@@ -4,6 +4,7 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { Backdrop, CloseButton, ModalContent } from "./Modal.styled";
 import iconClose from "/icons/x.svg";
 import { TModalProps } from "./Modal.types";
+import { modalContentVariants } from "./animations";
 
 const modalRoot = document.querySelector("#modal-root")!;
 
@@ -40,8 +41,15 @@ export const Modal: FC<TModalProps> = ({
   };
 
   return createPortal(
-    <Backdrop onClick={handleBackdropClick} maxheight={maxheight}>
-      <ModalContent maxwidth={maxwidth}>
+    <Backdrop
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      onClick={handleBackdropClick}
+      maxheight={maxheight}
+    >
+      <ModalContent maxwidth={maxwidth} variants={modalContentVariants}>
         <CloseButton onClick={close}>
           <img src={iconClose} alt="icon_close" width={32} height={32} />
         </CloseButton>

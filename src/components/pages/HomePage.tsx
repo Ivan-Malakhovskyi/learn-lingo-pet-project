@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Hero } from "../Hero";
 import { Stats } from "../Stats";
-import { Container } from "../layout/SharedLayout.styled";
+import { Container } from "../SharedLayout/SharedLayout.styled";
 
 const HomePage: FC = () => {
   return (

@@ -4,13 +4,14 @@ import { selectTheme } from "src/redux/theme/selectors";
 import { setTheme } from "src/redux/theme/themeSlice";
 import { List, ListItem, StyledBtn } from "./ThemeSwitcher.styled";
 
-export const ThemeSwitcher = () => {
+export const ThemeSwitcher = ({ onClose }: { onClose: () => void }) => {
   const dispatch = useDispatch();
 
   const currentTheme = useSelector(selectTheme);
 
   const handleChangeTheme = (newTheme: string) => {
     dispatch(setTheme(newTheme));
+    onClose();
   };
 
   return (
@@ -26,7 +27,6 @@ export const ThemeSwitcher = () => {
             aria-pressed={currentTheme === name}
             style={{
               backgroundColor: theme.primary,
-              // border: currentTheme === name ? "2px solid #121417B3" : "none",
             }}
           ></StyledBtn>
         </ListItem>

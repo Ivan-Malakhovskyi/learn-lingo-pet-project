@@ -9,7 +9,7 @@ interface IThemeModalProps {
 export const ThemeModal: FC<IThemeModalProps> = ({ toggle }) => {
   return (
     <Modal close={toggle}>
-      <ThemeSwitcher />
+      <ThemeSwitcher onClose={toggle} />
     </Modal>
   );
 };

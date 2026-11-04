@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 
 import { selectFavoriteTeachers } from "src/redux/teachers/teachers-selectors";
 import { TeachersListWrapper } from "../TeachersList/TeachersList.styled";
-import { Container, SectionFormContainer } from "../layout/SharedLayout.styled";
+import {
+  Container,
+  SectionFormContainer,
+} from "../SharedLayout/SharedLayout.styled";
 import { TeachersListItem } from "../TeachersListItem";
 import {
   Paragraph,

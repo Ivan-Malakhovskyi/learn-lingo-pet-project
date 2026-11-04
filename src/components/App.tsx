@@ -5,7 +5,7 @@ import { FC, lazy, useEffect } from "react";
 import { useAppDispatch } from "src/redux/store";
 import { getCurrentUser } from "src/redux/auth/auth-slice";
 import { GlobalStyle } from "../GlobalStyle";
-import { SharedLayout } from "./layout/SharedLayout";
+import { SharedLayout } from "./SharedLayout";
 import { useAuthUser } from "./hooks/useAuthUser";
 import { PrivateRoute } from "../PrivateRoute";
 import { ERoutes } from "../enums";

@@ -118,9 +118,27 @@ export const BtnSignin = styled.button`
 `;
 
 export const Topic = styled.p`
-  color: #121417;
+  color: ${({ theme }) => theme.primaryText};
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0%;
+`;
+
+export const StyledBtn = styled.button`
+  display: flex;
+  gap: 12px;
+  transition: color 250ms ${({ theme }) => theme.transitions.cubic};
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.primary};
+  }
+`;
+
+export const Arrow = styled.img<{ $isOpen: boolean }>`
+  transform: rotate(${({ $isOpen }) => ($isOpen ? "180deg" : "360deg")});
+
+  transition: transform 250ms
+    ${({ theme: { transitions } }) => transitions.cubic};
 `;
