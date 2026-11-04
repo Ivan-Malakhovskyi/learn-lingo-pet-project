@@ -11,7 +11,7 @@ export const Backdrop = styled(motion.div)<TModalTypes>`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: ${({ theme }) => theme.blackOverlay};
   z-index: 1200;
 
@@ -47,7 +47,7 @@ export const CloseButton = styled.button`
     transform: scale(1.2);
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1199px) {
     top: 12px;
     right: 12px;
   }
@@ -57,8 +57,8 @@ export const CloseIcon = styled.img`
   width: 32px;
   height: 32px;
 
-  @media screen and (max-width: 767px) {
-    width: 16px;
-    height: 16px;
+  @media screen and (max-width: 1199px) {
+    width: 20px;
+    height: 20px;
   }
 `;

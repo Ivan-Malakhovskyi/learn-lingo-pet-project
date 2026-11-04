@@ -17,11 +17,11 @@ export const ThemeSwitcher = ({ onClose }: { onClose: () => void }) => {
   return (
     <List>
       {Object.entries(themeVariants).map(([name, theme]) => (
-        <ListItem>
+        <ListItem key={name}>
           <StyledBtn
             type="button"
             key={name}
-            active={currentTheme === name}
+            $active={currentTheme === name}
             onClick={() => handleChangeTheme(name)}
             aria-label={`select ${name} theme`}
             aria-pressed={currentTheme === name}

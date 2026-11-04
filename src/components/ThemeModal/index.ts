@@ -1,1 +1,1 @@
-export { ThemeModal } from "./ThemeModal";
+export { default } from "./ThemeModal";

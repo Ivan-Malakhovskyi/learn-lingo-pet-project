@@ -1,10 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
-import mac_yellow from "../public/images/mac_yellow_short.png";
-import mac_sage from "../public/images/mac_sage.png";
-import mac_blue from "../public/images/mac_blue.png";
-import mac_peach from "../public/images/mac_peach.png";
-import mac_red from "../public/images/mac_red.png";
+import mac_yellow from "/images/mac_yellow_short.png";
+import mac_sage from "/images/mac_sage.png";
+import mac_blue from "/images/mac_blue.png";
+import mac_peach from "/images/mac_peach.png";
+import mac_red from "/images/mac_red.png";
 
 export const themeVariants = {
   yellow: { primary: "#F4C550", secondary: "#FBE9BA", image: mac_yellow },

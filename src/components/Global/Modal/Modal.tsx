@@ -8,12 +8,7 @@ import { modalContentVariants } from "./animations";
 
 const modalRoot = document.querySelector("#modal-root")!;
 
-export const Modal: FC<TModalProps> = ({
-  close,
-  children,
-  maxwidth,
-  maxheight,
-}) => {
+const Modal: FC<TModalProps> = ({ close, children, maxwidth, maxheight }) => {
   useEffect(() => {
     const handleEscClick = ({ code }: KeyboardEvent) => {
       if (code === "Escape") {
@@ -59,3 +54,5 @@ export const Modal: FC<TModalProps> = ({
     modalRoot,
   );
 };
+
+export default Modal;

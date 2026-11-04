@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, lazy, Suspense, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ import { selectUser } from "src/redux/auth/auth-selectors";
 import { useGoogleAuth } from "../hooks/useGoogleAuth";
 import { selectIsLoading } from "src/redux/teachers/teachers-selectors";
 
-import { Modal } from "../Global/Modal";
+// import { Modal } from "../Global/Modal";
 import { SignInPage } from "../pages/SignInPage";
 import { SignUpPage } from "../pages/SignUpPage";
 import { useAuthUser } from "../hooks/useAuthUser";
@@ -27,7 +27,6 @@ import {
   StyledBtn,
   Arrow,
 } from "../Navigation/Navigation.styled";
-import { ThemeModal } from "../ThemeModal";
 import { HomeLink } from "../Navigation/Navigation.styled";
 import { TNavProps } from "./Navigation.types";
 import { ERoutes } from "../../enums";
@@ -40,6 +39,9 @@ import iconLogin from "/icons/log-in-01.svg";
 import arrow from "/icons/chevron-down.svg";
 
 const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
+
+const ThemeModal = lazy(() => import("../ThemeModal"));
+const Modal = lazy(() => import("../Global/Modal"));
 
 export const Navigation: FC = () => {
   const [isOpen, setIsOpen] = useState<TNavProps>({
@@ -169,33 +171,35 @@ export const Navigation: FC = () => {
         <CustomToaster />
       </HeaderWrapper>
 
-      <AnimatePresence>
-        {isColorMenuOpen && <ThemeModal toggle={handleToggleColorModal} />}
-      </AnimatePresence>
+      <Suspense fallback={<Loader />}>
+        <AnimatePresence>
+          {isColorMenuOpen && <ThemeModal toggle={handleToggleColorModal} />}
+        </AnimatePresence>
 
-      <AnimatePresence>
-        {isOpen.signUp && (
-          <Modal
-            maxwidth={566}
-            maxheight={600}
-            close={() => handleToggle("signUp")}
-          >
-            <SignUpPage onRegisterClose={handleRegisterClose} />
-          </Modal>
-        )}
-      </AnimatePresence>
+        <AnimatePresence>
+          {isOpen.signUp && (
+            <Modal
+              maxwidth={566}
+              maxheight={600}
+              close={() => handleToggle("signUp")}
+            >
+              <SignUpPage onRegisterClose={handleRegisterClose} />
+            </Modal>
+          )}
+        </AnimatePresence>
 
-      <AnimatePresence>
-        {isOpen.signIn && (
-          <Modal
-            maxwidth={566}
-            maxheight={506}
-            close={() => handleToggle("signIn")}
-          >
-            <SignInPage onLoginClose={handleLoginClose} />
-          </Modal>
-        )}
-      </AnimatePresence>
+        <AnimatePresence>
+          {isOpen.signIn && (
+            <Modal
+              maxwidth={566}
+              maxheight={506}
+              close={() => handleToggle("signIn")}
+            >
+              <SignInPage onLoginClose={handleLoginClose} />
+            </Modal>
+          )}
+        </AnimatePresence>
+      </Suspense>
     </>
   );
 };

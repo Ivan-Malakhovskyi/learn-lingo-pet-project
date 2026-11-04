@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledBtn = styled.button<{ active: boolean }>`
+export const StyledBtn = styled.button<{ $active: boolean }>`
   width: 60px;
   height: 60px;
   border-radius: 16px;
@@ -10,9 +10,9 @@ export const StyledBtn = styled.button<{ active: boolean }>`
     border-color 200ms ${({ theme }) => theme.transitions.cubic},
     box-shadow 200ms ${({ theme }) => theme.transitions.cubic};
 
-  border: ${({ active }) => (active ? "2px solid #121417B3" : "none")};
+  border: ${({ $active }) => ($active ? "2px solid #121417B3" : "none")};
 
-  transform: ${({ active }) => (active ? "scale(1.2)" : null)};
+  transform: ${({ $active }) => ($active ? "scale(1.2)" : null)};
 
   &:hover,
   &:focus {

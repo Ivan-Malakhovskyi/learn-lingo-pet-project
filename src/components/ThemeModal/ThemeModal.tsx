@@ -1,15 +1,17 @@
 import { FC } from "react";
-import { Modal } from "../Global/Modal";
+import Modal from "../Global/Modal";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 
 interface IThemeModalProps {
   toggle: () => void;
 }
 
-export const ThemeModal: FC<IThemeModalProps> = ({ toggle }) => {
+const ThemeModal: FC<IThemeModalProps> = ({ toggle }) => {
   return (
     <Modal close={toggle}>
       <ThemeSwitcher onClose={toggle} />
     </Modal>
   );
 };
+
+export default ThemeModal;

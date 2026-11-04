@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, lazy, useState } from "react";
 import toast from "react-hot-toast";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,10 +41,11 @@ import star from "/icons/icon_star.svg";
 
 import { BookTrial } from "../BookTrial/BookTrial";
 import { Teacher, TeacherProps } from "src/types";
-import { Modal } from "../Global/Modal/Modal";
 import { LabelsList } from "../LabelsList/LabelsList";
 
 import { TOAST_MESSAGES } from "../constants";
+
+const Modal = lazy(() => import("../Global/Modal"));
 
 export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
   const [showInfo, setShowInfo] = useState(false);
