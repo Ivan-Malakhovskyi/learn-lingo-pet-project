@@ -9,7 +9,6 @@ import { SharedLayout } from "./SharedLayout";
 import { useAuthUser } from "./hooks/useAuthUser";
 import { PrivateRoute } from "../PrivateRoute";
 import { ERoutes } from "../enums";
-import "../App.css";
 import { Loader } from "./Loader";
 import { useGoogleAuth } from "./hooks/useGoogleAuth";
 import { CustomToaster } from "./Global/CustomToaster";

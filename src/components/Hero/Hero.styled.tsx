@@ -93,7 +93,10 @@ export const HeroBgImg = styled.div`
   }
 `;
 
-export const GirlImg = styled.img`
+export const GirlImg = styled.img.attrs(({ theme }) => ({
+  src: theme.primaryImg,
+  alt: "Girl",
+}))`
   position: absolute;
   width: 339px;
   height: 339px;
@@ -104,14 +107,12 @@ export const GirlImg = styled.img`
 `;
 
 export const MacImg = styled.img.attrs(({ theme }) => ({
-  src: theme.image,
+  src: theme.secondaryImg,
   alt: "theme banner",
 }))`
   position: absolute;
   top: 354px;
   left: 103.64px;
   width: 359.72px;
-  height: 175px;
-
-  /* height: 300px; */
+  height: 180px;
 `;

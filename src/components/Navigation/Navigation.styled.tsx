@@ -52,6 +52,14 @@ export const IconWrapper = styled.span`
   margin-right: 8px;
 `;
 
+export const StyledImage = styled.img.attrs(({ theme }) => ({
+  src: theme.icon,
+  alt: `icon theme ${theme.primary}`,
+}))`
+  width: 20px;
+  height: 20px;
+`;
+
 export const LogoLink = styled(NavLink)`
   display: flex;
   align-items: center;

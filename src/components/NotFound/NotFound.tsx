@@ -1,6 +1,6 @@
 import { FC } from "react";
-import notFound from "/icons/404.svg";
 import { HomeLink, NotFoundWrapper, Topic } from "./NotFound.styled";
+import notFound from "/icons/404.svg";
 
 export const NotFound: FC = () => {
   return (

@@ -22,13 +22,13 @@ export const HomeLink = styled(NavLink)`
   margin-bottom: 40px;
   border-radius: 12px;
   color: ${({ theme }) => theme.primaryText};
-  background: ${({ theme }) => theme.primary};
+  background-color: ${({ theme }) => theme.primary};
   transition: background-color 250ms
     ${({ theme: { transitions } }) => transitions.cubic};
 
   &:hover,
   &:focus {
-    background-color: ${({ theme }) => theme.primaryBg};
+    background-color: ${({ theme }) => theme.secondary};
   }
 
   font-size: 18px;

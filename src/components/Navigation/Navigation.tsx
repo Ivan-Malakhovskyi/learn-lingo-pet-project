@@ -10,7 +10,6 @@ import { selectUser } from "src/redux/auth/auth-selectors";
 import { useGoogleAuth } from "../hooks/useGoogleAuth";
 import { selectIsLoading } from "src/redux/teachers/teachers-selectors";
 
-// import { Modal } from "../Global/Modal";
 import { SignInPage } from "../pages/SignInPage";
 import { SignUpPage } from "../pages/SignUpPage";
 import { useAuthUser } from "../hooks/useAuthUser";
@@ -26,6 +25,7 @@ import {
   Topic,
   StyledBtn,
   Arrow,
+  StyledImage,
 } from "../Navigation/Navigation.styled";
 import { HomeLink } from "../Navigation/Navigation.styled";
 import { TNavProps } from "./Navigation.types";
@@ -35,7 +35,6 @@ import { TOAST_MESSAGES } from "../constants";
 import { Loader } from "../Loader";
 
 import logo from "/icons/ukraine_blue_yellow.svg";
-import iconLogin from "/icons/log-in-01.svg";
 import arrow from "/icons/chevron-down.svg";
 
 const { SIGN_OUT_SUCCESS } = TOAST_MESSAGES;
@@ -148,12 +147,7 @@ export const Navigation: FC = () => {
               <li>
                 <BtnSignin onClick={handleLoginClose}>
                   <IconWrapper>
-                    <img
-                      src={iconLogin}
-                      width={20}
-                      height={20}
-                      alt="icon_login"
-                    />{" "}
+                    <StyledImage />{" "}
                   </IconWrapper>
                   Log in
                 </BtnSignin>

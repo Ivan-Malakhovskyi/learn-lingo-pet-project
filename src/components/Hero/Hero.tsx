@@ -11,7 +11,6 @@ import {
   HeroBtn,
   HeroStyled,
 } from "./Hero.styled";
-import girl from "/images/stiker_girl.png";
 
 export const Hero: FC = () => {
   return (
@@ -30,7 +29,7 @@ export const Hero: FC = () => {
           <HeroBtn to="/teachers">Get started</HeroBtn>
         </HeroBenefits>
         <HeroBgImg>
-          <GirlImg src={girl} alt="girl_stiker" />
+          <GirlImg />
           <MacImg />
         </HeroBgImg>
       </HeroWrapper>

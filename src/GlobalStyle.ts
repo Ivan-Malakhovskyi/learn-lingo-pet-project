@@ -1,18 +1,66 @@
 import { createGlobalStyle } from "styled-components";
 
+import girl from "/images/stiker_girl.png";
+import sage_1 from "/images/sage_1.png";
+import sage_2 from "/images/sage_2.png";
 import mac_yellow from "/images/mac_yellow_short.png";
 import mac_sage from "/images/mac_sage.png";
 import mac_blue from "/images/mac_blue.png";
 import mac_peach from "/images/mac_peach.png";
 import mac_red from "/images/mac_red.png";
+import iconLogin from "/icons/log-in-01.svg";
+import iconLoginSage from "/icons/login_sage.svg";
 
 export const themeVariants = {
-  yellow: { primary: "#F4C550", secondary: "#FBE9BA", image: mac_yellow },
-  sage: { primary: "#9FBAAE", secondary: "#CBDED3", image: mac_sage },
-  blue: { primary: "#9FB7CE", secondary: "#BFD6EA", image: mac_blue },
-  rose: { primary: "#E0A39A", secondary: "#F2C0BD", image: mac_peach },
-  peach: { primary: "#F0AA8D", secondary: "#F4C8BA", image: mac_red },
-  gray: { primary: "#8A8A89", secondary: "#8A8A89", image: mac_yellow },
+  yellow: {
+    primary: "#F4C550",
+    secondary: "#FBE9BA",
+    primaryImg: girl,
+    secondaryImg: mac_yellow,
+    addImg: "",
+    icon: iconLogin,
+  },
+  sage: {
+    primary: "#9FBAAE",
+    secondary: "#CBDED3",
+    primaryImg: girl,
+    secondaryImg: mac_sage,
+    addImg: "",
+    icon: iconLogin,
+  },
+  blue: {
+    primary: "#9FB7CE",
+    secondary: "#BFD6EA",
+    primaryImg: girl,
+    secondaryImg: mac_blue,
+    addImg: "",
+    icon: iconLogin,
+  },
+  rose: {
+    primary: "#E0A39A",
+    secondary: "#F2C0BD",
+    primaryImg: girl,
+    secondaryImg: mac_peach,
+    addImg: "",
+    icon: iconLogin,
+  },
+  peach: {
+    primary: "#F0AA8D",
+    secondary: "#F4C8BA",
+    primaryImg: girl,
+    secondaryImg: mac_red,
+    addImg: "",
+    icon: iconLogin,
+  },
+  gray: {
+    primary: "#8A8A89",
+    secondary: "#c3c3bc",
+    primaryImg: sage_1,
+    secondaryImg: sage_2,
+    addImg: "",
+    image: "",
+    icon: iconLoginSage,
+  },
 };
 
 export const commonColors = {

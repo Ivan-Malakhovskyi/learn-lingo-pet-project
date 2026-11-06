@@ -1,4 +1,4 @@
-import { FC, lazy, useState } from "react";
+import { FC, lazy, Suspense, useState } from "react";
 import toast from "react-hot-toast";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,17 +33,19 @@ import { TeacherLevelList } from "../TeacherLevelList/TeacherLevelList";
 
 import { BookTrialBtn } from "../AdditionalInfo/AdditonalInfo.styled";
 
-import activeStatus from "/icons/active_status.svg";
-import heart from "/icons/heart.svg";
-import activeHeart from "/icons/active_icon.svg";
-import book from "/icons/book-open-01.svg";
-import star from "/icons/icon_star.svg";
-
 import { BookTrial } from "../BookTrial/BookTrial";
 import { Teacher, TeacherProps } from "src/types";
 import { LabelsList } from "../LabelsList/LabelsList";
 
 import { TOAST_MESSAGES } from "../constants";
+import { AnimatePresence } from "framer-motion";
+import { Loader } from "../Loader";
+
+import activeStatus from "/icons/active_status.svg";
+import heart from "/icons/heart.svg";
+import activeHeart from "/icons/active_icon.svg";
+import book from "/icons/book-open-01.svg";
+import star from "/icons/icon_star.svg";
 
 const Modal = lazy(() => import("../Global/Modal"));
 
@@ -189,15 +191,19 @@ export const TeachersListItem: FC<TeacherProps> = ({ teacher }) => {
                 Book trial lesson
               </BookTrialBtn>
             )}
-
-            {showModal && (
-              <Modal maxwidth={600} maxheight={972} close={handleToggleClick}>
-                <BookTrial teacher={teacher} close={handleToggleClick} />
-              </Modal>
-            )}
           </div>
         </ContentWrapper>
       </ListItem>
+
+      <Suspense fallback={<Loader />}>
+        <AnimatePresence>
+          {showModal && (
+            <Modal maxwidth={600} maxheight={972} close={handleToggleClick}>
+              <BookTrial teacher={teacher} close={handleToggleClick} />
+            </Modal>
+          )}
+        </AnimatePresence>
+      </Suspense>
     </>
   );
 };
