@@ -10,29 +10,38 @@
 
 ## Introductions and Usage
 
-This application is designed for a company that offers online language learning services. The app consists of three main pages: `"Home"`, `"Teachers"` and `"Favorites."`
+This application is designed for a company that offers online language learning
+services. The app consists of three main pages: `"Home"`, `"Teachers"` and
+`"Favorites."`
 
-1.`Home Page`: Learn about the company's advantages and navigate to the `"Teachers"` page.
+1.`Home Page`: Learn about the company's advantages and navigate to the
+`"Teachers"` page.
 
-2. `Teachers Page`: Choose teachers based on your preferences, adding them to your favorites. Get more information and book a trial lesson
+2. `Teachers Page`: Choose teachers based on your preferences, adding them to
+   your favorites. Get more information and book a trial lesson
 
-3. `Favorites Page`: If you are logged in, review the teachers you liked and added to your favorites
+3. `Favorites Page`: If you are logged in, review the teachers you liked and
+   added to your favorites
 
 ### Key Features
 
 #### Home Page
 
--- **View the company's advantages and start working with the app. Link to redirect to the "Teachers" page.**
+-- **View the company's advantages and start working with the app. Link to
+redirect to the "Teachers" page.**
 
 #### Teachers Page
 
--- **Browse a list of teachers with the ability to filter by language, students' proficiency level, and hourly rate.**
+-- **Browse a list of teachers with the ability to filter by language, students'
+proficiency level, and hourly rate.**
 
--- **Implementation of "Load more" to dynamically load additional teacher cards.**
+-- **Implementation of "Load more" to dynamically load additional teacher
+cards.**
 
 -- **Add teachers to the user's favorites list.**
 
--- **View detailed information about a teacher and reviews from students. Booking trial lessons through a modal window.**
+-- **View detailed information about a teacher and reviews from students.
+Booking trial lessons through a modal window.**
 
 #### Favorites Page
 
@@ -46,7 +55,8 @@ This application is designed for a company that offers online language learning 
 
 -- **Use Firebase Realtime Database for storing and retrieving teacher data.**
 
--- **Introduce user authentication, registration, login, and logout through Firebase.**
+-- **Introduce user authentication, registration, login, and logout through
+Firebase.**
 
 #### Forms
 
@@ -64,4 +74,8 @@ This application is designed for a company that offers online language learning 
 
 -- **Implement React Router for application routing.**
 
--- **Add functionality for filtering by language, students' proficiency level, and pricing $.**
+-- **Add functionality for filtering by language, students' proficiency level,
+and pricing $.**
+
+-- **Add the ability to switch between six application themes: Gray, Peach,
+Rose, Blue, Sage, and Yellow.**
